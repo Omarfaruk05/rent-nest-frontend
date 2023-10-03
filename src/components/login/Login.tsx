@@ -20,7 +20,7 @@ const LoginPage = () => {
 
   const router = useRouter();
 
-  const onsubmit: SubmitHandler<FromValues> = async (data: any) => {
+  const onSubmit: SubmitHandler<FromValues> = async (data: any) => {
     try {
       const res = await userlogin({ ...data }).unwrap();
       console.log(res);
@@ -54,7 +54,7 @@ const LoginPage = () => {
           First login your account
         </h1>
         <div>
-          <Form submitHandler={onsubmit}>
+          <Form submitHandler={onSubmit}>
             <div>
               <FormInput name="id" type="text" size="large" label="User Id" />
             </div>
