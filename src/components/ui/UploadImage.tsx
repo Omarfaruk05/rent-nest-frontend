@@ -21,8 +21,11 @@ const beforeUpload = (file: RcFile) => {
   }
   return isJpgOrPng && isLt2M;
 };
+type ImageUploadProps = {
+  name: string;
+};
 
-const UploadImage = () => {
+const UploadImage = ({ name }: ImageUploadProps) => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
 

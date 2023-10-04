@@ -10,7 +10,6 @@ const { Sider } = Layout;
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { role } = getUserInfo() as any;
-  console.log(role);
 
   return (
     <Sider

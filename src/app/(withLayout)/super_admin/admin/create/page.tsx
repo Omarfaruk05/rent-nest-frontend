@@ -1,7 +1,7 @@
 "use client";
 
 import Form from "@/components/forms/Form";
-import FormDatePicer from "@/components/forms/FormDatePicer";
+import FormDatePicker from "@/components/forms/FormDatePicker";
 import FormInput from "@/components/forms/FormInput";
 import FormSelectField from "@/components/forms/FormSelectField";
 import FormTextArea from "@/components/forms/FormTextArea";
@@ -12,7 +12,9 @@ import {
   departmentOptions,
   genderOptions,
 } from "@/constants/global";
+import { adminSchema } from "@/schemas/admin";
 import { getUserInfo } from "@/services/auth.service";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row } from "antd";
 import React from "react";
 
@@ -55,7 +57,7 @@ const CreateAdminPage = () => {
           marginBottom: "10px",
         }}
       >
-        <Form submitHandler={onSubmit}>
+        <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
           {/* admin infromation  */}
           <div>
             <p
@@ -160,7 +162,7 @@ const CreateAdminPage = () => {
                   marginBottom: "10px",
                 }}
               >
-                <UploadImage />
+                <UploadImage name="file" />
               </Col>
             </Row>
           </div>
@@ -225,7 +227,7 @@ const CreateAdminPage = () => {
                   marginBottom: "10px",
                 }}
               >
-                <FormDatePicer
+                <FormDatePicker
                   name="admin.dateOfBirth"
                   size="large"
                   label="Date of Birth"

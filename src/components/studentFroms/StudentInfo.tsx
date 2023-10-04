@@ -2,7 +2,13 @@
 import { Col, Row } from "antd";
 import FormInput from "../forms/FormInput";
 import FormSelectField from "../forms/FormSelectField";
-import { departmentOptions, genderOptions } from "@/constants/global";
+import {
+  academicDepartmentOptions,
+  academicFacultyOptions,
+  academicSemesterOptions,
+  departmentOptions,
+  genderOptions,
+} from "@/constants/global";
 import UploadImage from "../ui/UploadImage";
 import Form from "@/components/forms/Form";
 
@@ -15,7 +21,14 @@ const StudentInfo = () => {
     }
   };
   return (
-    <div>
+    <div
+      style={{
+        border: "1px solid #d9d9d9",
+        borderRadius: "5px",
+        padding: "15px",
+        margin: "10px 0px",
+      }}
+    >
       <h1>Student info from.</h1>{" "}
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -85,7 +98,7 @@ const StudentInfo = () => {
             <FormSelectField
               size="large"
               name="student.academicDepartment"
-              options={genderOptions}
+              options={academicDepartmentOptions}
               label="Academic Departmen"
               placeholder="Select"
             />
@@ -100,7 +113,7 @@ const StudentInfo = () => {
             <FormSelectField
               size="large"
               name="student.academicFaculty"
-              options={genderOptions}
+              options={academicFacultyOptions}
               label="Academic Faculty"
               placeholder="Select"
             />
@@ -115,7 +128,7 @@ const StudentInfo = () => {
             <FormSelectField
               size="large"
               name="student.academicSemester"
-              options={genderOptions}
+              options={academicSemesterOptions}
               label="Academic Semester"
               placeholder="Select"
             />
@@ -129,9 +142,9 @@ const StudentInfo = () => {
           >
             <FormSelectField
               size="large"
-              name="student.managementDepartment"
-              options={departmentOptions}
-              label="Department"
+              name="student.gender"
+              options={genderOptions}
+              label="Gender"
               placeholder="Select"
             />
           </Col>

@@ -2,7 +2,7 @@ import { DatePicker, DatePickerProps, Input } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
 import dayjs, { Dayjs } from "dayjs";
 
-type FormDatePicerProps = {
+type FormDatePickerProps = {
   onChange?: (valOne: Dayjs | null, valTwo: string) => void;
   name: string;
   label?: string;
@@ -10,7 +10,12 @@ type FormDatePicerProps = {
   size?: "large" | "small";
 };
 
-const FormDatePicer = ({ name, label, onChange, size }: FormDatePicerProps) => {
+const FormDatePicker = ({
+  name,
+  label,
+  onChange,
+  size,
+}: FormDatePickerProps) => {
   const { control, setValue } = useFormContext();
 
   const handleOnChange: DatePickerProps["onChange"] = (date, dateString) => {
@@ -42,4 +47,4 @@ const FormDatePicer = ({ name, label, onChange, size }: FormDatePicerProps) => {
   );
 };
 
-export default FormDatePicer;
+export default FormDatePicker;

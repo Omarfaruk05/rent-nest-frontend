@@ -1,16 +1,12 @@
 "use client";
 
-import StepperFrom from "@/components/stepperForm/StepperFrom";
+import StepperForm from "@/components/stepperForm/StepperFrom";
 import GurdianInfo from "@/components/studentFroms/GurdianInfo";
-import LocalgurdianInfo from "@/components/studentFroms/LocalgurdianInfo";
+import LocalGurdianInfo from "@/components/studentFroms/LocalGurdianInfo";
 import StudentBasicInfo from "@/components/studentFroms/StudentBasicInfo";
 import StudentInfo from "@/components/studentFroms/StudentInfo";
-import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
-import { getUserInfo } from "@/services/auth.service";
 
 const CreateStudentPage = () => {
-  const { role } = getUserInfo() as any;
-
   const steps = [
     {
       title: "Student Information",
@@ -21,34 +17,32 @@ const CreateStudentPage = () => {
       content: <StudentBasicInfo />,
     },
     {
-      title: "Gurdian Information",
+      title: "Guardian Information",
       content: <GurdianInfo />,
     },
     {
-      title: "Local Gurdian Information",
-      content: <LocalgurdianInfo />,
+      title: "Local Guardian Information",
+      content: <LocalGurdianInfo />,
     },
   ];
+
+  const handleStudentSubmit = async (data: any) => {
+    try {
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <div
-      style={{
-        padding: "10px",
-      }}
-    >
-      <UMBreadCrumb
-        items={[
-          {
-            label: `${role}`,
-            link: `/${role}`,
-          },
-          {
-            label: `create`,
-            link: `create`,
-          },
-        ]}
-      />
+    <div>
       <h1>Create Student</h1>
-      <StepperFrom steps={steps} />
+      <StepperForm
+        submitHandler={(value) => {
+          handleStudentSubmit(value);
+        }}
+        steps={steps}
+      />
     </div>
   );
 };

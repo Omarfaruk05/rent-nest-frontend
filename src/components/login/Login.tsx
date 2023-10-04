@@ -1,6 +1,6 @@
 "use client";
 
-import { Col, Row, Button } from "antd";
+import { Col, Row, Button, message } from "antd";
 import loginImg from "../../assects/login-image.png";
 import Image from "next/image";
 import Form from "@/components/forms/Form";
@@ -23,10 +23,10 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<FromValues> = async (data: any) => {
     try {
       const res = await userlogin({ ...data }).unwrap();
-      console.log(res);
 
       if (res?.accessToken) {
         router.push("/profile");
+        message.success("Login Successfull.");
       }
 
       storeUserInfo({ accessToken: res?.accessToken });
