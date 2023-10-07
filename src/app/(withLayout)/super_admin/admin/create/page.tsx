@@ -7,27 +7,53 @@ import FormSelectField from "@/components/forms/FormSelectField";
 import FormTextArea from "@/components/forms/FormTextArea";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import UploadImage from "@/components/ui/UploadImage";
-import {
-  bloodGroupOptions,
-  departmentOptions,
-  genderOptions,
-} from "@/constants/global";
+import { bloodGroupOptions, genderOptions } from "@/constants/global";
+import { useAddAdminWithFromDataMutation } from "@/redux/api/adminApi";
+import { useGetDepartmentsQuery } from "@/redux/api/departmentApi";
 import { adminSchema } from "@/schemas/admin";
 import { getUserInfo } from "@/services/auth.service";
+import { IDepartment } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, message } from "antd";
 import React from "react";
 
 const CreateAdminPage = () => {
   const { role } = getUserInfo() as any;
 
-  const onSubmit = (data: any) => {
+  const { data, isLoading } = useGetDepartmentsQuery({ limit: 100, page: 1 });
+  const [addAdminWithFromData] = useAddAdminWithFromDataMutation();
+
+  //@ts-ignore
+  const departments: IDepartment[] = data?.departments;
+
+  const departmentOptions =
+    departments &&
+    departments.map((department) => {
+      return {
+        label: department?.title,
+        value: department?.id,
+      };
+    });
+
+  const onSubmit = async (values: any) => {
+    const obj = { ...values };
+    const file = obj["file"];
+    delete obj["file"];
+    const data = JSON.stringify(obj);
+
+    const formData = new FormData();
+    formData.append("file", file as Blob);
+    formData.append("data", data);
+    message.loading("Creating...");
     try {
-      console.log(data);
-    } catch (error: any) {
-      console.error(error.message);
+      console.log(formData);
+      await addAdminWithFromData(formData);
+      message.success("Admin created successfully!");
+    } catch (err: any) {
+      console.error(err.message);
     }
   };
+
   return (
     <div
       style={{
@@ -41,8 +67,8 @@ const CreateAdminPage = () => {
             link: `/${role}`,
           },
           {
-            label: `create`,
-            link: `create`,
+            label: `admin`,
+            link: `/${role}/admin`,
           },
         ]}
       />
@@ -57,7 +83,7 @@ const CreateAdminPage = () => {
           marginBottom: "10px",
         }}
       >
-        <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
+        <Form submitHandler={onSubmit}>
           {/* admin infromation  */}
           <div>
             <p

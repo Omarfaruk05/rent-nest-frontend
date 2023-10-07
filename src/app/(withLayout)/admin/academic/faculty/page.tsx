@@ -1,27 +1,23 @@
 "use client";
-
-import ActionBar from "@/components/ui/ActionBar";
-import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
-import UMTable from "@/components/ui/UMTable";
-import {
-  useDeleteDepartmentMutation,
-  useGetDepartmentsQuery,
-} from "@/redux/api/departmentApi";
-import { getUserInfo } from "@/services/auth.service";
-import { Button, Input, message } from "antd";
-import Link from "next/link";
-import { useState } from "react";
-import dayjs from "dayjs";
+import { useDebounced } from "@/redux/hooks";
 import {
   DeleteOutlined,
   EditOutlined,
-  EyeOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
-import { useDebounced } from "@/redux/hooks";
+import { Button, Input, message } from "antd";
+import { useState } from "react";
+import dayjs from "dayjs";
+import {
+  useDeleteAcademicFacultyMutation,
+  useGetAcademicFacultiesQuery,
+} from "@/redux/api/academic/facultyApi";
+import Link from "next/link";
+import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
+import ActionBar from "@/components/ui/ActionBar";
+import UMTable from "@/components/ui/UMTable";
 
-const DepartmentPage = () => {
-  const { role } = getUserInfo() as any;
+const ACFacultyPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
@@ -29,6 +25,8 @@ const DepartmentPage = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [deleteAcademicFaculty] = useDeleteAcademicFacultyMutation();
+
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
@@ -43,21 +41,21 @@ const DepartmentPage = () => {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
-
-  const { data, isLoading } = useGetDepartmentsQuery({ ...query });
-  const [deleteDepartment] = useDeleteDepartmentMutation();
-  console.log(data);
-
-  const departments = data?.departments;
-  const meta = data?.meta;
+  const { data, isLoading } = useGetAcademicFacultiesQuery({ ...query });
+  const academicFaculties = data?.academicFaculties?.data;
+  const meta = data?.academicFaculties?.meta;
+  console.log(meta);
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
-
     try {
-      await deleteDepartment(id);
-      message.success("Department deleted successfully");
+      //   console.log(data);
+      const res = await deleteAcademicFaculty(id);
+      if (res) {
+        message.success("Faculty Deleted successfully");
+      }
     } catch (err: any) {
+      //   console.error(err.message);
       message.error(err.message);
     }
   };
@@ -80,7 +78,7 @@ const DepartmentPage = () => {
       render: function (data: any) {
         return (
           <>
-            <Link href={`/super_admin/department/edit/${data?.id}`}>
+            <Link href={`/admin/academic/faculty/edit/${data?.id}`}>
               <Button
                 style={{
                   margin: "0px 5px",
@@ -105,12 +103,13 @@ const DepartmentPage = () => {
   ];
 
   const onPaginationChange = (page: number, pageSize: number) => {
+    console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
-    setSize(size);
+    setSize(pageSize);
   };
-
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
+    // console.log(order, field);
     setSortBy(field as string);
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
@@ -130,16 +129,17 @@ const DepartmentPage = () => {
       <UMBreadCrumb
         items={[
           {
-            label: `${role}`,
-            link: `/${role}`,
+            label: "admin",
+            link: "/admin",
           },
         ]}
       />
-      <ActionBar title="Department List">
+
+      <ActionBar title="Academic Faculty List">
         <Input
           type="text"
           size="large"
-          placeholder="Search"
+          placeholder="Search..."
           style={{
             width: "20%",
           }}
@@ -148,8 +148,8 @@ const DepartmentPage = () => {
           }}
         />
         <div>
-          <Link href="/super_admin/department/create">
-            <Button type="primary">Create Department</Button>
+          <Link href="/admin/academic/faculty/create">
+            <Button type="primary">Create</Button>
           </Link>
           {(!!sortBy || !!sortOrder || !!searchTerm) && (
             <Button
@@ -162,11 +162,12 @@ const DepartmentPage = () => {
           )}
         </div>
       </ActionBar>
+
       <UMTable
         loading={isLoading}
         columns={columns}
-        dataSource={departments}
         pageSize={size}
+        dataSource={academicFaculties}
         totalPages={meta?.total}
         showSizeChanger={true}
         onPaginationChange={onPaginationChange}
@@ -177,4 +178,4 @@ const DepartmentPage = () => {
   );
 };
 
-export default DepartmentPage;
+export default ACFacultyPage;
