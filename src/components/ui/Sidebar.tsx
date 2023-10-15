@@ -22,7 +22,7 @@ const Sidebar = () => {
         height: "100vh",
         position: "sticky",
         left: "0",
-        top: "0",
+        top: "50px",
         bottom: "0",
         paddingRight: "10px",
       }}

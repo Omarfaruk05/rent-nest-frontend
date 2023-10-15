@@ -1,4 +1,5 @@
 "use client";
+
 import { AUTH_KEY } from "@/constants/storageKey";
 import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import {
@@ -10,9 +11,9 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
-import { Shippori_Antique } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type navBtnProps = {
   showDrawer: () => void;
@@ -20,14 +21,22 @@ type navBtnProps = {
 };
 
 const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
-  const router = useRouter();
+  const [userRole, setUserRole] = useState(undefined);
+  const [logout, setLogout] = useState(false);
 
+  const router = useRouter();
   const logOut = () => {
     removeUserInfo(AUTH_KEY);
+    setLogout(!logout);
     router.push("/");
   };
 
-  const { role } = getUserInfo() as any;
+  useEffect(() => {
+    const { role } = getUserInfo() as any;
+    setUserRole(role);
+  }, [logout, userRole]);
+
+  console.log(logout, userRole);
 
   return (
     <div className={`flex ${flexDir}`}>
@@ -83,20 +92,22 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           Saved
         </Button>
       </Link>
-      <Link
-        className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-        href={"/dashboard/house_renter"}
-      >
-        <Button
-          onClick={showDrawer}
-          className="text-white hover:text-blue-500"
-          type="link"
-          icon={<HeartOutlined />}
+      {userRole && (
+        <Link
+          className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
+          href={"/dashboard/house_renter"}
         >
-          Dashboard
-        </Button>
-      </Link>
-      {role === undefined ? (
+          <Button
+            onClick={showDrawer}
+            className="text-white hover:text-blue-500"
+            type="link"
+            icon={<HeartOutlined />}
+          >
+            Dashboard
+          </Button>
+        </Link>
+      )}
+      {!userRole ? (
         <Link className="" href={"/login"}>
           <Button
             onClick={showDrawer}
@@ -109,9 +120,9 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           </Button>
         </Link>
       ) : (
-        <span onClick={logOut}>
+        <Link href={"/"}>
           <Button
-            onClick={showDrawer}
+            onClick={logOut}
             size="middle"
             className="text-white w-full text-center  border-solid border-[1px] rounded-md m-1 "
             type="primary"
@@ -120,7 +131,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           >
             Logout
           </Button>
-        </span>
+        </Link>
       )}
     </div>
   );

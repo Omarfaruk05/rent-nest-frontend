@@ -36,7 +36,7 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className="bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
+    <div className=" bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
       <div>
         <div className=" flex justify-center items-center h-[90vh]">
           <Form submitHandler={onSubmit}>

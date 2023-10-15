@@ -1,4 +1,5 @@
 import LoginPage from "@/components/login/Login";
+import { getUserInfo } from "@/services/auth.service";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 
 const Login = () => {
   return (
-    <>
+    <div>
       <LoginPage></LoginPage>
-    </>
+    </div>
   );
 };
 

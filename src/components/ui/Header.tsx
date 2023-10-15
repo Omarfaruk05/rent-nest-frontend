@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useState } from "react";
 import NavDrawer from "./NavDrawer";
 import NavbarBtn from "./NavbarBtn";
+import dynamic from "next/dynamic";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -25,7 +26,7 @@ const Header = () => {
     setOpen(false);
   };
   return (
-    <div className="bg-gray-900 text-white ">
+    <div className="bg-gray-900 text-white sticky top-0 z-30">
       <div className="mx-2 sm:mx-4 md:mx-12 lg:mx-20 flex justify-between items-center py-2">
         <div>
           <Link href={"/"}>
@@ -37,19 +38,17 @@ const Header = () => {
         <div className=" hidden lg:block">
           <NavbarBtn showDrawer={function () {}} />
         </div>
-        <div>
-          <Button
-            size="middle"
-            className="text-white block lg:hidden hover:text-blue-500"
-            type="link"
-            icon={<MenuUnfoldOutlined />}
-            onClick={showDrawer}
-          ></Button>
-        </div>
+        <Button
+          size="middle"
+          className="text-white block lg:hidden hover:text-blue-500"
+          type="link"
+          icon={<MenuUnfoldOutlined />}
+          onClick={showDrawer}
+        ></Button>
       </div>
       <NavDrawer open={open} onClose={onClose} showDrawer={showDrawer} />
     </div>
   );
 };
 
-export default Header;
+export default dynamic(() => Promise.resolve(Header), { ssr: false });
