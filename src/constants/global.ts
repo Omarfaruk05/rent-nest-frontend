@@ -29,35 +29,35 @@ export const departmentOptions = [
 export const bloodGroupOptions = [
   {
     label: "A+",
-    value: "a+",
+    value: "A+",
   },
   {
     label: "A-",
-    value: "a-",
+    value: "A-",
   },
   {
     label: "B+",
-    value: "b+",
+    value: "B+",
   },
   {
     label: "B-",
-    value: "b-",
+    value: "B-",
   },
   {
     label: "AB+",
-    value: "ab+",
+    value: "AB+",
   },
   {
     label: "AB-",
-    value: "ab-",
+    value: "AB-",
   },
   {
     label: "O+",
-    value: "o+",
+    value: "O+",
   },
   {
     label: "O-",
-    value: "o-",
+    value: "O-",
   },
 ];
 
@@ -97,3 +97,40 @@ export const academicSemesterOptions = [
     value: "semmer 2023",
   },
 ];
+
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+export const monthOptions = months.map((month: string) => {
+  return {
+    label: month,
+    value: month,
+  };
+});
+
+export const days = [
+  "SATURDAY",
+  "SUNDAY",
+  "MONDAY",
+  "TUESDAY",
+  "WEDNESDAY",
+  "THURSDAY",
+  "FRIDAY",
+];
+export const daysOptions = days.map((day: string) => {
+  return {
+    label: day,
+    value: day,
+  };
+});

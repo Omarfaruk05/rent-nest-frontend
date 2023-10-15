@@ -9,26 +9,30 @@ export type SelectOptions = {
 };
 
 type SelectFieldProps = {
+  options: SelectOptions[];
   name: string;
   size?: "large" | "small";
   value?: string | string[] | undefined;
   placeholder?: string;
   label?: string;
-  options: SelectOptions[];
   defaultValue?: SelectOptions;
-  placement?: "bottomLeft" | "bottomRight" | "topLeft" | "topRight";
+  placement?: string;
+  handleChange?: (el: string) => void;
 };
+
 const FormSelectField = ({
   name,
-  size,
-  placeholder,
+  size = "large",
   value,
+  placeholder = "select",
   options,
   label,
   defaultValue,
   placement,
+  handleChange,
 }: SelectFieldProps) => {
   const { control } = useFormContext();
+
   return (
     <>
       {label ? label : null}
@@ -37,16 +41,12 @@ const FormSelectField = ({
         name={name}
         render={({ field: { value, onChange } }) => (
           <Select
-            defaultValue={defaultValue}
-            placeholder={placeholder}
-            placement={placement}
+            onChange={handleChange ? handleChange : onChange}
             size={size}
-            onChange={onChange}
             options={options}
             value={value}
-            style={{
-              width: "100%",
-            }}
+            style={{ width: "100%" }}
+            placeholder={placeholder}
           />
         )}
       />

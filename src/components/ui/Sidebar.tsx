@@ -3,13 +3,12 @@
 import { useState } from "react";
 import { Menu, Layout } from "antd";
 import sidebarItems from "@/constants/sidebarItems";
-import { getUserInfo } from "@/services/auth.service";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const { role } = getUserInfo() as any;
+  const role = "admin";
 
   return (
     <Sider
@@ -35,9 +34,7 @@ const Sidebar = () => {
           fontWeight: "bold",
           marginBottom: "1rem",
         }}
-      >
-        UMS
-      </div>
+      ></div>
       <Menu
         theme="dark"
         defaultSelectedKeys={["1"]}

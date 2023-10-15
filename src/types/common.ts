@@ -4,19 +4,20 @@ export interface IMeta {
   total: number;
 }
 
-export type IGenericErrorMessage = {
-  path: string | number;
-  message: string;
-};
-
 export type ResponseSuccessType = {
   data: any;
   meta?: IMeta;
 };
+
 export type IGenericErrorResponse = {
   statusCode: number;
   message: string;
   errorMessages: IGenericErrorMessage[];
+};
+
+export type IGenericErrorMessage = {
+  path: string | number;
+  message: string;
 };
 
 export interface IDepartment {
@@ -27,17 +28,17 @@ export interface IDepartment {
   __v: number;
 }
 
-export type Name = {
+export interface Name {
   firstName: string;
-  middleName: string;
   lastName: string;
-};
+  middleName: string;
+}
 
 export interface IAdmin {
   id: string;
   name: Name;
   gender: string;
-  managementDeaprtment: string;
+  managementDepartment: string;
   email: string;
   contactNo: string;
   emergencyContactNo: string;
@@ -282,4 +283,83 @@ export interface ICoreFaculty {
   academicFacultyId: string;
   academicFaculty: IAcademicCoreFaculty;
   academicDepartment: IAcademicCoreDepartment;
+}
+
+export interface IMyCourse {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: null;
+  studentId: string;
+  courseId: string;
+  academicSemesterId: string;
+  grade?: null;
+  point: number;
+  totalMarks: number;
+  status: string;
+  course: ICourse;
+}
+
+export interface IFacultyCourse {
+  course: ICourse;
+  sections?: SectionsEntity[] | null;
+}
+
+export interface SectionsEntity {
+  section: IOfferedCourseSection;
+  classSchedules?: IOfferedCourseSchedule[] | null;
+}
+
+export interface IStudentEnrolledCourseMark {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: null;
+  studentId: string;
+  studentEnrolledCourseId: string;
+  academicSemesterId: string;
+  grade?: null;
+  marks: number;
+  examType: string;
+  academicSemester: IAcademicCoreSemester;
+  student: ICoreStudent;
+  studentEnrolledCourse: IStudentEnrolledCourse;
+}
+export interface ICoreStudent {
+  id: string;
+  studentId: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  profileImage: string;
+  email: string;
+  contactNo: string;
+  gender: string;
+  bloodGroup: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: null;
+  academicSemesterId: string;
+  academicDepartmentId: string;
+  academicFacultyId: string;
+  academicFaculty: IAcademicCoreFaculty;
+  academicDepartment: IAcademicCoreDepartment;
+  academicSemester: IAcademicCoreSemester;
+}
+
+export interface IStudentEnrolledCourse {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: null;
+  studentId: string;
+  courseId: string;
+  academicSemesterId: string;
+  grade?: null;
+  point: number;
+  totalMarks: number;
+  status: string;
+  academicSemester: IAcademicCoreSemester;
+  student: ICoreStudent;
+  course: ICourse;
 }

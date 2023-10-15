@@ -1,67 +1,52 @@
-import {
-  Avatar,
-  Breadcrumb,
-  Button,
-  Dropdown,
-  Layout,
-  Menu,
-  MenuProps,
-  Row,
-  Space,
-  theme,
-} from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import { getUserInfo, removeUserInfo } from "@/services/auth.service";
-import { AUTH_KEY } from "@/constants/storageKey";
-import { useRouter } from "next/navigation";
+"use client";
 
-const { Header: AntdHeader, Content, Footer } = Layout;
+import { Button, Radio, Space, Divider } from "antd";
+import {
+  HomeOutlined,
+  ReadOutlined,
+  OrderedListOutlined,
+  HeartOutlined,
+  LoginOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
+import Link from "next/link";
+import { useState } from "react";
+import NavDrawer from "./NavDrawer";
+import NavbarBtn from "./NavbarBtn";
 
 const Header = () => {
-  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
-  const logOut = () => {
-    removeUserInfo(AUTH_KEY);
-    router.push("/login");
+  const showDrawer = () => {
+    setOpen(true);
   };
-  const { role } = getUserInfo() as any;
 
-  const items: MenuProps["items"] = [
-    {
-      key: "0",
-      label: (
-        <Button onClick={logOut} type="text" danger>
-          Logout
-        </Button>
-      ),
-    },
-  ];
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
-    <AntdHeader
-      style={{
-        backgroundColor: "#fff",
-      }}
-    >
-      <Row
-        justify="end"
-        align="middle"
-        style={{
-          height: "100%",
-          gap: "15px",
-        }}
-      >
+    <div className="bg-gray-900 text-white ">
+      <div className="mx-2 sm:mx-4 md:mx-12 lg:mx-20 flex justify-between items-center py-2">
         <div>
-          <h3>{role}</h3>
+          <Link href={"/"}>
+            <Button className="text-white hover:text-blue-500" type="link">
+              <h1 className="-mt-3"> Rent Nest</h1>
+            </Button>
+          </Link>
         </div>
-        <Dropdown menu={{ items }}>
-          <a>
-            <Space>
-              <Avatar size="large" icon={<UserOutlined />} />
-            </Space>
-          </a>
-        </Dropdown>
-      </Row>
-    </AntdHeader>
+        <div className=" hidden lg:block">
+          <NavbarBtn />
+        </div>
+        <Button
+          size="middle"
+          className="text-white block lg:hidden hover:text-blue-500"
+          type="link"
+          icon={<MenuUnfoldOutlined />}
+          onClick={showDrawer}
+        ></Button>
+      </div>
+      <NavDrawer open={open} onClose={onClose} />
+    </div>
   );
 };
 
