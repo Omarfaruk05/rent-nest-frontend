@@ -18,7 +18,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
-    setOpen(true);
+    setOpen(!open);
   };
 
   const onClose = () => {
@@ -35,17 +35,19 @@ const Header = () => {
           </Link>
         </div>
         <div className=" hidden lg:block">
-          <NavbarBtn />
+          <NavbarBtn showDrawer={function () {}} />
         </div>
-        <Button
-          size="middle"
-          className="text-white block lg:hidden hover:text-blue-500"
-          type="link"
-          icon={<MenuUnfoldOutlined />}
-          onClick={showDrawer}
-        ></Button>
+        <div>
+          <Button
+            size="middle"
+            className="text-white block lg:hidden hover:text-blue-500"
+            type="link"
+            icon={<MenuUnfoldOutlined />}
+            onClick={showDrawer}
+          ></Button>
+        </div>
       </div>
-      <NavDrawer open={open} onClose={onClose} />
+      <NavDrawer open={open} onClose={onClose} showDrawer={showDrawer} />
     </div>
   );
 };

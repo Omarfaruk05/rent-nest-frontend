@@ -32,7 +32,9 @@ const FormInput = ({
   const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
     <>
-      {label ? label : null}
+      <div className="text-lg uppercase text-gray-500 ml-1 ">
+        {label ? label : null}
+      </div>
       <Controller
         control={control}
         name={name}

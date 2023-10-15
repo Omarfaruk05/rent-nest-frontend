@@ -11,7 +11,7 @@ import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 
 type FromValues = {
-  id: string;
+  email: string;
   password: string;
 };
 
@@ -20,12 +20,13 @@ const LoginPage = () => {
 
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<FromValues> = async (data: any) => {
+  const onSubmit: SubmitHandler<FromValues> = async (data: FromValues) => {
     try {
+      message.loading("Please wite");
       const res = await userlogin({ ...data }).unwrap();
 
       if (res?.accessToken) {
-        router.push("/profile");
+        router.push("/");
         message.success("Login Successfull.");
       }
 
@@ -35,30 +36,21 @@ const LoginPage = () => {
     }
   };
   return (
-    <Row
-      justify="center"
-      align="middle"
-      style={{
-        minHeight: "100vh",
-      }}
-    >
-      <Col sm={12} md={16} lg={10}>
-        <Image src={loginImg} width={500} alt="login image" />
-      </Col>
-      <Col sm={12} md={8} lg={8}>
-        <h1
-          style={{
-            margin: "15px 0px",
-          }}
-        >
-          First login your account
-        </h1>
-        <div>
+    <div className="bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
+      <div>
+        <div className=" flex justify-center items-center h-[90vh]">
           <Form submitHandler={onSubmit}>
             <div>
-              <FormInput name="id" type="text" size="large" label="User Id" />
+              <FormInput
+                name="email"
+                type="email"
+                size="large"
+                placeholder="Enter Email"
+                label="Email"
+              />
             </div>
             <div
+              className="w-72 md:w-96"
               style={{
                 margin: "15px 0px",
               }}
@@ -67,16 +59,22 @@ const LoginPage = () => {
                 name="password"
                 type="password"
                 size="large"
+                placeholder="Enter Password"
                 label="User Password"
               />
             </div>
-            <Button type="primary" htmlType="submit">
+            <Button
+              className="w-full"
+              size="large"
+              type="primary"
+              htmlType="submit"
+            >
               Login
             </Button>
           </Form>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 

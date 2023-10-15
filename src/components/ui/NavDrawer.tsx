@@ -5,10 +5,11 @@ import NavbarBtn from "./NavbarBtn";
 
 type drawerProps = {
   open: boolean;
+  showDrawer: () => void;
   onClose: () => void;
 };
 
-const NavDrawer = ({ open, onClose }: drawerProps) => {
+const NavDrawer = ({ open, onClose, showDrawer }: drawerProps) => {
   return (
     <div>
       <Drawer
@@ -18,7 +19,7 @@ const NavDrawer = ({ open, onClose }: drawerProps) => {
         open={open}
         className="bg-slate-900 bg-opacity-75"
       >
-        <NavbarBtn flexDir="flex-col" />
+        <NavbarBtn flexDir="flex-col" showDrawer={showDrawer} />
       </Drawer>
     </div>
   );

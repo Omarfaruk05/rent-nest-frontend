@@ -4,195 +4,186 @@ import {
   ProfileOutlined,
   TableOutlined,
   AppstoreOutlined,
-  FileTextOutlined,
-  ThunderboltOutlined,
-  ScheduleOutlined,
-  CreditCardOutlined,
+  HomeOutlined,
+  OrderedListOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 
 const sidebarItems = (role: string) => {
+  console.log(role);
   const defaultSidebarItems: MenuProps["items"] = [
     {
-      label: "Profile",
+      label: <Link href={`/dashboard/${role}/profile`}>My Profile</Link>,
       key: "profile",
       icon: <ProfileOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}`}>Account Profile</Link>,
-          key: `/${role}/profile`,
-        },
-        {
-          label: <Link href={`/${role}/change-password`}>Change Password</Link>,
-          key: `/${role}/change-password`,
-        },
-      ],
     },
   ];
-  const commonadminSidebarItems: MenuProps["items"] = [
+
+  const houseOwnerSidebarItems: MenuProps["items"] = [
+    ...defaultSidebarItems,
     {
-      label: <Link href={`/${role}/manage-students`}>Manage Students</Link>,
-      key: `${role}/manage-students`,
-      icon: <TableOutlined />,
+      label: <Link href={`/dashboard/${role}/house`}>My Houses</Link>,
+      key: "my-houses",
+      icon: <HomeOutlined />,
     },
     {
-      label: <Link href={`/${role}/manage-faculty`}>Manage Faculty</Link>,
-      key: `${role}/manage-faculty`,
-      icon: <TableOutlined />,
+      label: <Link href={`/dashboard/${role}/booking`}>My Bookings</Link>,
+      key: "all-bookings",
+      icon: <OrderedListOutlined />,
+    },
+    {
+      label: (
+        <Link href={`/dashboard/${role}/house-visit`}>House visit List</Link>
+      ),
+      key: "house-visit-list",
+      icon: <OrderedListOutlined />,
+    },
+  ];
+
+  const houseRenterSidebarItems: MenuProps["items"] = [
+    ...defaultSidebarItems,
+
+    {
+      label: <Link href={`/dashboard/${role}/booking`}>My Bookings</Link>,
+      key: "all-bookings",
+      icon: <OrderedListOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/saved-house`}>Saved House</Link>,
+      key: "saved-houses",
+      icon: <OrderedListOutlined />,
+    },
+    {
+      label: (
+        <Link href={`/dashboard/${role}/house-visit`}>House visit List</Link>
+      ),
+      key: "house-visit-list",
+      icon: <OrderedListOutlined />,
     },
   ];
 
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    ...commonadminSidebarItems,
     {
-      label: "Manage academic",
-      key: "manage-academic",
+      label: <Link href={`/dashboard/${role}/user`}>All Users</Link>,
+      key: "all-users",
       icon: <TableOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/academic/faculty`}>Faculties</Link>,
-          key: `/${role}/academic/faculty`,
+          label: (
+            <Link href={`/dashboard/${role}/house-renter`}>House Renter</Link>
+          ),
+          key: `/dashboard/${role}/house-renter`,
         },
         {
-          label: <Link href={`/${role}/academic/department`}>Departments</Link>,
-          key: `/${role}/academic/department`,
-        },
-        {
-          label: <Link href={`/${role}/academic/semester`}>Semesters</Link>,
-          key: `/${role}/academic/semester`,
+          label: (
+            <Link href={`/dashboard/${role}/house-renter`}>House Renter</Link>
+          ),
+          key: `/dashboard/${role}/house-renter`,
         },
       ],
     },
     {
-      label: "Management",
-      key: "management",
+      label: <Link href={`/dashboard/${role}/booked-house`}>Booked House</Link>,
+      key: "all-bookings",
       icon: <AppstoreOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/department`}>Department</Link>,
-          key: `/${role}/department`,
-        },
-        {
-          label: <Link href={`/${role}/building`}>Building</Link>,
-          key: `/${role}/building`,
-        },
-        {
-          label: <Link href={`/${role}/room`}>Rooms</Link>,
-          key: `/${role}/room`,
-        },
-        {
-          label: <Link href={`/${role}/course`}>Course</Link>,
-          key: `/${role}/course`,
-        },
-        {
-          label: (
-            <Link href={`/${role}/semester-registration`}>
-              Semester registration
-            </Link>
-          ),
-          key: `/${role}/semester-registration`,
-        },
-        {
-          label: <Link href={`/${role}/offered-course`}>Offered courses</Link>,
-          key: `/${role}/offered-course`,
-        },
-        {
-          label: (
-            <Link href={`/${role}/offered-course-section`}>
-              Course sections
-            </Link>
-          ),
-          key: `/${role}/offered-course-section`,
-        },
-        {
-          label: (
-            <Link href={`/${role}/offered-course-schedule`}>
-              Course schedules
-            </Link>
-          ),
-          key: `/${role}/offered-course-schedule`,
-        },
-      ],
+    },
+    {
+      label: (
+        <Link href={`/dashboard/${role}/house-visit`}>House Visit List</Link>
+      ),
+      key: "all-house-visit",
+      icon: <AppstoreOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/review`}>All Reviews</Link>,
+      key: "all-reviews",
+      icon: <AppstoreOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/feedback`}>All Feedbacks</Link>,
+      key: "feedbacks",
+      icon: <AppstoreOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/blog`}>Blogs</Link>,
+      key: "blogs",
+      icon: <AppstoreOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/faq`}>FAQ</Link>,
+      key: "faq",
+      icon: <AppstoreOutlined />,
     },
   ];
 
   const superAdminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    ...commonadminSidebarItems,
     {
-      label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
+      label: <Link href={`/dashboard/${role}/user`}>All Users</Link>,
+      key: "all-users",
       icon: <TableOutlined />,
-      key: `/${role}/admin`,
-    },
-    {
-      label: <Link href={`/${role}/user`}>Manage User</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/user`,
-    },
-
-    {
-      label: "Management",
-      key: "management",
-      icon: <AppstoreOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/department`}>Department</Link>,
-          key: `/${role}/department`,
+          label: <Link href={`/dashboard/${role}/admin`}>Admins</Link>,
+          key: `/dashboard/${role}/admin`,
+        },
+        {
+          label: (
+            <Link href={`/dashboard/${role}/house-renter`}>House Renter</Link>
+          ),
+          key: `/dashboard/${role}/house-renter`,
+        },
+        {
+          label: (
+            <Link href={`/dashboard/${role}/house-renter`}>House Renter</Link>
+          ),
+          key: `/dashboard/${role}/house-renter`,
         },
       ],
     },
-  ];
-
-  const facultySidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
     {
-      label: <Link href={`/${role}/courses`}>Courses</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/courses`,
-    },
-  ];
-
-  const studentSidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
-    {
-      label: <Link href={`/${role}/courses`}>Courses</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/courses`,
+      label: <Link href={`/dashboard/${role}/booked-house`}>Booked House</Link>,
+      key: "all-bookings",
+      icon: <AppstoreOutlined />,
     },
     {
-      label: <Link href={`/${role}/courses/schedule`}>Course schedules</Link>,
-      icon: <ScheduleOutlined />,
-      key: `/${role}/courses/schedule`,
+      label: (
+        <Link href={`/dashboard/${role}/house-visit`}>House Visit List</Link>
+      ),
+      key: "all-house-visit",
+      icon: <AppstoreOutlined />,
     },
     {
-      label: <Link href={`/${role}/registration`}>Registration</Link>,
-      icon: <ThunderboltOutlined />,
-      key: `/${role}/registration`,
+      label: <Link href={`/dashboard/${role}/review`}>All Reviews</Link>,
+      key: "all-reviews",
+      icon: <AppstoreOutlined />,
     },
     {
-      label: <Link href={`/${role}/payment`}>Payment</Link>,
-      icon: <CreditCardOutlined />,
-      key: `/${role}/payment`,
+      label: <Link href={`/dashboard/${role}/feedback`}>All Feedbacks</Link>,
+      key: "feedbacks",
+      icon: <AppstoreOutlined />,
     },
     {
-      label: <Link href={`/${role}/academic-report`}>Academic report</Link>,
-      icon: <FileTextOutlined />,
-      key: `/${role}/academic-report`,
+      label: <Link href={`/dashboard/${role}/blog`}>Blogs</Link>,
+      key: "blogs",
+      icon: <AppstoreOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/faq`}>FAQ</Link>,
+      key: "faq",
+      icon: <AppstoreOutlined />,
     },
   ];
 
   if (role === USER_ROLE.SUPER_ADMIN) return superAdminSidebarItems;
   else if (role === USER_ROLE.ADMIN) return adminSidebarItems;
-  else if (role === USER_ROLE.FACULTY) return facultySidebarItems;
-  else if (role === USER_ROLE.STUDENT) return studentSidebarItems;
+  else if (role === USER_ROLE.HOUSE_OWNER) return houseOwnerSidebarItems;
+  else if (role === USER_ROLE.HOUSE_RENTER) return houseRenterSidebarItems;
   else {
     return defaultSidebarItems;
   }
-
-  if (role === "student") return defaultSidebarItems;
-  else if (role === "super_admin") return commonadminSidebarItems;
 };
 
 export default sidebarItems;
