@@ -9,18 +9,13 @@ import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import dayjs from "dayjs";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  ReloadOutlined,
-  ArrowRightOutlined,
-} from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { Button, Input, message } from "antd";
+import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 
-const HousePage = () => {
+const SavedHousePage = () => {
   const { id, role } = getUserInfo() as any;
   const query: Record<string, any> = {};
 
@@ -59,7 +54,7 @@ const HousePage = () => {
       console.log(data);
       const res = await deleteHouse(id);
       if (res) {
-        message.success("House Deleted Successfully");
+        message.success("Department Deleted successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -129,40 +124,13 @@ const HousePage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
-  const resetFilters = () => {
-    setSortBy("");
-    setSortOrder("");
-    setSearchTerm("");
-  };
-
   if (isLoading) {
     return <Loading></Loading>;
   }
 
   return (
     <div className="m-2">
-      <ActionBar title="My Houses List">
-        <h2>
-          Create House{" "}
-          <span>
-            <ArrowRightOutlined />
-          </span>
-        </h2>
-        <div>
-          <Link href={`/dashboard/${role}/house/create`}>
-            <Button type="primary">Create</Button>
-          </Link>
-          {(!!sortBy || !!sortOrder || !!searchTerm) && (
-            <Button
-              onClick={resetFilters}
-              type="primary"
-              style={{ margin: "0px 5px" }}
-            >
-              <ReloadOutlined />
-            </Button>
-          )}
-        </div>
-      </ActionBar>
+      <ActionBar title="Houses Visit List"></ActionBar>
 
       <UMTable
         loading={isLoading}
@@ -179,4 +147,4 @@ const HousePage = () => {
   );
 };
 
-export default HousePage;
+export default SavedHousePage;

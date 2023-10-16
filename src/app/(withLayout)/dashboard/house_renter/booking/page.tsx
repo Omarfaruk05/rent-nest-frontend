@@ -19,8 +19,9 @@ import Link from "next/link";
 import { Button, Input, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
+import { useGetBookingsQuery } from "@/redux/api/bookingApi";
 
-const HousePage = () => {
+const HouseBookingPage = () => {
   const { id, role } = getUserInfo() as any;
   const query: Record<string, any> = {};
 
@@ -47,19 +48,19 @@ const HousePage = () => {
     query["searchTerm"] = debouncedTerm;
   }
 
-  const { data, isLoading } = useGetHousesQuery({ ...query });
-  const [deleteHouse] = useDeleteHouseMutation();
+  const { data, isLoading } = useGetBookingsQuery({ ...query });
+  const [deleteBooking] = useDeleteHouseMutation();
 
-  const houses = data?.houses;
+  const bookings = data?.bookings;
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
       console.log(data);
-      const res = await deleteHouse(id);
+      const res = await deleteBooking(id);
       if (res) {
-        message.success("House Deleted Successfully");
+        message.success("Department Deleted successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -141,33 +142,12 @@ const HousePage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="My Houses List">
-        <h2>
-          Create House{" "}
-          <span>
-            <ArrowRightOutlined />
-          </span>
-        </h2>
-        <div>
-          <Link href={`/dashboard/${role}/house/create`}>
-            <Button type="primary">Create</Button>
-          </Link>
-          {(!!sortBy || !!sortOrder || !!searchTerm) && (
-            <Button
-              onClick={resetFilters}
-              type="primary"
-              style={{ margin: "0px 5px" }}
-            >
-              <ReloadOutlined />
-            </Button>
-          )}
-        </div>
-      </ActionBar>
+      <ActionBar title="Houses Visit List"></ActionBar>
 
       <UMTable
         loading={isLoading}
         columns={columns}
-        dataSource={houses}
+        dataSource={bookings}
         pageSize={size}
         totalPages={meta?.total}
         showSizeChanger={true}
@@ -179,4 +159,4 @@ const HousePage = () => {
   );
 };
 
-export default HousePage;
+export default HouseBookingPage;

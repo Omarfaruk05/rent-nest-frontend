@@ -41,7 +41,7 @@ const UpdateProfilePage = () => {
       console.log(res);
 
       if (res?.id) {
-        router.push(`/dashboard/${res?.role}/profile`);
+        message.success("User Updated Successfully.");
       }
     } catch (error: any) {
       console.error(error.message);

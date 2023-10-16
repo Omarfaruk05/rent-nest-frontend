@@ -95,7 +95,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
       {userRole && (
         <Link
           className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-          href={"/dashboard/house_renter"}
+          href={"/dashboard/house_renter/profile"}
         >
           <Button
             onClick={showDrawer}

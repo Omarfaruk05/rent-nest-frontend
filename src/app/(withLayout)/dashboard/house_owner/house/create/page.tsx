@@ -3,15 +3,9 @@
 import Form from "@/components/forms/Form";
 import FormDatePicker from "@/components/forms/FormDatePicker";
 import FormInput from "@/components/forms/FormInput";
-import FormSelectField, {
-  SelectOptions,
-} from "@/components/forms/FormSelectField";
+import FormSelectField from "@/components/forms/FormSelectField";
 import FormTextArea from "@/components/forms/FormTextArea";
 import { useAddHouseMutation } from "@/redux/api/houseApi";
-import {
-  useGetSingUserQuery,
-  useUpdateMyProfileMutation,
-} from "@/redux/api/userApi";
 
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
@@ -38,7 +32,6 @@ type FromValues = {
 };
 
 const UpdateProfilePage = () => {
-  const router = useRouter();
   const [addHouse] = useAddHouseMutation();
 
   const onSubmit: SubmitHandler<FromValues> = async (houseData: FromValues) => {

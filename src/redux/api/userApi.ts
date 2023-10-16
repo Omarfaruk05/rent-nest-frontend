@@ -42,6 +42,7 @@ export const userApi = baseApi.injectEndpoints({
         method: "PATCH",
         data: data,
       }),
+      invalidatesTags: [tagTypes.user],
     }),
     makeAdmin: build.mutation({
       query: (data) => ({

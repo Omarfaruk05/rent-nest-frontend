@@ -13,7 +13,6 @@ import Link from "next/link";
 import { useState } from "react";
 import NavDrawer from "./NavDrawer";
 import NavbarBtn from "./NavbarBtn";
-import dynamic from "next/dynamic";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -51,4 +50,4 @@ const Header = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(Header), { ssr: false });
+export default Header;
