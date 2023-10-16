@@ -19,22 +19,20 @@ const FormDatePicker = ({
   const { control, setValue } = useFormContext();
 
   const handleOnChange: DatePickerProps["onChange"] = (date, dateString) => {
-    onChange ? onChange(date, dateString) : null;
+    onChange ? onChange(date, dateString) : "";
     setValue(name, dateString);
-
-    console.log(date, dateString);
   };
 
   return (
     <div>
-      {label ? label : null}
-      <br />
+      <p className="ml-1 uppercase text-lg text-gray-500">
+        {label ? label : null}
+      </p>
       <Controller
         name={name}
         control={control}
         render={({ field }) => (
           <DatePicker
-            defaultValue={dayjs(field.value) || ""}
             size={size}
             onChange={handleOnChange}
             style={{
