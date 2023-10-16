@@ -71,7 +71,7 @@ const HouseBookingPage = () => {
       };
       const res = await updateBooking(updatedData);
       if (res) {
-        message.success("Booking Deleted successfully");
+        message.success("Booking updated successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);

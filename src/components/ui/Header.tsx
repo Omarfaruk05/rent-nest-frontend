@@ -1,14 +1,7 @@
 "use client";
 
-import { Button, Radio, Space, Divider } from "antd";
-import {
-  HomeOutlined,
-  ReadOutlined,
-  OrderedListOutlined,
-  HeartOutlined,
-  LoginOutlined,
-  MenuUnfoldOutlined,
-} from "@ant-design/icons";
+import { Button } from "antd";
+import { MenuUnfoldOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { useState } from "react";
 import NavDrawer from "./NavDrawer";
@@ -27,13 +20,12 @@ const Header = () => {
   return (
     <div className="bg-gray-900 text-white sticky top-0 z-30">
       <div className="mx-2 sm:mx-4 md:mx-12 lg:mx-20 flex justify-between items-center py-2">
-        <div>
-          <Link href={"/"}>
-            <Button className="text-white hover:text-blue-500" type="link">
-              <h1 className="-mt-3"> Rent Nest</h1>
-            </Button>
-          </Link>
-        </div>
+        <Link href={"/"}>
+          <Button className="text-white hover:text-blue-500" type="link">
+            <h1 className="-mt-3"> Rent Nest</h1>
+          </Button>
+        </Link>
+
         <div className=" hidden lg:block">
           <NavbarBtn showDrawer={function () {}} />
         </div>

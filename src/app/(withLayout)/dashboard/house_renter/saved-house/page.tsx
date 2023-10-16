@@ -14,6 +14,10 @@ import Link from "next/link";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
+import {
+  useDeleteSavedHouseMutation,
+  useGetSavedHousesQuery,
+} from "@/redux/api/savedHouseApi";
 
 const SavedHousePage = () => {
   const { id, role } = getUserInfo() as any;
@@ -35,26 +39,24 @@ const SavedHousePage = () => {
     delay: 600,
   });
   if (!!role) {
-    query["ownerId"] = id;
+    query["userId"] = id;
   }
 
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
 
-  const { data, isLoading } = useGetHousesQuery({ ...query });
-  const [deleteHouse] = useDeleteHouseMutation();
+  const { data, isLoading } = useGetSavedHousesQuery({ ...query });
+  const [deleteSavedHouse] = useDeleteSavedHouseMutation();
 
-  const houses = data?.houses;
+  const houses = data?.savedHouses;
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
-    message.loading("Deleting.....");
     try {
-      console.log(data);
-      const res = await deleteHouse(id);
+      const res = await deleteSavedHouse(id);
       if (res) {
-        message.success("Department Deleted successfully");
+        message.success("Cart item deleted successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -65,48 +67,62 @@ const SavedHousePage = () => {
   const columns = [
     {
       title: "House Name",
-      dataIndex: "name",
+      dataIndex: "",
+      render: function (data: any) {
+        return <p>{data?.house?.name}</p>;
+      },
     },
     {
       title: "City",
-      dataIndex: "city",
+      dataIndex: "",
+      render: function (data: any) {
+        return <p>{data?.house?.city}</p>;
+      },
     },
     {
       title: "Status",
-      dataIndex: "status",
+      dataIndex: "",
+      render: function (data: any) {
+        return (
+          <Button
+            disabled
+            className="bg-cyan-200 text-center rounded-lg text-dark py-1"
+          >
+            {data?.house?.status}
+          </Button>
+        );
+      },
     },
     {
-      title: "CreatedAt",
-      dataIndex: "createdAt",
+      title: "Rent/Month",
+      dataIndex: "",
       render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+        return <p>{data?.house?.rentPerMonth}</p>;
       },
       sorter: true,
+    },
+    {
+      title: "Book House",
+      dataIndex: "",
+      render: function (data: any) {
+        return !data?.house?.status ? (
+          <Button size="small" type="primary">
+            Make Booked
+          </Button>
+        ) : (
+          <Button size="small" type="primary" disabled>
+            Already Booked
+          </Button>
+        );
+      },
     },
     {
       title: "Action",
       render: function (data: any) {
         return (
-          <>
-            <Link href={`/admin/academic/department/edit/${data?.id}`}>
-              <Button
-                style={{
-                  margin: "0px 5px",
-                }}
-                onClick={() => console.log(data)}
-                type="primary"
-              >
-                <EditOutlined />
-              </Button>
-            </Link>
-            <Button
-              onClick={() => deleteHandler(data?.id)}
-              type="primary"
-              danger
-            >
-              <DeleteOutlined />
-            </Button>
-          </>
+          <Button onClick={() => deleteHandler(data?.id)} type="primary" danger>
+            <DeleteOutlined />
+          </Button>
         );
       },
     },
@@ -130,7 +146,7 @@ const SavedHousePage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="Houses Visit List"></ActionBar>
+      <ActionBar title="Your Saved Houses."></ActionBar>
 
       <UMTable
         loading={isLoading}

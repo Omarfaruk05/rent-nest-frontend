@@ -39,42 +39,40 @@ const LoginPage = () => {
   };
   return (
     <div className=" bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
-      <div>
-        <div className=" flex justify-center items-center h-[90vh]">
-          <Form submitHandler={onSubmit}>
-            <div>
-              <FormInput
-                name="email"
-                type="email"
-                size="large"
-                placeholder="Enter Email"
-                label="Email"
-              />
-            </div>
-            <div
-              className="w-72 md:w-96"
-              style={{
-                margin: "15px 0px",
-              }}
-            >
-              <FormInput
-                name="password"
-                type="password"
-                size="large"
-                placeholder="Enter Password"
-                label="User Password"
-              />
-            </div>
-            <Button
-              className="w-full"
+      <div className=" flex justify-center items-center h-[90vh]">
+        <Form submitHandler={onSubmit}>
+          <div>
+            <FormInput
+              name="email"
+              type="email"
               size="large"
-              type="primary"
-              htmlType="submit"
-            >
-              Login
-            </Button>
-          </Form>
-        </div>
+              placeholder="Enter Email"
+              label="Email"
+            />
+          </div>
+          <div
+            className="w-72 md:w-96"
+            style={{
+              margin: "15px 0px",
+            }}
+          >
+            <FormInput
+              name="password"
+              type="password"
+              size="large"
+              placeholder="Enter Password"
+              label="User Password"
+            />
+          </div>
+          <Button
+            className="w-full"
+            size="large"
+            type="primary"
+            htmlType="submit"
+          >
+            Login
+          </Button>
+        </Form>
       </div>
     </div>
   );
