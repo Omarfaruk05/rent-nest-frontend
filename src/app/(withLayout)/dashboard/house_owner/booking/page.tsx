@@ -81,36 +81,46 @@ const HouseBookingPage = () => {
 
   const columns = [
     {
-      title: "House Name",
+      title: "House Image",
       dataIndex: "",
       render: function (data: any) {
         return (
           <div>
-            <p>{data.house.name}</p>
-            <img src={data.house.houseImage} alt="houseImage" />
+            <img
+              width={100}
+              src={data?.house?.houseImage[0]}
+              alt="houseImage"
+            />
           </div>
         );
+      },
+    },
+    {
+      title: "House Name",
+      dataIndex: "",
+      render: function (data: any) {
+        return <p>{data?.house?.name}</p>;
       },
     },
     {
       title: "City",
       dataIndex: "",
       render: function (data: any) {
-        return <p>{data.house.city}</p>;
+        return <p>{data?.house?.city}</p>;
       },
     },
     {
       title: "Status",
       dataIndex: "",
       render: function (data: any) {
-        return <p>{data.house.status}</p>;
+        return <p>{data?.house?.status}</p>;
       },
     },
     {
       title: "Booked By",
       dataIndex: "",
       render: function (data: any) {
-        return <p>{data.user.name}</p>;
+        return <p>{data?.user?.name}</p>;
       },
     },
     {

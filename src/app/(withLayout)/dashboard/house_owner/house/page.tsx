@@ -69,6 +69,17 @@ const HousePage = () => {
 
   const columns = [
     {
+      title: "House Image",
+      dataIndex: "",
+      render: function (data: any) {
+        return (
+          <div>
+            <img width={100} src={data?.houseImage[0]} alt="" />
+          </div>
+        );
+      },
+    },
+    {
       title: "House Name",
       dataIndex: "name",
     },
@@ -93,7 +104,7 @@ const HousePage = () => {
       render: function (data: any) {
         return (
           <div className="flex flex-wrap gap-2">
-            <Link href={`/admin/academic/department/edit/${data?.id}`}>
+            <Link href={`/dashboard/${role}/house/edit/${data?.id}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EditOutlined />
               </Button>

@@ -40,6 +40,13 @@ const HouseVisitPage = () => {
 
   const columns = [
     {
+      title: "House Image",
+      dataIndex: "",
+      render: function (data: any) {
+        return <img width={100} src={data?.house?.houseImage[0]} alt="" />;
+      },
+    },
+    {
       title: "House Name",
       dataIndex: "",
       render: function (data: any) {

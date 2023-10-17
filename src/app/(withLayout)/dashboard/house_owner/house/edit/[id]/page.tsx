@@ -2,13 +2,19 @@
 
 import Form from "@/components/forms/Form";
 import FormDatePicker from "@/components/forms/FormDatePicker";
+import FormImageLinkPicker from "@/components/forms/FormImageLinkPicker";
 import FormInput from "@/components/forms/FormInput";
 import FormSelectField from "@/components/forms/FormSelectField";
 import FormTextArea from "@/components/forms/FormTextArea";
-import { useAddHouseMutation } from "@/redux/api/houseApi";
+import {
+  useAddHouseMutation,
+  useGetSingHouseQuery,
+  useUpdateHouseMutation,
+} from "@/redux/api/houseApi";
 
-import { Button, Col, Row, message } from "antd";
+import { Button, Col, Row, SelectProps, message } from "antd";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { SubmitHandler } from "react-hook-form";
 
@@ -28,23 +34,34 @@ type FromValues = {
   roomSize: string;
   status: string;
   availabilityDate: string;
-  houseImage: string[];
+  houseImage1: string;
+  houseImage2: string;
+  houseImage3: string;
+  houseImage?: string[];
+  owner?: any;
+  ownerId?: string;
 };
 
-const CreateHousePage = () => {
-  const [addHouse] = useAddHouseMutation();
+const UpdateHousePage = ({ params }: { params: any }) => {
+  const id: string = params?.id;
+
+  const { data, isLoading } = useGetSingHouseQuery(id);
+  const [updateHouse] = useUpdateHouseMutation();
+  console.log(data);
 
   const onSubmit: SubmitHandler<FromValues> = async (houseData: FromValues) => {
     houseData.bedrooms = Number(houseData?.bedrooms);
     houseData.numberOfBalcony = Number(houseData?.numberOfBalcony);
     houseData.parking = Number(houseData?.parking);
+    delete houseData.owner;
+    delete houseData.ownerId;
 
     try {
       message.loading("Please wite");
-      const res = await addHouse(houseData).unwrap();
+      const res = await updateHouse({ id: data?.id, body: houseData }).unwrap();
       console.log(res);
       if (res?.id) {
-        message.success("House created successfull.");
+        message.success("House updated successfull.");
       }
     } catch (error: any) {
       message.error(error);
@@ -129,7 +146,7 @@ const CreateHousePage = () => {
             marginBottom: "10px",
           }}
         >
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} defaultValues={data}>
             <p
               style={{
                 fontSize: "18px",
@@ -375,4 +392,4 @@ const CreateHousePage = () => {
   );
 };
 
-export default CreateHousePage;
+export default UpdateHousePage;

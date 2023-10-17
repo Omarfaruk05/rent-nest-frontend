@@ -6,8 +6,6 @@ import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-
-import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/api/blogApi";
 import Loading from "@/app/loading";
 import ActionBar from "@/components/ui/ActionBar";
 import { useDeleteFAQMutation, useGetFAQQuery } from "@/redux/api/faqApi";

@@ -21,10 +21,10 @@ const Hero = () => {
     console.log(data);
   };
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-96">
+    <div className="bg-gradient-to-r from-teal-400 to-violet-600 h-96">
       <div className="max-w-7xl mx-auto">
         <div className="pt-32 flex justify-center items-center ">
-          <div className="bg-white p-4 mx-4  rounded-md  ">
+          <div className="backdrop-blur-lg bg-white/50 p-4 mx-4  rounded-md  ">
             <Form submitHandler={handleSubmit}>
               <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                 <Col

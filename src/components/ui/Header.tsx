@@ -18,7 +18,7 @@ const Header = () => {
     setOpen(false);
   };
   return (
-    <div className="bg-gray-900 text-white sticky top-0 z-30">
+    <div className="backdrop-blur-sm bg-slate-900/80 text-white sticky backdrop-blur-md top-0 z-30">
       <div className="mx-2 sm:mx-4 md:mx-12 lg:mx-20 flex justify-between items-center py-2">
         <Link href={"/"}>
           <Button className="text-white hover:text-blue-500" type="link">

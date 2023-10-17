@@ -31,7 +31,7 @@ export const houseApi = baseApi.injectEndpoints({
     }),
     getSingHouse: build.query({
       query: (id) => ({
-        url: `${BASE_URL}/:${id}`,
+        url: `${BASE_URL}/${id}`,
         method: "GET",
       }),
       providesTags: [tagTypes.house],
