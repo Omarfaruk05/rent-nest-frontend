@@ -1,20 +1,20 @@
 "use client";
 
-import Loading from "@/app/loading";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
-import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-import ActionBar from "@/components/ui/ActionBar";
 import {
   useDeleteBookingMutation,
   useGetBookingsQuery,
   useUpdateBookingMutation,
 } from "@/redux/api/bookingApi";
+import ActionBar from "@/components/ui/ActionBar";
+import Loading from "@/app/loading";
 
-const HouseBookingPage = () => {
+const BookedHousePage = () => {
   const { id, role } = getUserInfo() as any;
   const query: Record<string, any> = {};
 
@@ -33,9 +33,6 @@ const HouseBookingPage = () => {
     searchQuery: searchTerm,
     delay: 600,
   });
-  if (!!role) {
-    query["userId"] = id;
-  }
 
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
@@ -43,9 +40,11 @@ const HouseBookingPage = () => {
 
   const { data, isLoading } = useGetBookingsQuery({ ...query });
   const [deleteBooking] = useDeleteBookingMutation();
+  const [updateBooking] = useUpdateBookingMutation();
 
   const bookings = data?.bookings;
   const meta = data?.meta;
+  console.log(bookings);
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
@@ -60,6 +59,22 @@ const HouseBookingPage = () => {
       message.error(err.message);
     }
   };
+  const updateHandler = async (id: string) => {
+    message.loading("Deleting.....");
+    try {
+      const updatedData = {
+        id,
+        body: { bookingStatus: "ACCEPTED" },
+      };
+      const res = await updateBooking(updatedData);
+      if (res) {
+        message.success("Booking updated successfully");
+      }
+    } catch (err: any) {
+      //   console.error(err.message);
+      message.error(err.message);
+    }
+  };
 
   const columns = [
     {
@@ -67,17 +82,10 @@ const HouseBookingPage = () => {
       dataIndex: "",
       render: function (data: any) {
         return (
-          data.house.houseImage && (
-            <div>
-              <p>{data.house.name}</p>
-              <img
-                height={20}
-                width={20}
-                src={data.house.houseImage}
-                alt="houseImage"
-              />
-            </div>
-          )
+          <div>
+            <p>{data.house.name}</p>
+            <img src={data.house.houseImage} alt="houseImage" />
+          </div>
         );
       },
     },
@@ -114,16 +122,37 @@ const HouseBookingPage = () => {
       },
     },
     {
-      title: "Action",
+      title: "Update",
       render: function (data: any) {
         return data?.bookingStatus !== "ACCEPTED" ? (
+          <Button
+            style={{
+              margin: "0px 5px",
+            }}
+            onClick={() => updateHandler(data?.id)}
+            type="primary"
+          >
+            Make Booked
+          </Button>
+        ) : (
+          <Button
+            style={{
+              margin: "0px 5px",
+            }}
+            disabled
+          >
+            Booked
+          </Button>
+        );
+      },
+    },
+    {
+      title: "Action",
+      render: function (data: any) {
+        return (
           <Button onClick={() => deleteHandler(data?.id)} type="primary" danger>
             <DeleteOutlined />
           </Button>
-        ) : (
-          <div className="bg-green-300 w-8 h-8 text-center pt-1 text-white rounded-full">
-            <CheckOutlined />
-          </div>
         );
       },
     },
@@ -141,16 +170,19 @@ const HouseBookingPage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
+  const resetFilters = () => {
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
+  };
+
   if (isLoading) {
     return <Loading></Loading>;
   }
 
   return (
     <div className="m-2">
-      <ActionBar
-        title="Client Booked This Houses
-      "
-      ></ActionBar>
+      <ActionBar title="All Booked Houses"></ActionBar>
 
       <UMTable
         loading={isLoading}
@@ -167,4 +199,4 @@ const HouseBookingPage = () => {
   );
 };
 
-export default HouseBookingPage;
+export default BookedHousePage;

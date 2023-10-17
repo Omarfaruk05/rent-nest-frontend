@@ -66,15 +66,15 @@ const sidebarItems = (role: string) => {
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
-      label: <Link href={`/dashboard/${role}/user`}>All Users</Link>,
+      label: <p>All Users</p>,
       key: "all-users",
       icon: <TableOutlined />,
       children: [
         {
           label: (
-            <Link href={`/dashboard/${role}/house-renter`}>House Renter</Link>
+            <Link href={`/dashboard/${role}/house-owner`}>House Owner</Link>
           ),
-          key: `/dashboard/${role}/house-renter`,
+          key: `/dashboard/${role}/house-owner`,
         },
         {
           label: (
@@ -83,6 +83,11 @@ const sidebarItems = (role: string) => {
           key: `/dashboard/${role}/house-renter`,
         },
       ],
+    },
+    {
+      label: <Link href={`/dashboard/${role}/all-house`}>All Houses</Link>,
+      key: "all-houses",
+      icon: <HomeOutlined />,
     },
     {
       label: <Link href={`/dashboard/${role}/booked-house`}>Booked House</Link>,
@@ -121,7 +126,7 @@ const sidebarItems = (role: string) => {
   const superAdminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
-      label: <Link href={`/dashboard/${role}/user`}>All Users</Link>,
+      label: <p>All Users</p>,
       key: "all-users",
       icon: <TableOutlined />,
       children: [
@@ -131,9 +136,9 @@ const sidebarItems = (role: string) => {
         },
         {
           label: (
-            <Link href={`/dashboard/${role}/house-renter`}>House Renter</Link>
+            <Link href={`/dashboard/${role}/house-owner`}>House Owner</Link>
           ),
-          key: `/dashboard/${role}/house-renter`,
+          key: `/dashboard/${role}/house-owner`,
         },
         {
           label: (
@@ -142,6 +147,11 @@ const sidebarItems = (role: string) => {
           key: `/dashboard/${role}/house-renter`,
         },
       ],
+    },
+    {
+      label: <Link href={`/dashboard/${role}/all-house`}>All Houses</Link>,
+      key: "all-houses",
+      icon: <HomeOutlined />,
     },
     {
       label: <Link href={`/dashboard/${role}/booked-house`}>Booked House</Link>,

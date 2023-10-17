@@ -39,9 +39,6 @@ const HousePage = () => {
     searchQuery: searchTerm,
     delay: 600,
   });
-  if (!!role) {
-    query["ownerId"] = id;
-  }
 
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
@@ -80,6 +77,15 @@ const HousePage = () => {
       title: "Status",
       dataIndex: "status",
     },
+    {
+      title: "Owner",
+      dataIndex: "",
+      render: function (data: any) {
+        return <p>{data?.owner?.name}</p>;
+      },
+      sorter: true,
+    },
+
     {
       title: "CreatedAt",
       dataIndex: "createdAt",
@@ -135,7 +141,7 @@ const HousePage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="My Houses List">
+      <ActionBar title="All Houses">
         <h2>
           Create House{" "}
           <span>

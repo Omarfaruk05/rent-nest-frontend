@@ -23,7 +23,7 @@ export const userApi = baseApi.injectEndpoints({
       }),
       transformResponse: (response, meta: IMeta) => {
         return {
-          admins: response,
+          users: response,
           meta,
         };
       },

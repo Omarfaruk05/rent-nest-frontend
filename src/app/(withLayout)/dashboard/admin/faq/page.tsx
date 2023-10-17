@@ -1,20 +1,18 @@
 "use client";
 
-import Loading from "@/app/loading";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
-import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-import ActionBar from "@/components/ui/ActionBar";
-import {
-  useDeleteBookingMutation,
-  useGetBookingsQuery,
-  useUpdateBookingMutation,
-} from "@/redux/api/bookingApi";
 
-const HouseBookingPage = () => {
+import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/api/blogApi";
+import Loading from "@/app/loading";
+import ActionBar from "@/components/ui/ActionBar";
+import { useDeleteFAQMutation, useGetFAQQuery } from "@/redux/api/faqApi";
+
+const FaqPage = () => {
   const { id, role } = getUserInfo() as any;
   const query: Record<string, any> = {};
 
@@ -33,27 +31,23 @@ const HouseBookingPage = () => {
     searchQuery: searchTerm,
     delay: 600,
   });
-  if (!!role) {
-    query["userId"] = id;
-  }
 
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
 
-  const { data, isLoading } = useGetBookingsQuery({ ...query });
-  const [deleteBooking] = useDeleteBookingMutation();
+  const { data, isLoading } = useGetFAQQuery({ ...query });
+  const [deleteFaq] = useDeleteFAQMutation();
 
-  const bookings = data?.bookings;
+  const faqs = data?.faq;
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
-      console.log(data);
-      const res = await deleteBooking(id);
-      if (res) {
-        message.success("Booking Deleted successfully");
+      const res = await deleteFaq(id).unwrap();
+      if (res?.id) {
+        message.success("Feedback Deleted successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -63,67 +57,30 @@ const HouseBookingPage = () => {
 
   const columns = [
     {
-      title: "House Name",
+      title: "User",
       dataIndex: "",
       render: function (data: any) {
-        return (
-          data.house.houseImage && (
-            <div>
-              <p>{data.house.name}</p>
-              <img
-                height={20}
-                width={20}
-                src={data.house.houseImage}
-                alt="houseImage"
-              />
-            </div>
-          )
-        );
+        return <p>{data?.user?.name}</p>;
       },
     },
     {
-      title: "City",
+      title: "Email",
       dataIndex: "",
       render: function (data: any) {
-        return <p>{data.house.city}</p>;
+        return <p>{data?.user?.email}</p>;
       },
     },
     {
-      title: "Status",
-      dataIndex: "",
-      render: function (data: any) {
-        return <p>{data.house.status}</p>;
-      },
-    },
-    {
-      title: "Booked By",
-      dataIndex: "",
-      render: function (data: any) {
-        return <p>{data.user.name}</p>;
-      },
-    },
-    {
-      title: "Status",
-      dataIndex: "",
-      render: function (data: any) {
-        return (
-          <Button className="bg-teal-300 text-black" disabled>
-            {data?.bookingStatus}
-          </Button>
-        );
-      },
+      title: "FAQ Question",
+      dataIndex: "question",
     },
     {
       title: "Action",
       render: function (data: any) {
-        return data?.bookingStatus !== "ACCEPTED" ? (
+        return (
           <Button onClick={() => deleteHandler(data?.id)} type="primary" danger>
             <DeleteOutlined />
           </Button>
-        ) : (
-          <div className="bg-green-300 w-8 h-8 text-center pt-1 text-white rounded-full">
-            <CheckOutlined />
-          </div>
         );
       },
     },
@@ -147,15 +104,12 @@ const HouseBookingPage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar
-        title="Client Booked This Houses
-      "
-      ></ActionBar>
+      <ActionBar title="All Faqs"></ActionBar>
 
       <UMTable
         loading={isLoading}
         columns={columns}
-        dataSource={bookings}
+        dataSource={faqs}
         pageSize={size}
         totalPages={meta?.total}
         showSizeChanger={true}
@@ -167,4 +121,4 @@ const HouseBookingPage = () => {
   );
 };
 
-export default HouseBookingPage;
+export default FaqPage;

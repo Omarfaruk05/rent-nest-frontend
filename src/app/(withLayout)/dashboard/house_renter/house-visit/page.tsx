@@ -38,14 +38,14 @@ const HouseVisitPage = () => {
       title: "House Name",
       dataIndex: "",
       render: function (data: any) {
-        return <p>{data.house.name}</p>;
+        return <p>{data?.house?.name}</p>;
       },
     },
     {
       title: "City",
       dataIndex: "",
       render: function (data: any) {
-        return <p>{data.house.city}</p>;
+        return <p>{data?.house?.city}</p>;
       },
     },
     {
@@ -59,11 +59,11 @@ const HouseVisitPage = () => {
       title: "Schedule Time",
       dataIndex: "",
       render: function (data: any) {
-        if (data.visitSlot === "MORNING") {
+        if (data?.visitSlot === "MORNING") {
           return <p>10:00AM - 12:00PM</p>;
-        } else if (data.visitSlot === "NOON") {
+        } else if (data?.visitSlot === "NOON") {
           return <p>1:00PM - 3:00PM</p>;
-        } else if (data.visitSlot === "EVENING") {
+        } else if (data?.visitSlot === "EVENING") {
           return <p>4:00PM - 6:00PM</p>;
         }
       },

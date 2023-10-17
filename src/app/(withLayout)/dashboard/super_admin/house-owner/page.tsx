@@ -1,26 +1,25 @@
 "use client";
 
-import Loading from "@/app/loading";
-import {
-  useDeleteHouseMutation,
-  useGetHousesQuery,
-} from "@/redux/api/houseApi";
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
-import dayjs from "dayjs";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  ReloadOutlined,
-  ArrowRightOutlined,
-} from "@ant-design/icons";
-import Link from "next/link";
-import { Button, Input, message } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
+import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
+import {
+  useDeleteBookingMutation,
+  useGetBookingsQuery,
+  useUpdateBookingMutation,
+} from "@/redux/api/bookingApi";
 import ActionBar from "@/components/ui/ActionBar";
+import Loading from "@/app/loading";
+import {
+  useDeleteUserMutation,
+  useGetUsersQuery,
+  useMakeAdminMutation,
+} from "@/redux/api/userApi";
 
-const HousePage = () => {
+const HouseOwnerPage = () => {
   const { id, role } = getUserInfo() as any;
   const query: Record<string, any> = {};
 
@@ -39,27 +38,46 @@ const HousePage = () => {
     searchQuery: searchTerm,
     delay: 600,
   });
+
   if (!!role) {
-    query["ownerId"] = id;
+    query["role"] = "house_owner";
   }
 
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
 
-  const { data, isLoading } = useGetHousesQuery({ ...query });
-  const [deleteHouse] = useDeleteHouseMutation();
+  const { data, isLoading } = useGetUsersQuery({ ...query });
+  const [deleteUser] = useDeleteUserMutation();
+  const [makeAdmin] = useMakeAdminMutation();
 
-  const houses = data?.houses;
+  const users = data?.users;
   const meta = data?.meta;
+  console.log(users);
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
       console.log(data);
-      const res = await deleteHouse(id);
+      const res = await deleteUser(id);
       if (res) {
-        message.success("House Deleted Successfully");
+        message.success("User Deleted successfully");
+      }
+    } catch (err: any) {
+      //   console.error(err.message);
+      message.error(err.message);
+    }
+  };
+  const updateHandler = async (id: string) => {
+    message.loading("Deleting.....");
+    try {
+      const updatedData = {
+        id,
+        body: { role: "admin" },
+      };
+      const res = await makeAdmin(updatedData);
+      if (res) {
+        message.success("User updated successfully");
       }
     } catch (err: any) {
       //   console.error(err.message);
@@ -69,43 +87,48 @@ const HousePage = () => {
 
   const columns = [
     {
-      title: "House Name",
-      dataIndex: "name",
-    },
-    {
-      title: "City",
-      dataIndex: "city",
-    },
-    {
-      title: "Status",
-      dataIndex: "status",
-    },
-    {
-      title: "CreatedAt",
-      dataIndex: "createdAt",
+      title: "User Name",
+      dataIndex: "",
       render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+        return (
+          <div>
+            <p>{data?.name}</p>
+            <img src={data?.prodileImage} alt="houseImage" />
+          </div>
+        );
       },
-      sorter: true,
     },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "Contact No.",
+      dataIndex: "contactNumber",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+    },
+    {
+      title: "Make Admin",
+      dataIndex: "",
+      render: function (data: any) {
+        return (
+          <Button onClick={() => updateHandler(data?.id)} type="primary">
+            Make Admin
+          </Button>
+        );
+      },
+    },
+
     {
       title: "Action",
       render: function (data: any) {
         return (
-          <div className="flex flex-wrap gap-2">
-            <Link href={`/admin/academic/department/edit/${data?.id}`}>
-              <Button onClick={() => console.log(data)} type="primary">
-                <EditOutlined />
-              </Button>
-            </Link>
-            <Button
-              onClick={() => deleteHandler(data?.id)}
-              type="primary"
-              danger
-            >
-              <DeleteOutlined />
-            </Button>
-          </div>
+          <Button onClick={() => deleteHandler(data?.id)} type="primary" danger>
+            <DeleteOutlined />
+          </Button>
         );
       },
     },
@@ -123,45 +146,18 @@ const HousePage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
-  const resetFilters = () => {
-    setSortBy("");
-    setSortOrder("");
-    setSearchTerm("");
-  };
-
   if (isLoading) {
     return <Loading></Loading>;
   }
 
   return (
     <div className="m-2">
-      <ActionBar title="My Houses List">
-        <h2>
-          Create House{" "}
-          <span>
-            <ArrowRightOutlined />
-          </span>
-        </h2>
-        <div>
-          <Link href={`/dashboard/${role}/house/create`}>
-            <Button type="primary">Create</Button>
-          </Link>
-          {(!!sortBy || !!sortOrder || !!searchTerm) && (
-            <Button
-              onClick={resetFilters}
-              type="primary"
-              style={{ margin: "0px 5px" }}
-            >
-              <ReloadOutlined />
-            </Button>
-          )}
-        </div>
-      </ActionBar>
+      <ActionBar title="All House Owners"></ActionBar>
 
       <UMTable
         loading={isLoading}
         columns={columns}
-        dataSource={houses}
+        dataSource={users}
         pageSize={size}
         totalPages={meta?.total}
         showSizeChanger={true}
@@ -173,4 +169,4 @@ const HousePage = () => {
   );
 };
 
-export default HousePage;
+export default HouseOwnerPage;

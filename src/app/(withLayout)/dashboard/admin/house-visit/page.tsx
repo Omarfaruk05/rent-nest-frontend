@@ -1,13 +1,8 @@
 "use client";
 
 import Loading from "@/app/loading";
-import {
-  useDeleteHouseMutation,
-  useGetHousesQuery,
-} from "@/redux/api/houseApi";
-import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
-import React, { useState } from "react";
+import React from "react";
 import dayjs from "dayjs";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
@@ -99,7 +94,7 @@ const HouseVisitPage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="Clients want to visit this housees."></ActionBar>
+      <ActionBar title="All House Visiting list"></ActionBar>
 
       <UMTable
         loading={isLoading}

@@ -1,9 +1,9 @@
-const AdminPage = () => {
+const SuperAdminPage = () => {
   return (
     <div>
-      <h1>this is admin page</h1>
+      <h1>This is super admin</h1>
     </div>
   );
 };
 
-export default AdminPage;
+export default SuperAdminPage;
