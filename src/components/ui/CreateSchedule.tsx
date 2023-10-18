@@ -1,28 +1,61 @@
 "use client";
 
-import { Button, Col, DatePicker, DatePickerProps, Row } from "antd";
+import {
+  Button,
+  Col,
+  DatePicker,
+  DatePickerProps,
+  Input,
+  Row,
+  message,
+} from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import FormInput from "../forms/FormInput";
 import { getUserInfo } from "@/services/auth.service";
 import Link from "next/link";
 import Form from "../forms/Form";
 import FormDatePicker from "../forms/FormDatePicker";
-import { useGetAvailableSlotQuery } from "@/redux/api/houseVisitApi";
+import {
+  useAddHouseVisitMutation,
+  useGetAvailableSlotQuery,
+} from "@/redux/api/houseVisitApi";
 import { useState } from "react";
 
 const CreateSchedule = ({ houseId }: any) => {
-  const { id, role } = getUserInfo() as any;
+  const { id } = getUserInfo() as any;
   const [date, setDate] = useState("");
+  const [slot, setSlot] = useState("");
 
   const onChange: DatePickerProps["onChange"] = (date, dateString) => {
     setDate(dateString);
   };
 
   const { data, isLoading } = useGetAvailableSlotQuery({ date, houseId });
+  const [addHouseVisit] = useAddHouseVisitMutation();
 
-  console.log(data);
-
-  const onSubmit = async (data: any) => {};
+  const onSubmit = async (data: any) => {
+    data.visitDate = date;
+    data.houseId = houseId;
+    if (slot === "10:00AM - 12:00PM") {
+      data.visitSlot = "MORNING";
+    }
+    if (slot === "1:00PM - 3:00PM") {
+      data.visitSlot = "NOON";
+    }
+    if (slot === "4:00PM - 6:00PM") {
+      data.visitSlot = "EVENING";
+    }
+    message.loading("Creating...");
+    try {
+      const res = await addHouseVisit(data).unwrap();
+      if (res?.id) {
+        message.success("Schedule Added Successfully.");
+      }
+    } catch (error: any) {
+      console.error(error.message);
+      message.error(error.message);
+    }
+  };
   return (
     <div className="mx-auto">
       <Form submitHandler={onSubmit}>
@@ -43,7 +76,7 @@ const CreateSchedule = ({ houseId }: any) => {
               marginBottom: "10px",
             }}
           >
-            <DatePicker onChange={onChange} />
+            <Input value={slot} />
           </Col>
           <Col
             className="gutter-row"
@@ -57,17 +90,26 @@ const CreateSchedule = ({ houseId }: any) => {
                 data?.map((schedule: any, index: any) => (
                   <div className="" key={index}>
                     {schedule === "MORNING" && (
-                      <Button className=" bg-gray-500 text-white rounded-md mb-2">
+                      <Button
+                        onClick={() => setSlot("10:00AM - 12:00PM")}
+                        className=" bg-gray-500 text-white rounded-md mb-2"
+                      >
                         10:00AM - 12:00PM
                       </Button>
                     )}
                     {schedule === "NOON" && (
-                      <Button className="bg-gray-500 text-white  rounded-md mb-2">
+                      <Button
+                        onClick={() => setSlot("1:00PM - 3:00PM")}
+                        className="bg-gray-500 text-white  rounded-md mb-2"
+                      >
                         1:00PM - 3:00PM
                       </Button>
                     )}
                     {schedule === "EVENING" && (
-                      <Button className="bg-gray-500 text-white  rounded-md">
+                      <Button
+                        onClick={() => setSlot("4:00PM - 6:00PM")}
+                        className="bg-gray-500 text-white  rounded-md"
+                      >
                         4:00PM - 6:00PM
                       </Button>
                     )}

@@ -9,6 +9,7 @@ import Link from "next/link";
 import FormTextArea from "../forms/FormTextArea";
 import FormSelectField from "../forms/FormSelectField";
 import { useAddUserMutation } from "@/redux/api/userApi";
+import FooterComponent from "../ui/FooterComponent";
 
 type FromValues = {
   email: string;
@@ -160,6 +161,7 @@ const SingUp = () => {
             </Link>
           </Form>
         </div>
+        <FooterComponent />
       </div>
     </div>
   );

@@ -17,8 +17,10 @@ import Loading from "@/app/loading";
 import RelatedHouse from "@/components/ui/RelatedHouse";
 import Reviews from "@/components/ui/Reviews";
 import CreateSchedule from "@/components/ui/CreateSchedule";
+import { getUserInfo } from "@/services/auth.service";
 
 const ProductDetailsPage = ({ params }: any) => {
+  const { role } = getUserInfo() as any;
   const { id } = params;
 
   const { data, isLoading } = useGetSingHouseQuery(id);
@@ -103,8 +105,16 @@ const ProductDetailsPage = ({ params }: any) => {
             </div>
           </div>
           <div>
-            <h2 className="text-slate-700">Schedule For Visit House.</h2>
-            <CreateSchedule houseId={data?.id} />
+            {role === "house_renter" || role === "house_owner" ? (
+              <>
+                <h2 className="text-slate-700">Schedule For Visit House.</h2>
+                <CreateSchedule houseId={data?.id} />
+              </>
+            ) : (
+              <h1>
+                Only House Owner and House Renter can see house visit schedule.
+              </h1>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

@@ -1,4 +1,5 @@
 import LoginPage from "@/components/login/Login";
+import FooterComponent from "@/components/ui/FooterComponent";
 import { getUserInfo } from "@/services/auth.service";
 import { Metadata } from "next";
 
@@ -11,6 +12,7 @@ const Login = () => {
   return (
     <div>
       <LoginPage></LoginPage>
+      <FooterComponent />
     </div>
   );
 };
