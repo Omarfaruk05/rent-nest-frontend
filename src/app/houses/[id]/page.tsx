@@ -16,6 +16,7 @@ import dayjs, { Dayjs } from "dayjs";
 import Loading from "@/app/loading";
 import RelatedHouse from "@/components/ui/RelatedHouse";
 import Reviews from "@/components/ui/Reviews";
+import CreateSchedule from "@/components/ui/CreateSchedule";
 
 const ProductDetailsPage = ({ params }: any) => {
   const { id } = params;
@@ -102,7 +103,8 @@ const ProductDetailsPage = ({ params }: any) => {
             </div>
           </div>
           <div>
-            <h2>for house visit</h2>
+            <h2 className="text-slate-700">Schedule For Visit House.</h2>
+            <CreateSchedule houseId={data?.id} />
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

@@ -4,7 +4,7 @@ import { baseApi } from "./baseApi";
 
 const BASE_URL = "/house-visits";
 
-export const visitHouseApi = baseApi.injectEndpoints({
+export const visitHouseApi: any = baseApi.injectEndpoints({
   endpoints: (build) => ({
     addHouseVisit: build.mutation({
       query: (data) => ({
