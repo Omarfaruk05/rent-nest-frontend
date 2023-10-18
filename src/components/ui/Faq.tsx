@@ -7,6 +7,7 @@ import React from "react";
 import type { CollapseProps } from "antd";
 import { Collapse, theme } from "antd";
 import { useGetFAQQuery } from "@/redux/api/faqApi";
+import Loading from "@/app/loading";
 
 const FaqPage = () => {
   const { data, isLoading } = useGetFAQQuery({ page: 1, limit: 10 });
@@ -39,6 +40,10 @@ const FaqPage = () => {
     borderRadius: token.borderRadiusLG,
     border: "none",
   };
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="my-12 max-w-7xl mx-auto">

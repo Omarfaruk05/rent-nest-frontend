@@ -21,7 +21,7 @@ export const feedbackApi = baseApi.injectEndpoints({
         method: "GET",
         params: arg,
       }),
-      transformResponse: (response, meta: IMeta) => {
+      transformResponse: (response: any[], meta: IMeta) => {
         return {
           feedbacks: response,
           meta,

@@ -1,4 +1,7 @@
+import CreateFeedback from "@/components/ui/CreateFeedback";
 import FaqPage from "@/components/ui/Faq";
+import Feedback from "@/components/ui/Feedback";
+import FooterComponent from "@/components/ui/FooterComponent";
 import Hero from "@/components/ui/Hero";
 import LatestProperty from "@/components/ui/LatestProperty";
 import OurPartners from "@/components/ui/OurPartners";
@@ -13,9 +16,12 @@ const HomePage = () => {
       <PropertyCategory />
       <UpComingCategory />
       <LatestProperty />
-      <OurPartners />
       <Overview />
+      <Feedback />
       <FaqPage />
+      <OurPartners />
+      <CreateFeedback />
+      <FooterComponent />
     </div>
   );
 };

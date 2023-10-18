@@ -9,7 +9,7 @@ const UpComingCategory = () => {
   return (
     <div className="mt-12 max-w-7xl mx-auto">
       <div className="mx-4">
-        <h2 className="text-center text-slate-500">Upcoming Category?</h2>
+        <h2 className="text-center text-slate-500">Upcoming Category</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 justify-center mx-auto gap-8 lg:gap-12">
           <div className="text-center rounded-md border bordered-1 shadow-md p-4">
