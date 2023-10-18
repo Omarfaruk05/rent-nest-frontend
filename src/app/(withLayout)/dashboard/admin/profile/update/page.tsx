@@ -69,8 +69,6 @@ const UpdateProfilePage = () => {
           }}
         >
           <Form submitHandler={onSubmit} defaultValues={defaultValues}>
-            {/* admin infromation  */}
-
             <p
               style={{
                 fontSize: "18px",

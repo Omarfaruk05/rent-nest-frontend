@@ -9,6 +9,7 @@ import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type FromValues = {
   email: string;
@@ -65,13 +66,16 @@ const LoginPage = () => {
             />
           </div>
           <Button
-            className="w-full"
+            className="w-full mb-2"
             size="large"
             type="primary"
             htmlType="submit"
           >
             Login
           </Button>
+          <Link href={"/signup"} className="no-underline hover:underline">
+            Want to creat Account?
+          </Link>
         </Form>
       </div>
     </div>

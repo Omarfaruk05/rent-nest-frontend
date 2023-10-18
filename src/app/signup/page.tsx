@@ -1,4 +1,4 @@
-import SingUp from "@/components/Signup/SingUp";
+import SingUp from "@/components/signup/SingUp";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

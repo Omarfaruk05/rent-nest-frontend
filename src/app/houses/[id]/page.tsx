@@ -15,6 +15,7 @@ import FooterComponent from "@/components/ui/FooterComponent";
 import dayjs, { Dayjs } from "dayjs";
 import Loading from "@/app/loading";
 import RelatedHouse from "@/components/ui/RelatedHouse";
+import Reviews from "@/components/ui/Reviews";
 
 const ProductDetailsPage = ({ params }: any) => {
   const { id } = params;
@@ -175,14 +176,18 @@ const ProductDetailsPage = ({ params }: any) => {
                 <hr />
               </div>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 bg-gray-50 p-4 rounded-md">
               <h2>Details</h2>
               <hr />
-              <p>{data?.description}</p>
+              <p className="mt-4">{data?.description}</p>
+            </div>
+            <div>
+              <h2 className="mt-12">Reviews</h2>
+              <Reviews houseId={data?.id} />
             </div>
           </div>
           <div>
-            <h2>Related Products</h2>
+            <h2 className="text-center my-4 text-slate-600">Related Houses</h2>
             <RelatedHouse city={data?.city} />
           </div>
         </div>

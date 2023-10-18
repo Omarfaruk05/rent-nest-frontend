@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useDebounced } from "@/redux/hooks";
@@ -93,7 +94,12 @@ const HouseOwnerPage = () => {
         return (
           <div>
             <p>{data?.name}</p>
-            <img src={data?.prodileImage} alt="houseImage" />
+            <img
+              width={100}
+              className="rounded-md"
+              src={data?.profileImage}
+              alt="houseImage"
+            />
           </div>
         );
       },

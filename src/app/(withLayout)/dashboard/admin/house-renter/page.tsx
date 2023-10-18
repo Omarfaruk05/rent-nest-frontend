@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useDebounced } from "@/redux/hooks";
@@ -6,11 +7,6 @@ import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-import {
-  useDeleteBookingMutation,
-  useGetBookingsQuery,
-  useUpdateBookingMutation,
-} from "@/redux/api/bookingApi";
 import ActionBar from "@/components/ui/ActionBar";
 import Loading from "@/app/loading";
 import {
@@ -93,7 +89,12 @@ const HouseRenterPage = () => {
         return (
           <div>
             <p>{data?.name}</p>
-            <img src={data?.prodileImage} alt="houseImage" />
+            <img
+              width={100}
+              className="rounded-md"
+              src={data?.profileImage}
+              alt="houseImage"
+            />
           </div>
         );
       },

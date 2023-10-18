@@ -66,7 +66,9 @@ const ProductCart = ({ house }: any) => {
         <Button className="bg-yellow-400" icon={<HeartOutlined />}>
           Save
         </Button>
-        <Button className="bg-teal-100">Details</Button>
+        <Link href={`/houses/${house?.id}`}>
+          <Button className="bg-teal-100">Details</Button>
+        </Link>
       </div>
     </div>
   );

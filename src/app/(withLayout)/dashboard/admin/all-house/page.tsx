@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Loading from "@/app/loading";
@@ -65,6 +66,19 @@ const HousePage = () => {
   };
 
   const columns = [
+    {
+      title: "House Image",
+      render: function (data: any) {
+        return (
+          <img
+            className="rounded-md"
+            width={100}
+            src={data?.houseImage[0]}
+            alt="houseImage"
+          />
+        );
+      },
+    },
     {
       title: "House Name",
       dataIndex: "name",

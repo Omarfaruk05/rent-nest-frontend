@@ -21,7 +21,7 @@ export const reviewApi = baseApi.injectEndpoints({
         method: "GET",
         params: arg,
       }),
-      transformResponse: (response, meta: IMeta) => {
+      transformResponse: (response: any[], meta: IMeta) => {
         return {
           reviews: response,
           meta,
