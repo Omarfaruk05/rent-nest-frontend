@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Project Name[RentNest](https://property-beta-three.vercel.app)
 
-## Getting Started
+## This site is usually used for rental service like house rent, car rent, office rent etc. There thas four role: super_admin, admin, house_renter, house_owner. House owner can sell or tolet his houes on the other hand HOUSE RENTER can rent or buy house. HOUSE RENTER also can make house visit schedule, save house, house booking etc. Lastly admin and super_admin can action against any user. But the difference is between admin cannot see or create action against another admin.
 
-First, run the development server:
+### For admin:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+email: tonmoy@gmail.com
+password: 123456
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## admin action:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Delete any user expect admin and super_admin
+2. Delete all hosue.
+3. Delete all house booking.
+4. Make house Booked.
+5. Make an user to admin.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## super_admin
 
-## Learn More
+email: omarfaruk@gmail.com
+password:123456
 
-To learn more about Next.js, take a look at the following resources:
+## Super admin action:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Delete any user.
+2. Delete all hosue.
+3. Delete all house booking.
+4. Make house Booked.
+5. Make an user to admin.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## house_renter
 
-## Deploy on Vercel
+email: emon@gmail.com
+password:123456
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## House renter action:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Update own profile.
+2. Make house book.
+3. Aible to save house.
+4. Aible to make house schedule.
+5. Create Review.
+6. Send Feedback.
+
+## house_owner
+
+email: abulhasnathasib@gmail.com
+password:123456
+
+## House owner action:
+
+1. Update own profile.
+2. Create house.
+3. Aible to save house.
+4. Aible to make house schedule.
+5. Create Review.
+6. Send Feedback.
