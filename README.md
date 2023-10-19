@@ -1,4 +1,4 @@
-### Project Name[RentNest](https://property-beta-three.vercel.app)
+### Project Name: [RentNest](https://property-beta-three.vercel.app)
 
 ## This site is usually used for rental service like house rent, car rent, office rent etc. There thas four role: super_admin, admin, house_renter, house_owner. House owner can sell or tolet his houes on the other hand HOUSE RENTER can rent or buy house. HOUSE RENTER also can make house visit schedule, save house, house booking etc. Lastly admin and super_admin can action against any user. But the difference is between admin cannot see or create action against another admin.
 
