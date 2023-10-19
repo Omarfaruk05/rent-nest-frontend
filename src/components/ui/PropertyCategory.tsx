@@ -7,6 +7,7 @@ import OfficeIcon from "../../assects/office.png";
 import BannerImg from "../../assects/banner.jpeg";
 import Image from "next/image";
 import { Carousel } from "antd";
+import Link from "next/link";
 
 const PropertyCategory = () => {
   return (
@@ -15,22 +16,34 @@ const PropertyCategory = () => {
         <h2 className="text-center text-slate-500">What Do You Want?</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
         <div className="mt-12 flex flex-wrap justify-around items-center gap-8 md:gap-12 lg:gap-[100px] mx-20">
-          <div className="text-center cursor-pointer">
+          <Link
+            href={"/houses"}
+            className="text-center cursor-pointer no-underline text-slate-700"
+          >
             <Image height={50} src={HouseIcon} alt="HouseIcon" />
             <p>Furnished Apartment</p>
-          </div>
-          <div className="text-center cursor-pointer">
+          </Link>
+          <Link
+            href={"/houses"}
+            className="text-center cursor-pointer no-underline text-slate-700"
+          >
             <Image height={50} src={ResidentialIcon} alt="HouseIcon" />
             <p>Residential Apartment</p>
-          </div>
-          <div className="text-center cursor-pointer">
+          </Link>
+          <Link
+            href={"/houses"}
+            className="text-center cursor-pointer no-underline text-slate-700"
+          >
             <Image height={50} src={LuxuryIcon} alt="HouseIcon" />
             <p>Luxury Apartment</p>
-          </div>
-          <div className="text-center cursor-pointer">
+          </Link>
+          <Link
+            href={"/houses"}
+            className="text-center cursor-pointer no-underline text-slate-700"
+          >
             <Image height={50} src={OfficeIcon} alt="HouseIcon" />
             <p>Office Space</p>
-          </div>
+          </Link>
         </div>
         <Carousel autoplay className="mt-12">
           <div>

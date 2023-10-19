@@ -1,15 +1,16 @@
 "use client";
 
-import { Col, Row, Button, message } from "antd";
-import loginImg from "../../assects/login-image.png";
-import Image from "next/image";
+import { Button, message } from "antd";
+
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { getUserInfo, storeUserInfo } from "@/services/auth.service";
+import { storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "@/redux/slice/userSlice";
 
 type FromValues = {
   email: string;
@@ -18,6 +19,7 @@ type FromValues = {
 
 const LoginPage = () => {
   const [userlogin] = useUserLoginMutation();
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -33,6 +35,7 @@ const LoginPage = () => {
       }
 
       storeUserInfo({ accessToken: res?.accessToken });
+      dispatch(loginSuccess());
     } catch (error: any) {
       console.error(error.message);
     }

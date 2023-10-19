@@ -19,18 +19,18 @@ const Feedback = () => {
 
   return (
     <div className="my-12 max-w-7xl mx-auto py-4">
-      <div className="mx-4">
+      <div className="">
         <h2 className=" text-center text-slate-500">Feedbacks</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
 
-        <div className=" text-center flex gap-4 justify-center items-center">
+        <div className=" text-center mx-3 flex flex-wrap gap-4 justify-center items-center">
           {feedbacks &&
             feedbacks.map((feedback: any) => (
               <div
                 key={feedback?.id}
-                className=" bg-white p-4 rounded-md shadow-lg w-96 h-40"
+                className=" bg-white pb-4 shadow-lg rounded-md w-96 h-40"
               >
-                <h3 className="bg-green-200 py-4 rounded-md text-purple-500">
+                <h3 className="bg-teal-50 py-4 text-purple-500">
                   {feedback?.user?.name}{" "}
                 </h3>
                 <p className="mt-8 ">{feedback?.feedback}</p>

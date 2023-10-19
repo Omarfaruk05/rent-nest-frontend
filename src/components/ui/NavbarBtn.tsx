@@ -1,6 +1,7 @@
 "use client";
 
 import { AUTH_KEY } from "@/constants/storageKey";
+import { logout } from "@/redux/slice/userSlice";
 import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import {
   HomeOutlined,
@@ -14,6 +15,7 @@ import { Button } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 type navBtnProps = {
   showDrawer: () => void;
@@ -21,20 +23,16 @@ type navBtnProps = {
 };
 
 const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
-  const [userRole, setUserRole] = useState(undefined);
-  const [logout, setLogout] = useState(false);
+  const dispatch = useDispatch();
+  const loginResponse = useSelector((state: any) => state?.user);
+  const isLoggedIn = loginResponse?.isLoggedIn;
 
   const router = useRouter();
   const logOut = () => {
     removeUserInfo(AUTH_KEY);
-    setLogout(!logout);
+    dispatch(logout());
     router.push("/");
   };
-
-  useEffect(() => {
-    const { role } = getUserInfo() as any;
-    setUserRole(role);
-  }, [logout, userRole]);
 
   return (
     <div className={`flex ${flexDir}`}>
@@ -91,7 +89,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           About Us
         </Button>
       </Link>
-      {userRole && (
+      {isLoggedIn && (
         <Link
           className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
           href={"/dashboard/house_renter/profile"}
@@ -106,7 +104,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           </Button>
         </Link>
       )}
-      {!userRole ? (
+      {!isLoggedIn ? (
         <Link className="" href={"/login"}>
           <Button
             onClick={showDrawer}

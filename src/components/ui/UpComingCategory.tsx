@@ -4,6 +4,7 @@ import Image from "next/image";
 import UpcomingIcon from "../../assects/upcoming.png";
 import BannerImg from "../../assects/banner.jpeg";
 import { Button, Carousel } from "antd";
+import Link from "next/link";
 
 const UpComingCategory = () => {
   return (
@@ -24,11 +25,12 @@ const UpComingCategory = () => {
               RENTS Corporation help businesses find the right way to work. We
               are facilitators connecting people with spaces. And most
               importantly, in the communities where we live and work, we are
-              trusted insiders, advisors and friends.
+              trusted insiders.
             </small>
-            <div className="mt-4">
-              <Button className="bg-teal-100">Read More</Button>
-            </div>
+            <br />
+            <Link href={"/blog"}>
+              <Button className="bg-teal-100 mt-4">Read More</Button>
+            </Link>
           </div>
           <div className="text-center rounded-md shadow-md p-4 ">
             <Image
@@ -41,11 +43,12 @@ const UpComingCategory = () => {
             <small>
               Find your new place with thousands of constantly updated listings,
               robust filters and impressive photo experience with RENTS
-              Incorporation.
+              Incorporation.we are trusted insiders.
             </small>
-            <div className="mt-4">
-              <Button className="bg-teal-100">Read More</Button>
-            </div>
+            <br />
+            <Link href={"/blog"}>
+              <Button className="bg-teal-100 mt-4">Read More</Button>
+            </Link>
           </div>
           <div className="text-center rounded-md shadow-md p-4">
             <Image
@@ -60,9 +63,10 @@ const UpComingCategory = () => {
               homes without leaving yours. RENTS Corporation furnishing make it
               easy to find flexible housing without sacrificing quality.
             </small>
-            <div className="mt-4">
-              <Button className="bg-teal-100">Read More</Button>
-            </div>
+            <br />
+            <Link href={"/blog"}>
+              <Button className="bg-teal-100 mt-4">Read More</Button>
+            </Link>
           </div>
         </div>
         <Carousel autoplay className="mt-12">

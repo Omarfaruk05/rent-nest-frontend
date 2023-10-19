@@ -7,16 +7,18 @@ import LatestProperty from "@/components/ui/LatestProperty";
 import OurPartners from "@/components/ui/OurPartners";
 import Overview from "@/components/ui/Overview";
 import PropertyCategory from "@/components/ui/PropertyCategory";
+import Servey from "@/components/ui/Servey";
 import UpComingCategory from "@/components/ui/UpComingCategory";
 
 const HomePage = () => {
   return (
     <div>
-      <Hero />
+      <Hero text={"Discover Your Perfect Property"} />
       <PropertyCategory />
       <UpComingCategory />
       <LatestProperty />
       <Overview />
+      <Servey />
       <Feedback />
       <FaqPage />
       <OurPartners />
