@@ -19,16 +19,14 @@ const HouseVisitPage = () => {
   const { data: houseVisit, isLoading } = useGetHousevisitsQuery({});
   const [deleteHouseVisit] = useDeleteHouseVisitMutation();
 
-  console.log(houseVisit);
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
-      const res = await deleteHouseVisit(id);
-      if (res) {
+      const res = await deleteHouseVisit(id).unwrap();
+      if (res?.id) {
         message.success("House Visit Deleted successfully");
       }
     } catch (err: any) {
-      //   console.error(err.message);
       message.error(err.message);
     }
   };

@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 import {
@@ -51,6 +51,7 @@ const SavedHousePage = () => {
 
   const houses = data?.savedHouses;
   const meta = data?.meta;
+  console.log(data);
 
   const deleteHandler = async (id: string) => {
     try {
@@ -65,6 +66,19 @@ const SavedHousePage = () => {
   };
 
   const columns = [
+    {
+      title: "House Image",
+      dataIndex: "",
+      render: function (data: any) {
+        return (
+          <Image
+            width={100}
+            src={data?.house?.houseImage[0]}
+            alt="HouseImage"
+          />
+        );
+      },
+    },
     {
       title: "House Name",
       dataIndex: "",
@@ -86,7 +100,8 @@ const SavedHousePage = () => {
         return (
           <Button
             disabled
-            className="bg-cyan-200 text-center rounded-lg text-dark py-1"
+            size="small"
+            className="bg-cyan-200 text-center rounded-lg text-dark"
           >
             {data?.house?.status}
           </Button>
@@ -105,7 +120,7 @@ const SavedHousePage = () => {
       title: "Book House",
       dataIndex: "",
       render: function (data: any) {
-        return !data?.house?.status ? (
+        return data?.house?.status !== "BOOKED" ? (
           <Button size="small" type="primary">
             Make Booked
           </Button>

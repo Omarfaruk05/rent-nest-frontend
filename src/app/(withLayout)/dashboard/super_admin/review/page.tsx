@@ -56,13 +56,12 @@ const HouseOwnerPage = () => {
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
-      console.log(data);
       const res = await deleteReview(id).unwrap();
       if (res?.id) {
         message.success("Review Deleted successfully");
       }
     } catch (err: any) {
-      //   console.error(err.message);
+      console.error(err.message);
       message.error(err.message);
     }
   };
@@ -104,13 +103,12 @@ const HouseOwnerPage = () => {
   ];
 
   const onPaginationChange = (page: number, pageSize: number) => {
-    console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
     setSize(pageSize);
   };
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
-    // console.log(order, field);
+
     setSortBy(field as string);
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };

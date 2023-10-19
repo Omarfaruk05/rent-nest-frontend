@@ -26,7 +26,6 @@ const LoginPage = () => {
       message.loading("Please wite");
 
       const res = await userlogin({ ...data }).unwrap();
-      console.log(res);
 
       if (res?.accessToken) {
         router.push("/");

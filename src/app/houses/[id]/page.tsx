@@ -6,7 +6,6 @@ import Bed from "../../../assects/bed_1986188.png";
 import Balcony from "../../../assects/balcony_259592.png";
 import {
   AppstoreOutlined,
-  HeartOutlined,
   CarOutlined,
   ArrowDownOutlined,
 } from "@ant-design/icons";
@@ -18,6 +17,8 @@ import RelatedHouse from "@/components/ui/RelatedHouse";
 import Reviews from "@/components/ui/Reviews";
 import CreateSchedule from "@/components/ui/CreateSchedule";
 import { getUserInfo } from "@/services/auth.service";
+import Save from "@/components/ui/Save";
+import BookForRent from "@/components/ui/BookForRent";
 
 const ProductDetailsPage = ({ params }: any) => {
   const { role } = getUserInfo() as any;
@@ -90,16 +91,10 @@ const ProductDetailsPage = ({ params }: any) => {
                 </div>
               </div>
               <div>
+                {/* save and booking */}
                 <div className="md:flex  gap-2 justify-center">
-                  <Button
-                    className="bg-orange-200 my-2"
-                    icon={<ArrowDownOutlined />}
-                  >
-                    Book For Rent
-                  </Button>
-                  <Button className="bg-teal-100 my-2" icon={<HeartOutlined />}>
-                    Save
-                  </Button>
+                  <BookForRent houseId={data?.id} />
+                  <Save houseId={data?.id} />
                 </div>
               </div>
             </div>

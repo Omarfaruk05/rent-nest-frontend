@@ -27,7 +27,6 @@ const CreateFeedback = () => {
     delete feedbackData.name;
     delete feedbackData.email;
     try {
-      console.log(feedbackData);
       const res = await addFeedback(feedbackData).unwrap();
       if (res?.id) {
         message.success("Feedback sended successfull.");

@@ -5,7 +5,7 @@ import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 import {
@@ -70,12 +70,7 @@ const HouseBookingPage = () => {
           data.house.houseImage && (
             <div>
               <p>{data.house.name}</p>
-              <img
-                height={20}
-                width={20}
-                src={data.house.houseImage}
-                alt="houseImage"
-              />
+              <Image width={50} src={data.house.houseImage} alt="houseImage" />
             </div>
           )
         );

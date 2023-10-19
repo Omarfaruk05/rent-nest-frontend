@@ -21,7 +21,7 @@ export const blogApi = baseApi.injectEndpoints({
         method: "GET",
         params: arg,
       }),
-      transformResponse: (response, meta: IMeta) => {
+      transformResponse: (response: any[], meta: IMeta) => {
         return {
           blogs: response,
           meta,

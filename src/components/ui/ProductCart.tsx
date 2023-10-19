@@ -2,8 +2,13 @@
 import { Button, Carousel, Image } from "antd";
 import Bed from "../../assects/bed_1986188.png";
 import Balcony from "../../assects/balcony_259592.png";
-import { AppstoreOutlined, HeartOutlined } from "@ant-design/icons";
+import {
+  AppstoreOutlined,
+  HeartOutlined,
+  ArrowRightOutlined,
+} from "@ant-design/icons";
 import Link from "next/link";
+import Save from "./Save";
 
 const ProductCart = ({ house }: any) => {
   return (
@@ -63,11 +68,12 @@ const ProductCart = ({ house }: any) => {
       </Link>
 
       <div className="flex  gap-2 justify-center">
-        <Button className="bg-yellow-400" icon={<HeartOutlined />}>
-          Save
-        </Button>
+        <Save houseId={house?.id}></Save>
         <Link href={`/houses/${house?.id}`}>
-          <Button className="bg-teal-100">Details</Button>
+          <Button className="bg-orange-100">
+            Details
+            <ArrowRightOutlined />
+          </Button>
         </Link>
       </div>
     </div>

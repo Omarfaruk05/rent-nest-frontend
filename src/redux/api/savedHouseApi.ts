@@ -4,9 +4,9 @@ import { baseApi } from "./baseApi";
 
 const BASE_URL = "/carts";
 
-export const savedHouseApi = baseApi.injectEndpoints({
+export const savedHouseApi: any = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    addHouse: build.mutation({
+    addToCart: build.mutation({
       query: (data) => ({
         url: BASE_URL,
         method: "POST",
@@ -54,7 +54,7 @@ export const savedHouseApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useAddHouseMutation,
+  useAddToCartMutation,
   useGetSavedHousesQuery,
   useGetSingSavedHouseQuery,
   useUpdateSavedHouseMutation,

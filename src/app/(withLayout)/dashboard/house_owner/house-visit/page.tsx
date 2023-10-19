@@ -10,7 +10,7 @@ import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 import {
@@ -43,7 +43,7 @@ const HouseVisitPage = () => {
       title: "House Image",
       dataIndex: "",
       render: function (data: any) {
-        return <img width={100} src={data?.house?.houseImage[0]} alt="" />;
+        return <Image width={100} src={data?.house?.houseImage[0]} alt="" />;
       },
     },
     {

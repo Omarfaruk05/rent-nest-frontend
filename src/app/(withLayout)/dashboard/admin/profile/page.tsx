@@ -2,7 +2,7 @@
 
 import Loading from "@/app/loading";
 import { useGetSingUserQuery } from "@/redux/api/userApi";
-import { Button } from "antd";
+import { Button, Image } from "antd";
 import Link from "next/link";
 import React from "react";
 
@@ -23,7 +23,7 @@ const ProfilePage = () => {
         </div>
         <div className=" p-4 ">
           {data?.profileImage ? (
-            <img
+            <Image
               width={500}
               height={300}
               src={data?.profileImage}

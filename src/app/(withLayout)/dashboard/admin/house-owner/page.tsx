@@ -5,7 +5,7 @@ import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 import Loading from "@/app/loading";
@@ -49,14 +49,12 @@ const HouseOwnerPage = () => {
 
   const users = data?.users;
   const meta = data?.meta;
-  console.log(users);
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
-      console.log(data);
-      const res = await deleteUser(id);
-      if (res) {
+      const res = await deleteUser(id).unwrap();
+      if (res?.id) {
         message.success("User Deleted successfully");
       }
     } catch (err: any) {
@@ -89,7 +87,7 @@ const HouseOwnerPage = () => {
         return (
           <div>
             <p>{data?.name}</p>
-            <img
+            <Image
               width={100}
               className="rounded-md"
               src={data?.profileImage}
@@ -136,13 +134,12 @@ const HouseOwnerPage = () => {
   ];
 
   const onPaginationChange = (page: number, pageSize: number) => {
-    console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
     setSize(pageSize);
   };
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
-    // console.log(order, field);
+
     setSortBy(field as string);
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };

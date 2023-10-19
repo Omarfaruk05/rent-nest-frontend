@@ -57,7 +57,7 @@ const CreateSchedule = ({ houseId }: any) => {
     }
   };
   return (
-    <div className="mx-auto">
+    <div className="mx-auto p-4 mt-4 rounded-md bg-purple-300">
       <Form submitHandler={onSubmit}>
         <Row className="mx-2" gutter={{ md: 8 }}>
           <Col

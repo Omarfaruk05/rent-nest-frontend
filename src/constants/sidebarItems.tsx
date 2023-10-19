@@ -11,7 +11,6 @@ import Link from "next/link";
 import { USER_ROLE } from "./role";
 
 const sidebarItems = (role: string) => {
-  console.log(role);
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: <Link href={`/dashboard/${role}/profile`}>My Profile</Link>,
@@ -26,6 +25,11 @@ const sidebarItems = (role: string) => {
       label: <Link href={`/dashboard/${role}/house`}>My Houses</Link>,
       key: "my-houses",
       icon: <HomeOutlined />,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/saved-house`}>Saved House</Link>,
+      key: "saved-houses",
+      icon: <OrderedListOutlined />,
     },
     {
       label: <Link href={`/dashboard/${role}/booking`}>My Bookings</Link>,

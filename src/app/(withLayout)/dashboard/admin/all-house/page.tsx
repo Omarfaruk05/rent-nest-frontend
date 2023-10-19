@@ -17,7 +17,7 @@ import {
   ArrowRightOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-import { Button, Input, message } from "antd";
+import { Button, Image, Input, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 
@@ -54,7 +54,6 @@ const HousePage = () => {
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
-      console.log(data);
       const res = await deleteHouse(id);
       if (res) {
         message.success("House Deleted Successfully");
@@ -70,7 +69,7 @@ const HousePage = () => {
       title: "House Image",
       render: function (data: any) {
         return (
-          <img
+          <Image
             className="rounded-md"
             width={100}
             src={data?.houseImage[0]}
@@ -132,13 +131,11 @@ const HousePage = () => {
   ];
 
   const onPaginationChange = (page: number, pageSize: number) => {
-    console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
     setSize(pageSize);
   };
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
-    // console.log(order, field);
     setSortBy(field as string);
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };

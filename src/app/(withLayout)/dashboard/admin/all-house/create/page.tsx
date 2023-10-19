@@ -43,7 +43,6 @@ const UpdateProfilePage = () => {
     try {
       message.loading("Please wite");
       const res = await addHouse(houseData).unwrap();
-      console.log(res);
       if (res?.id) {
         message.success("House created successfull.");
       }

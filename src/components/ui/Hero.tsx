@@ -17,9 +17,7 @@ const Hero = () => {
     { value: "Luxury", label: "Luxury" },
   ];
 
-  const handleSubmit = (data: any) => {
-    console.log(data);
-  };
+  const handleSubmit = (data: any) => {};
   return (
     <div className="bg-gradient-to-r from-teal-400 to-violet-600 h-96">
       <div className="max-w-7xl mx-auto">

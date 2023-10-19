@@ -47,16 +47,13 @@ const Houses = () => {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
-  console.log(query);
 
   const { data, isLoading } = useGetHousesQuery({ ...query });
 
   const houses = data?.houses;
   const meta = data?.meta;
-  console.log(houses);
 
   const onPaginationChange = (page: number, pageSize: number) => {
-    console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
     setSize(pageSize);
   };

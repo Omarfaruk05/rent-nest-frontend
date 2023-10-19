@@ -1,9 +1,10 @@
 "use client";
 
 import { useDebounced } from "@/redux/hooks";
+import dayjs from "dayjs";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 
@@ -18,6 +19,7 @@ import {
   useGetFeedbacksQuery,
 } from "@/redux/api/feedbackApi";
 import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/api/blogApi";
+import Link from "next/link";
 
 const BlogPage = () => {
   const { id, role } = getUserInfo() as any;
@@ -82,6 +84,14 @@ const BlogPage = () => {
       dataIndex: "title",
     },
     {
+      title: "CreatedAt",
+      dataIndex: "createdAt",
+      render: function (data: any) {
+        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+      },
+      sorter: true,
+    },
+    {
       title: "Action",
       render: function (data: any) {
         return (
@@ -111,7 +121,17 @@ const BlogPage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="All House Owners"></ActionBar>
+      <ActionBar title="All House Owners">
+        <h2 className="ml-3">
+          Create Blog{" "}
+          <span>
+            <ArrowRightOutlined />
+          </span>
+        </h2>
+        <Link className="mr-3" href={`/dashboard/${role}/blog/create`}>
+          <Button type="primary">Create</Button>
+        </Link>
+      </ActionBar>
 
       <UMTable
         loading={isLoading}

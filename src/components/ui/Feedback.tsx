@@ -13,8 +13,6 @@ const Feedback = () => {
 
   const feedbacks = data?.feedbacks;
 
-  console.log(feedbacks);
-
   if (isLoading) {
     return <Loading></Loading>;
   }

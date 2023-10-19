@@ -36,8 +36,6 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
     setUserRole(role);
   }, [logout, userRole]);
 
-  console.log(logout, userRole);
-
   return (
     <div className={`flex ${flexDir}`}>
       <Link
@@ -50,12 +48,25 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           className="text-white hover:text-blue-500"
           icon={<HomeOutlined />}
         >
-          Houses
+          All Houses
         </Button>
       </Link>
       <Link
         className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-        href={"/"}
+        href={"/category"}
+      >
+        <Button
+          onClick={showDrawer}
+          className="text-white hover:text-blue-500"
+          type="link"
+          icon={<OrderedListOutlined />}
+        >
+          Categories
+        </Button>
+      </Link>
+      <Link
+        className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
+        href={"/blog"}
       >
         <Button
           onClick={showDrawer}
@@ -66,22 +77,10 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           Blog
         </Button>
       </Link>
+
       <Link
         className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-        href={"/"}
-      >
-        <Button
-          onClick={showDrawer}
-          className="text-white hover:text-blue-500"
-          type="link"
-          icon={<OrderedListOutlined />}
-        >
-          Category
-        </Button>
-      </Link>
-      <Link
-        className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-        href={"/"}
+        href={"/about"}
       >
         <Button
           onClick={showDrawer}
@@ -89,7 +88,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           type="link"
           icon={<HeartOutlined />}
         >
-          Saved
+          About Us
         </Button>
       </Link>
       {userRole && (

@@ -4,7 +4,7 @@ import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import {
   useDeleteBookingMutation,
@@ -84,7 +84,7 @@ const BookedHousePage = () => {
         return (
           <div>
             <p>{data.house.name}</p>
-            <img src={data.house.houseImage} alt="houseImage" />
+            <Image width={100} src={data.house.houseImage} alt="houseImage" />
           </div>
         );
       },

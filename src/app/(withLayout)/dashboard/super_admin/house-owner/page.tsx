@@ -5,7 +5,7 @@ import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import {
   useDeleteBookingMutation,
@@ -94,7 +94,7 @@ const HouseOwnerPage = () => {
         return (
           <div>
             <p>{data?.name}</p>
-            <img
+            <Image
               width={100}
               className="rounded-md"
               src={data?.profileImage}

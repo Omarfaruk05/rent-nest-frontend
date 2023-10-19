@@ -5,7 +5,7 @@ import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 import {
@@ -86,7 +86,7 @@ const HouseBookingPage = () => {
       render: function (data: any) {
         return (
           <div>
-            <img
+            <Image
               width={100}
               src={data?.house?.houseImage[0]}
               alt="houseImage"

@@ -17,7 +17,7 @@ import {
   ArrowRightOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-import { Button, Input, message } from "antd";
+import { Button, Image, Input, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
 
@@ -71,7 +71,7 @@ const HousePage = () => {
       title: "House Image",
       render: function (data: any) {
         return (
-          <img
+          <Image
             className="rounded-md"
             width={100}
             src={data?.houseImage[0]}

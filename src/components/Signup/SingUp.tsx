@@ -50,8 +50,6 @@ const SingUp = () => {
       <div>
         <div className="mx-4 flex justify-center items-center h-[90vh]">
           <Form submitHandler={onSubmit}>
-            {/* admin infromation  */}
-
             <p
               style={{
                 fontSize: "18px",

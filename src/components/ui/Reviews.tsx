@@ -35,7 +35,7 @@ const Reviews = ({ houseId }: any) => {
       }
     } catch (error: any) {
       message.error(error.message);
-      console.log(error.message);
+      console.error(error.message);
     }
   };
 

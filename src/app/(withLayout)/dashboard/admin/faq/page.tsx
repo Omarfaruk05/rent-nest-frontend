@@ -3,12 +3,14 @@
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
-import { DeleteOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
+import { DeleteOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import Loading from "@/app/loading";
 import ActionBar from "@/components/ui/ActionBar";
 import { useDeleteFAQMutation, useGetFAQQuery } from "@/redux/api/faqApi";
+import Link from "next/link";
 
 const FaqPage = () => {
   const { id, role } = getUserInfo() as any;
@@ -73,6 +75,14 @@ const FaqPage = () => {
       dataIndex: "question",
     },
     {
+      title: "CreatedAt",
+      dataIndex: "createdAt",
+      render: function (data: any) {
+        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+      },
+      sorter: true,
+    },
+    {
       title: "Action",
       render: function (data: any) {
         return (
@@ -85,13 +95,12 @@ const FaqPage = () => {
   ];
 
   const onPaginationChange = (page: number, pageSize: number) => {
-    console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
     setSize(pageSize);
   };
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
-    // console.log(order, field);
+
     setSortBy(field as string);
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
@@ -102,7 +111,17 @@ const FaqPage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="All Faqs"></ActionBar>
+      <ActionBar title="All FAQ'S">
+        <h2 className="ml-3">
+          Create FAQ{" "}
+          <span>
+            <ArrowRightOutlined />
+          </span>
+        </h2>
+        <Link className="mr-3" href={`/dashboard/${role}/faq/create`}>
+          <Button type="primary">Create</Button>
+        </Link>
+      </ActionBar>
 
       <UMTable
         loading={isLoading}
