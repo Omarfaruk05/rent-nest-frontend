@@ -15,7 +15,7 @@ const Blog = () => {
       <div className="bg-gradient-to-r from-teal-400 to-violet-600 h-96">
         <div className="pt-32 flex justify-center items-center ">
           <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-4 mx-4  w-[600px] h-40 rounded-md  ">
-            <h1 className="text-indigo-500">Our Blogs</h1>
+            <h1 className="text-indigo-500 animate-bounce">Our Blogs</h1>
           </div>
         </div>
       </div>

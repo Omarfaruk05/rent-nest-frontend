@@ -113,11 +113,6 @@ const HousePage = () => {
       render: function (data: any) {
         return (
           <div className="flex flex-wrap gap-2">
-            <Link href={`/admin/academic/department/edit/${data?.id}`}>
-              <Button onClick={() => console.log(data)} type="primary">
-                <EditOutlined />
-              </Button>
-            </Link>
             <Button
               onClick={() => deleteHandler(data?.id)}
               type="primary"

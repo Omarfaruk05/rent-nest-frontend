@@ -22,66 +22,10 @@ const Hero = () => {
     <div className="bg-gradient-to-r from-teal-400 to-violet-600 h-96">
       <div className="max-w-7xl mx-auto">
         <div className="pt-32 flex justify-center items-center ">
-          <div className="backdrop-blur-lg bg-white/50 p-4 mx-4  rounded-md  ">
-            <Form submitHandler={handleSubmit}>
-              <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                <Col
-                  className="gutter-row"
-                  span={8}
-                  style={{
-                    marginBottom: "10px",
-                  }}
-                >
-                  <FormSelectField
-                    size="large"
-                    name="interior"
-                    label="interior"
-                    options={interiorOptions}
-                    placeholder="Interior"
-                  />
-                </Col>
-                <Col
-                  className="gutter-row md:w-96"
-                  span={8}
-                  style={{
-                    marginBottom: "10px",
-                  }}
-                >
-                  <FormInput
-                    type="text"
-                    name="searchTerm"
-                    size="large"
-                    label="Location"
-                    placeholder="Enter Location"
-                  />
-                </Col>
-                <Col
-                  className="gutter-row"
-                  span={8}
-                  style={{
-                    marginBottom: "10px",
-                  }}
-                >
-                  <FormSelectField
-                    size="large"
-                    name="propertyType"
-                    label="Category"
-                    options={categoryOptions}
-                    placeholder="Category"
-                  />
-                </Col>
-              </Row>
-              <div className="text-center">
-                <Button
-                  className="px-12 mt-8"
-                  size="large"
-                  type="primary"
-                  htmlType="submit"
-                >
-                  Submit
-                </Button>
-              </div>
-            </Form>
+          <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-4 mx-4  w-[600px] h-40 rounded-md  ">
+            <h1 className="text-slate-500 animate-bounce">
+              Discover Your Perfect Property
+            </h1>
           </div>
         </div>
       </div>
