@@ -143,7 +143,7 @@ const HouseBookingPage = () => {
   return (
     <div className="m-2">
       <ActionBar
-        title="Client Booked This Houses
+        title="My Booked This Houses
       "
       ></ActionBar>
 

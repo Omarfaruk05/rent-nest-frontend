@@ -117,21 +117,6 @@ const SavedHousePage = () => {
       sorter: true,
     },
     {
-      title: "Book House",
-      dataIndex: "",
-      render: function (data: any) {
-        return data?.house?.status !== "BOOKED" ? (
-          <Button size="small" type="primary">
-            Make Booked
-          </Button>
-        ) : (
-          <Button size="small" type="primary" disabled>
-            Already Booked
-          </Button>
-        );
-      },
-    },
-    {
       title: "Action",
       render: function (data: any) {
         return (
@@ -161,7 +146,7 @@ const SavedHousePage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="Your Saved Houses."></ActionBar>
+      <ActionBar title="My Saved Houses."></ActionBar>
 
       <UMTable
         loading={isLoading}

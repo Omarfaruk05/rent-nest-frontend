@@ -6,7 +6,7 @@ import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { storeUserInfo } from "@/services/auth.service";
+import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
@@ -34,8 +34,14 @@ const LoginPage = () => {
         message.success("Login Successfull.");
       }
 
-      storeUserInfo({ accessToken: res?.accessToken });
-      dispatch(loginSuccess());
+      await storeUserInfo({ accessToken: res?.accessToken });
+      const { id } = (await getUserInfo()) as any;
+
+      console.log(id);
+
+      if (id) {
+        dispatch(loginSuccess());
+      }
     } catch (error: any) {
       console.error(error.message);
     }

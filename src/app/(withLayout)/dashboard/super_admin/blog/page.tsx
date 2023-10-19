@@ -34,16 +34,7 @@ const BlogPage = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
-  // query["searchTerm"] = searchTerm;
-
-  const debouncedTerm = useDebounced({
-    searchQuery: searchTerm,
-    delay: 600,
-  });
-
-  if (!!debouncedTerm) {
-    query["searchTerm"] = debouncedTerm;
-  }
+  query["userId"] = id;
 
   const { data, isLoading } = useGetBlogsQuery({ ...query });
   const [deleteBlog] = useDeleteBlogMutation();

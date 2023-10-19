@@ -7,17 +7,8 @@ import React, { useState } from "react";
 import { DeleteOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-
-import {
-  useDeleteReviewMutation,
-  useGetReviewsQuery,
-} from "@/redux/api/reivewApi";
 import ActionBar from "@/components/ui/ActionBar";
 import Loading from "@/app/loading";
-import {
-  useDeleteFeedbackMutation,
-  useGetFeedbacksQuery,
-} from "@/redux/api/feedbackApi";
 import { useDeleteBlogMutation, useGetBlogsQuery } from "@/redux/api/blogApi";
 import Link from "next/link";
 
@@ -29,21 +20,11 @@ const BlogPage = () => {
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
-  const [searchTerm, setSearchTerm] = useState<string>("");
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
-  // query["searchTerm"] = searchTerm;
-
-  const debouncedTerm = useDebounced({
-    searchQuery: searchTerm,
-    delay: 600,
-  });
-
-  if (!!debouncedTerm) {
-    query["searchTerm"] = debouncedTerm;
-  }
+  query["userId"] = id;
 
   const { data, isLoading } = useGetBlogsQuery({ ...query });
   const [deleteBlog] = useDeleteBlogMutation();

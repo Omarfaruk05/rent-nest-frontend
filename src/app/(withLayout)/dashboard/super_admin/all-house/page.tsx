@@ -150,28 +150,7 @@ const HousePage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="All Houses">
-        <h2>
-          Create House{" "}
-          <span>
-            <ArrowRightOutlined />
-          </span>
-        </h2>
-        <div>
-          <Link href={`/dashboard/${role}/house/create`}>
-            <Button type="primary">Create</Button>
-          </Link>
-          {(!!sortBy || !!sortOrder || !!searchTerm) && (
-            <Button
-              onClick={resetFilters}
-              type="primary"
-              style={{ margin: "0px 5px" }}
-            >
-              <ReloadOutlined />
-            </Button>
-          )}
-        </div>
-      </ActionBar>
+      <ActionBar title="All Houses"></ActionBar>
 
       <UMTable
         loading={isLoading}

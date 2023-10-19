@@ -8,9 +8,8 @@ import {
 import { useDebounced } from "@/redux/hooks";
 import { getUserInfo } from "@/services/auth.service";
 import React, { useState } from "react";
-import dayjs from "dayjs";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import Link from "next/link";
+
+import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
 import ActionBar from "@/components/ui/ActionBar";
@@ -114,21 +113,7 @@ const SavedHousePage = () => {
       },
       sorter: true,
     },
-    {
-      title: "Book House",
-      dataIndex: "",
-      render: function (data: any) {
-        return data?.house?.status !== "BOOKED" ? (
-          <Button size="small" type="primary">
-            Make Booked
-          </Button>
-        ) : (
-          <Button size="small" type="primary" disabled>
-            Already Booked
-          </Button>
-        );
-      },
-    },
+
     {
       title: "Action",
       render: function (data: any) {
@@ -159,7 +144,7 @@ const SavedHousePage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="Your Saved Houses."></ActionBar>
+      <ActionBar title="My Saved Houses."></ActionBar>
 
       <UMTable
         loading={isLoading}

@@ -1,11 +1,14 @@
+import { getUserInfo } from "@/services/auth.service";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
   isLoggedIn: boolean;
 }
 
+const { id } = getUserInfo() as any;
+
 const initialState: UserState = {
-  isLoggedIn: false,
+  isLoggedIn: id ? true : false,
 };
 
 const userSlice = createSlice({

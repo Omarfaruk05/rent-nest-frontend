@@ -32,11 +32,6 @@ const sidebarItems = (role: string) => {
       icon: <OrderedListOutlined />,
     },
     {
-      label: <Link href={`/dashboard/${role}/booking`}>My Bookings</Link>,
-      key: "all-bookings",
-      icon: <OrderedListOutlined />,
-    },
-    {
       label: (
         <Link href={`/dashboard/${role}/house-visit`}>House visit List</Link>
       ),

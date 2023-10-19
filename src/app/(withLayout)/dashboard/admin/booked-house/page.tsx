@@ -76,15 +76,23 @@ const BookedHousePage = () => {
 
   const columns = [
     {
-      title: "House Name",
+      title: "House Image",
       dataIndex: "",
       render: function (data: any) {
         return (
-          <div>
-            <p>{data.house.name}</p>
-            <Image width={100} src={data.house.houseImage} alt="houseImage" />
-          </div>
+          <Image
+            width={100}
+            src={data?.house?.houseImage[0]}
+            alt="houseImage"
+          />
         );
+      },
+    },
+    {
+      title: "House Name",
+      dataIndex: "",
+      render: function (data: any) {
+        return <p>{data.house.name}</p>;
       },
     },
     {

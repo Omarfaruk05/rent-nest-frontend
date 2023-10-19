@@ -93,8 +93,10 @@ const ProductDetailsPage = ({ params }: any) => {
               <div>
                 {/* save and booking */}
                 <div className="md:flex  gap-2 justify-center">
-                  <BookForRent houseId={data?.id} />
-                  <Save houseId={data?.id} />
+                  {role === "house_renter" && (
+                    <BookForRent houseId={data?.id} />
+                  )}
+                  {role && <Save houseId={data?.id} />}
                 </div>
               </div>
             </div>

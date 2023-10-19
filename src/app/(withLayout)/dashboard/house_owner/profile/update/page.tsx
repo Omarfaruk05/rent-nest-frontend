@@ -37,7 +37,7 @@ const UpdateProfilePage = () => {
     console.log(updatedData);
     try {
       message.loading("Please wite");
-      const res = await updateMyProfile({ ...updatedData }).unwrap();
+      const res = await updateMyProfile(updatedData).unwrap();
       console.log(res);
 
       if (res?.id) {
