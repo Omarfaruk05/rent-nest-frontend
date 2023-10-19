@@ -21,7 +21,7 @@ const LatestProperty = () => {
       <div className="flex flex-col justify-center items-center mx-4">
         <h2 className="text-slate-500">Latest Property For Rent</h2>
         <div className="h-[2px] w-20 bg-slate-800 mt-3"></div>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
           {houses?.map((house: any, index) => (
             <ProductCart house={house} key={index} />
           ))}
