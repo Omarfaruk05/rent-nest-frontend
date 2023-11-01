@@ -22,7 +22,7 @@ import {
 import { useState } from "react";
 
 const CreateSchedule = ({ houseId }: any) => {
-  const { id } = getUserInfo() as any;
+  const { id, role } = getUserInfo() as any;
   const [date, setDate] = useState("");
   const [slot, setSlot] = useState("");
 
@@ -57,7 +57,7 @@ const CreateSchedule = ({ houseId }: any) => {
     }
   };
   return (
-    <div className="mx-auto p-4 mt-4 rounded-md bg-purple-300">
+    <div className="mx-auto p-4 mt-4 rounded-md bg-slate-300">
       <Form submitHandler={onSubmit}>
         <Row className="mx-2" gutter={{ md: 8 }}>
           <Col
@@ -92,7 +92,7 @@ const CreateSchedule = ({ houseId }: any) => {
                     {schedule === "MORNING" && (
                       <Button
                         onClick={() => setSlot("10:00AM - 12:00PM")}
-                        className=" bg-gray-500 text-white rounded-md mb-2"
+                        className=" bg-gray-500 text-white rounded-md mb-2 px-[18px]"
                       >
                         10:00AM - 12:00PM
                       </Button>
@@ -100,7 +100,7 @@ const CreateSchedule = ({ houseId }: any) => {
                     {schedule === "NOON" && (
                       <Button
                         onClick={() => setSlot("1:00PM - 3:00PM")}
-                        className="bg-gray-500 text-white  rounded-md mb-2"
+                        className="bg-gray-500 text-white  rounded-md mb-2 px-6"
                       >
                         1:00PM - 3:00PM
                       </Button>
@@ -108,7 +108,7 @@ const CreateSchedule = ({ houseId }: any) => {
                     {schedule === "EVENING" && (
                       <Button
                         onClick={() => setSlot("4:00PM - 6:00PM")}
-                        className="bg-gray-500 text-white  rounded-md"
+                        className="bg-gray-500 text-white  rounded-md px-6"
                       >
                         4:00PM - 6:00PM
                       </Button>
@@ -118,11 +118,11 @@ const CreateSchedule = ({ houseId }: any) => {
             </div>
           </Col>
         </Row>
-        <div className="text-center">
-          {id ? (
+        <div className="ml-3">
+          {role === "house_renter" || role === "house_owner" ? (
             <Button
               size="large"
-              className="bg-slate-600 text-white px-16"
+              className="bg-teal-500 text-white w-full"
               htmlType="submit"
             >
               Send
@@ -130,7 +130,7 @@ const CreateSchedule = ({ houseId }: any) => {
             </Button>
           ) : (
             <Link href={"/login"}>
-              <Button size="large" className="bg-slate-600 text-white px-16">
+              <Button size="large" className="bg-teal-500 text-white px-16">
                 Send
                 <SendOutlined />
               </Button>

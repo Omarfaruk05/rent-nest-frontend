@@ -69,7 +69,7 @@ const UpComingCategory = () => {
             </Link>
           </div>
         </div>
-        <Carousel autoplay className="mt-12">
+        <Carousel autoplay effect="fade" className="mt-12">
           <div>
             <img
               className="rounded-lg mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px]"

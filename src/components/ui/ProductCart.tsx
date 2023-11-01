@@ -2,78 +2,64 @@
 import { Button, Carousel, Image } from "antd";
 import Bed from "../../assects/bed_1986188.png";
 import Balcony from "../../assects/balcony_259592.png";
-import {
-  AppstoreOutlined,
-  HeartOutlined,
-  ArrowRightOutlined,
-} from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Save from "./Save";
 
 const ProductCart = ({ house }: any) => {
   return (
     <div className=" rounded-md border bordered-1 shadow-md p-4">
-      {house.houseImage ? (
-        <Carousel autoplay>
-          <Image
-            src={house?.houseImage[0]}
-            alt="HouseImage"
-            className="rounded-md"
-          />
-          <Image
-            src={house?.houseImage[1]}
-            alt="HouseImage"
-            className="rounded-md"
-          />
-          <Image
-            src={house?.houseImage[2]}
-            alt="HouseImage"
-            className="rounded-md"
-          />
-        </Carousel>
-      ) : (
-        <div>No Image</div>
-      )}
-      <Link
-        href={`/houses/${house?.id}`}
-        className="cursor-pointer text-black no-underline "
-      >
-        <h4 className="my-3">
-          BDT {house?.rentPerMonth}/<small>month</small>
-        </h4>
-        <p className="">{house?.name}</p>
-        <small className="text-gray-400">{house?.city} city</small>
-        <br />
-        <small>{house?.address}</small>
-        <div className="mt-8 flex gap-2">
-          <div className="flex items-center gap-1">
-            <span>
-              <img width={25} src={Bed.src} alt="" />
-            </span>
-            <span className="text-xs">{house?.bedrooms} bed</span>
+      <div className="relative">
+        {house.houseImage ? (
+          <Carousel autoplay>
+            {house?.houseImage?.map((x: string, index: any) => (
+              <div key={index}>
+                <Image src={x} alt="HouseImage" className="rounded-md" />
+              </div>
+            ))}
+          </Carousel>
+        ) : (
+          <div>No Image</div>
+        )}
+        <small className="absolute top-0 left-1 text-white bg-slate-800 px-2 p-1 rounded-md top-1">
+          {house?.status}
+        </small>
+        <small className="absolute top-0 right-1 text-white px-2 p-1 rounded-md top-1">
+          <Save houseId={house?.id} save={"Save"}></Save>
+        </small>
+      </div>
+      <div className="cursor-pointer">
+        <Link
+          href={`/houses/${house?.id}`}
+          className=" text-black no-underline "
+        >
+          <h4 className="my-3 text-teal-600">
+            BDT {house?.rentPerMonth}/<small>month</small>
+          </h4>
+          <p className="">{house?.name}</p>
+          <small className="text-gray-400">{house?.city} city</small>
+          <br />
+          <small>{house?.address}</small>
+          <div className="mt-4 flex gap-2">
+            <div className="flex items-center gap-1">
+              <span>
+                <img width={25} src={Bed.src} alt="" />
+              </span>
+              <span className="text-xs">{house?.bedrooms} bed</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span>
+                <img width={20} src={Balcony.src} alt="" />
+              </span>
+              <span className="text-xs">{house?.bedrooms} balcony</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span>
+                <AppstoreOutlined />
+              </span>
+              <span className="text-xs">{house?.roomSize} sqft</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <span>
-              <img width={20} src={Balcony.src} alt="" />
-            </span>
-            <span className="text-xs">{house?.bedrooms} balcony</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>
-              <AppstoreOutlined />
-            </span>
-            <span className="text-xs">{house?.roomSize} sqft</span>
-          </div>
-        </div>
-      </Link>
-
-      <div className="flex  gap-2 justify-center">
-        <Save houseId={house?.id}></Save>
-        <Link href={`/houses/${house?.id}`}>
-          <Button className="bg-orange-100">
-            Details
-            <ArrowRightOutlined />
-          </Button>
         </Link>
       </div>
     </div>

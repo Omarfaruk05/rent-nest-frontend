@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useGetHousesQuery, useGetSingHouseQuery } from "@/redux/api/houseApi";
-import { Button, Carousel, Image } from "antd";
+import { useGetSingHouseQuery } from "@/redux/api/houseApi";
+import { Carousel, Image } from "antd";
 import Bed from "../../../assects/bed_1986188.png";
 import Balcony from "../../../assects/balcony_259592.png";
 import {
   AppstoreOutlined,
   CarOutlined,
-  ArrowDownOutlined,
+  ArrowRightOutlined,
 } from "@ant-design/icons";
-import { Footer } from "antd/es/layout/layout";
 import FooterComponent from "@/components/ui/FooterComponent";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import Loading from "@/app/loading";
 import RelatedHouse from "@/components/ui/RelatedHouse";
 import Reviews from "@/components/ui/Reviews";
@@ -32,7 +31,7 @@ const ProductDetailsPage = ({ params }: any) => {
 
   return (
     <div className="">
-      <div className="max-w-7xl mx-auto mt-2 px-4">
+      <div className="max-w-7xl mx-auto m-2 px-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="md:col-span-2">
             <Carousel autoplay>
@@ -96,29 +95,28 @@ const ProductDetailsPage = ({ params }: any) => {
                   {role === "house_renter" && (
                     <BookForRent houseId={data?.id} />
                   )}
-                  {role && <Save houseId={data?.id} />}
+                  {role && (
+                    <div className="flex gap-3">
+                      <p>
+                        For Save <ArrowRightOutlined />
+                      </p>
+                      <Save houseId={data?.id} />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
           <div>
-            {role === "house_renter" || role === "house_owner" ? (
-              <>
-                <h2 className="text-slate-700">Schedule For Visit House.</h2>
-                <CreateSchedule houseId={data?.id} />
-              </>
-            ) : (
-              <h1>
-                Only House Owner and House Renter can see house visit schedule.
-              </h1>
-            )}
+            <h2 className="text-slate-700">Schedule For Visit House</h2>
+            <CreateSchedule houseId={data?.id} />
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="col-span-2 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-between w-full">
               <div>
-                <h2 className="text-slate-700 mt-8">Description</h2>
+                <h2 className="text-teal-700 mt-8">Description</h2>
                 <hr />
                 <div className="flex justify-between my-2 mx-6">
                   <p>PropertyId :</p>
@@ -185,13 +183,13 @@ const ProductDetailsPage = ({ params }: any) => {
                 <hr />
               </div>
             </div>
-            <div className="mt-4 bg-gray-50 p-4 rounded-md">
-              <h2>Details</h2>
+            <div className="mt-4 bg-gray-50 p-2 rounded-md">
+              <h2 className="text-teal-700">Details</h2>
               <hr />
               <p className="mt-4">{data?.description}</p>
             </div>
             <div>
-              <h2 className="mt-12">Reviews</h2>
+              <h2 className="mt-12 text-teal-700">Reviews</h2>
               <Reviews houseId={data?.id} />
             </div>
           </div>

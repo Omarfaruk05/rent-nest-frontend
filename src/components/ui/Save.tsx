@@ -3,7 +3,7 @@ import { useAddToCartMutation } from "@/redux/api/savedHouseApi";
 import { getUserInfo } from "@/services/auth.service";
 import { HeartOutlined } from "@ant-design/icons";
 
-import { Button, message } from "antd";
+import { Button, Tooltip, message } from "antd";
 import Link from "next/link";
 
 const Save = ({ houseId }: any) => {
@@ -12,6 +12,7 @@ const Save = ({ houseId }: any) => {
   const [addToCart] = useAddToCartMutation();
 
   const handleSave = async () => {
+    message.loading("Loading...");
     try {
       const res = await addToCart({ houseId }).unwrap();
 
@@ -27,18 +28,17 @@ const Save = ({ houseId }: any) => {
   return (
     <>
       {role === "house_renter" || role === "house_owner" ? (
-        <Button
-          onClick={handleSave}
-          className="bg-teal-100"
-          icon={<HeartOutlined />}
-        >
-          Save
-        </Button>
+        <Tooltip title="Save" placement="bottom" color="teal">
+          <HeartOutlined
+            className="text-teal-200 text-xl"
+            onClick={handleSave}
+          />
+        </Tooltip>
       ) : (
         <Link href={"/login"}>
-          <Button className="bg-teal-100" icon={<HeartOutlined />}>
-            Save
-          </Button>
+          <Tooltip title="Save" placement="bottom" color="teal">
+            <HeartOutlined className="text-teal-200 text-xl" />
+          </Tooltip>
         </Link>
       )}
     </>

@@ -7,6 +7,7 @@ import { Button, Col, Input, Pagination, Row, Select } from "antd";
 import { useState } from "react";
 import Loading from "../loading";
 import ProductCart from "@/components/ui/ProductCart";
+import ProductCartLoading from "@/components/ui/ProductCartLoading";
 
 const Houses = () => {
   const query: Record<string, any> = {};
@@ -20,6 +21,7 @@ const Houses = () => {
   const [interior, setInterior] = useState<string>("");
   const [gas, setGas] = useState<string>("");
   const [status, setStatus] = useState<string>("");
+  const loadingNumber = [1, 2, 3, 4, 5, 6, 7, 8];
 
   query["limit"] = size;
   query["page"] = page;
@@ -67,10 +69,6 @@ const Houses = () => {
     setStatus("");
     setPropertyType("");
   };
-
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
 
   const categoryOptions = [
     {
@@ -243,9 +241,15 @@ const Houses = () => {
             </div>
           </Col>
         </Row>
+        <div className=" mx-2 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
+          {isLoading &&
+            loadingNumber?.map((x, index) => (
+              <ProductCartLoading key={index} />
+            ))}
+        </div>
         {houses?.length ? (
           <div className=" mx-2 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
-            {houses?.map((house, index) => (
+            {houses?.map((house: any, index: any) => (
               <ProductCart house={house} key={index} />
             ))}
           </div>

@@ -6,7 +6,7 @@ import Loading from "@/app/loading";
 const RelatedHouse = ({ city }: { city: string }) => {
   const { data, isLoading } = useGetHousesQuery({
     city: city,
-    limit: 4,
+    limit: 2,
     page: 1,
   });
   const houses = data?.houses;

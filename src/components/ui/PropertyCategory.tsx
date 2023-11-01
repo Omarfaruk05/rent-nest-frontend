@@ -20,7 +20,12 @@ const PropertyCategory = () => {
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            <Image height={50} src={HouseIcon} alt="HouseIcon" />
+            <Image
+              className="text-gray-400"
+              height={50}
+              src={HouseIcon}
+              alt="HouseIcon"
+            />
             <p>Furnished Apartment</p>
           </Link>
           <Link

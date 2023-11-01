@@ -82,7 +82,7 @@ const CreateFeedback = () => {
             {id ? (
               <Button
                 size="large"
-                className="bg-slate-600 text-white px-16"
+                className="bg-teal-700 text-white px-16"
                 htmlType="submit"
               >
                 Send
@@ -90,7 +90,7 @@ const CreateFeedback = () => {
               </Button>
             ) : (
               <Link href={"/login"}>
-                <Button size="large" className="bg-slate-600 text-white px-16">
+                <Button size="large" className="bg-teal-700 text-white px-16">
                   Send
                   <SendOutlined />
                 </Button>
