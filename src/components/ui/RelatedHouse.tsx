@@ -2,6 +2,7 @@ import { useGetHousesQuery } from "@/redux/api/houseApi";
 import React from "react";
 import ProductCart from "./ProductCart";
 import Loading from "@/app/loading";
+import ProductCartLoading from "./ProductCartLoading";
 
 const RelatedHouse = ({ city }: { city: string }) => {
   const { data, isLoading } = useGetHousesQuery({
@@ -12,7 +13,12 @@ const RelatedHouse = ({ city }: { city: string }) => {
   const houses = data?.houses;
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return (
+      <div>
+        <ProductCartLoading />
+        <ProductCartLoading />
+      </div>
+    );
   }
   return (
     <div>
