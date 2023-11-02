@@ -13,7 +13,7 @@ const Hero = ({ text }: { text: string }) => {
         alignItems: "center",
         justifyContent: "center",
       }}
-      className="h-[30vh] md:h[60vh]"
+      className="h-[30vh] md:h-[40vh] lg:h-[50vh] xl:h-[60vh]"
     >
       <div className="max-w-7xl mx-auto">
         <div className=" flex justify-center items-center ">
