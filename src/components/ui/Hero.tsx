@@ -1,4 +1,6 @@
+"use client";
 import backgroundImage from "../../assects/imageBackgroundLarge.ea3d629bf8eb6227abebba2d160de5b8.jpg";
+import { motion } from "framer-motion";
 
 const Hero = ({ text }: { text: string }) => {
   return (
@@ -17,9 +19,25 @@ const Hero = ({ text }: { text: string }) => {
     >
       <div className="max-w-7xl mx-auto">
         <div className=" flex justify-center items-center ">
-          <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-4 mx-4  w-[600px] h-40 rounded-md  ">
-            <h1 className="text-slate-500 animate-bounce">{text}</h1>
-          </div>
+          <motion.div
+            className="box"
+            initial={{ opacity: 0, scale: 0.2 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.1,
+
+              scale: {
+                type: "spring",
+                damping: 15,
+                stiffness: 100,
+                restDelta: 0.002,
+              },
+            }}
+          >
+            <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-4 mx-4 w-96  md:w-[600px] h-40 rounded-md  ">
+              <h1 className="text-slate-500 animate-bounce">{text}</h1>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
