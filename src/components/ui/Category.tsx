@@ -13,7 +13,7 @@ const Category = () => {
     <div>
       <Hero text={"All Categories"} />
       <div className="max-w-7xl mx-auto  mt-12">
-        <div className="mx-4 p-4 mb-4 rounded-md">
+        <div className=" mb-4">
           <PropertyCategory />
           <UpComingCategory />
         </div>

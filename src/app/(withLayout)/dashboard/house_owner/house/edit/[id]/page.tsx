@@ -2,19 +2,17 @@
 
 import Form from "@/components/forms/Form";
 import FormDatePicker from "@/components/forms/FormDatePicker";
-import FormImageLinkPicker from "@/components/forms/FormImageLinkPicker";
 import FormInput from "@/components/forms/FormInput";
 import FormSelectField from "@/components/forms/FormSelectField";
 import FormTextArea from "@/components/forms/FormTextArea";
 import {
-  useAddHouseMutation,
   useGetSingHouseQuery,
   useUpdateHouseMutation,
 } from "@/redux/api/houseApi";
+import { updateHouseSchema } from "@/schemas/house";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Button, Col, Row, SelectProps, message } from "antd";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { Button, Col, Row, message } from "antd";
 
 import { SubmitHandler } from "react-hook-form";
 
@@ -23,7 +21,7 @@ type FromValues = {
   description: string;
   address: string;
   city: string;
-  yearBuilt: number;
+  yearBuilt: string;
   propertyType: string;
   interior: string;
   gas: string;
@@ -146,7 +144,11 @@ const UpdateHousePage = ({ params }: { params: any }) => {
             marginBottom: "10px",
           }}
         >
-          <Form submitHandler={onSubmit} defaultValues={data}>
+          <Form
+            submitHandler={onSubmit}
+            defaultValues={data}
+            resolver={yupResolver(updateHouseSchema)}
+          >
             <p
               style={{
                 fontSize: "18px",

@@ -4,6 +4,8 @@ import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import FormTextArea from "@/components/forms/FormTextArea";
 import { useAddBlogMutation } from "@/redux/api/blogApi";
+import { blogSchema } from "@/schemas/blog";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row, message } from "antd";
 
 const CreateBlog = () => {
@@ -24,7 +26,7 @@ const CreateBlog = () => {
     <div>
       <div className="max-w-7xl mx-auto  p-4 md:px-20 lg:px-40">
         <h2 className="text-slate-700 text-center mt-20">Creat Blog</h2>
-        <Form submitHandler={createBlog}>
+        <Form submitHandler={createBlog} resolver={yupResolver(blogSchema)}>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col
               className="gutter-row"

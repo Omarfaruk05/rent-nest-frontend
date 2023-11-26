@@ -9,11 +9,11 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import backgroundImage from "../../assects/banner2.jpg";
 import { Button } from "antd";
 import Link from "next/link";
-const loadingNumber = [1, 2, 3, 4];
+const loadingNumber = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const LatestProperty = () => {
   const query = {
-    limit: 4,
+    limit: 8,
     page: 1,
   };
   const { data, isLoading } = useGetHousesQuery({ ...query });
@@ -61,7 +61,7 @@ const LatestProperty = () => {
         className="h-[50vh]  mt-12 bg-fixed"
       >
         <div className="text-white align-left max-w-7xl mx-auto p-4">
-          <h3 className="pt-32 pb-4">CORPORATE HOUSING</h3>
+          <h3 className="pt-4 md:pt-32 pb-4">CORPORATE HOUSING</h3>
           <h1 className="mb-4 text-5xl">Rent Apartments for Your Company</h1>
           <p>
             Manage easily all your corporate apartments needs with flexibility

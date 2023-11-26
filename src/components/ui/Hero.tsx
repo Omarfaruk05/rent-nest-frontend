@@ -21,10 +21,16 @@ const Hero = ({ text }: { text: string }) => {
         <div className=" flex justify-center items-center ">
           <motion.div
             className="box"
+            whileHover={{ scale: 1.2 }}
             initial={{ opacity: 0, scale: 0.2 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [null, -100, 0],
+              transition: { duration: 0.5 },
+            }}
             transition={{
-              duration: 0.1,
+              duration: 0.3,
 
               scale: {
                 type: "spring",

@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "@/redux/slice/userSlice";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "@/schemas/user";
 
 type FromValues = {
   email: string;
@@ -25,31 +27,33 @@ const LoginPage = () => {
 
   const onSubmit: SubmitHandler<FromValues> = async (data: FromValues) => {
     try {
-      message.loading("Please wite");
+      message.loading("Please wait");
 
       const res = await userlogin({ ...data }).unwrap();
+
+      if (res?.errorMessages) {
+        message.error(`${res?.errorMessages}`);
+      }
 
       if (res?.accessToken) {
         router.push("/");
         message.success("Login Successfull.");
+        await storeUserInfo({ accessToken: res?.accessToken });
       }
 
-      await storeUserInfo({ accessToken: res?.accessToken });
       const { id } = (await getUserInfo()) as any;
-
-      console.log(id);
 
       if (id) {
         dispatch(loginSuccess());
       }
     } catch (error: any) {
-      console.error(error.message);
+      message.error(error.message);
     }
   };
   return (
     <div className=" bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
       <div className=" flex justify-center items-center h-[90vh]">
-        <Form submitHandler={onSubmit}>
+        <Form submitHandler={onSubmit} resolver={yupResolver(loginSchema)}>
           <div>
             <FormInput
               name="email"

@@ -10,9 +10,17 @@ import FormTextArea from "../forms/FormTextArea";
 import FormSelectField from "../forms/FormSelectField";
 import { useAddUserMutation } from "@/redux/api/userApi";
 import FooterComponent from "../ui/FooterComponent";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { userSchema } from "@/schemas/user";
 
 type FromValues = {
+  name: string;
   email: string;
+  contactNumber: string;
+  role: "House Renter" | "house_renter";
+  password: string;
+  profileImage?: string;
+  address?: string;
 };
 
 const SingUp = () => {
@@ -20,7 +28,7 @@ const SingUp = () => {
 
   const [addUser] = useAddUserMutation();
 
-  const onSubmit: SubmitHandler<FromValues> = async (data: any) => {
+  const onSubmit: SubmitHandler<FromValues> = async (data: FromValues) => {
     try {
       const res = await addUser(data).unwrap();
       message.loading("Creating...");
@@ -30,7 +38,6 @@ const SingUp = () => {
         router.push("/login");
       }
     } catch (error: any) {
-      console.error(error.message);
       message.error(error.message);
     }
   };
@@ -49,7 +56,7 @@ const SingUp = () => {
     <div className="bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
       <div>
         <div className="mx-4 flex justify-center items-center h-[90vh]">
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
             <p
               style={{
                 fontSize: "18px",
@@ -151,7 +158,7 @@ const SingUp = () => {
             </Row>
             <div className="text-center">
               <Button type="primary" size="large" htmlType="submit">
-                Submit
+                Sign Up
               </Button>
             </div>
             <Link href={"/login"} className="no-underline hover:underline">

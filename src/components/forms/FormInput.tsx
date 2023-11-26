@@ -59,6 +59,7 @@ const FormInput = ({
         }
       />
       <small
+        className="ml-3"
         style={{
           color: "red",
         }}

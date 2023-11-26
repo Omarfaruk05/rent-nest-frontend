@@ -1,5 +1,6 @@
 "use client";
 
+import { getErrorMessageByPropertyName } from "@/utils/schema.validation";
 import { Select } from "antd";
 import { useFormContext, Controller } from "react-hook-form";
 
@@ -31,8 +32,11 @@ const FormSelectField = ({
   placement,
   handleChange,
 }: SelectFieldProps) => {
-  const { control } = useFormContext();
-
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
+  const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
     <>
       <div className="text-lg uppercase text-gray-500 ml-1 ">
@@ -52,6 +56,14 @@ const FormSelectField = ({
           />
         )}
       />
+      <small
+        className="ml-3"
+        style={{
+          color: "red",
+        }}
+      >
+        {errorMessage}
+      </small>
     </>
   );
 };

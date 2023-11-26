@@ -11,10 +11,11 @@ import Image from "next/image";
 import { Button, Carousel } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const PropertyCategory = () => {
   return (
-    <div className="mt-12 max-w-7xl mx-auto">
+    <div className="mt-12 max-w-7xl mx-auto p-3">
       <div className="items-center">
         <h2 className="text-center text-slate-500">What Do You Want?</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
@@ -60,13 +61,13 @@ const PropertyCategory = () => {
               src={BannerImg3.src}
               alt=""
             />
-            <div className="absolute top-0 left-0 pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
+            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
               <h1>Discover impresive virtual property tours </h1>
-              <p className="my-2 text-lg">
+              <p className="md:my-2 text-lg">
                 Explore properties form the comfort of your home
               </p>
               <Link href={"/houses"}>
-                <Button className="bg-white px-12 rounded-md mt-4 text-teal-700 font-semibold">
+                <Button className="bg-white px-12 rounded-md md:mt-4 text-teal-700 font-semibold">
                   View Now <ArrowRightOutlined />
                 </Button>
               </Link>
@@ -78,13 +79,13 @@ const PropertyCategory = () => {
               src={BannerImg2.src}
               alt=""
             />
-            <div className="absolute top-0 left-0 pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
+            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
               <h1>Discover impresive virtual property tours </h1>
-              <p className="my-2 text-lg">
+              <p className="md:my-2 text-lg">
                 Explore properties form the comfort of your home
               </p>
               <Link href={"/houses"}>
-                <Button className="bg-white px-12 rounded-md mt-4 text-teal-700 font-semibold">
+                <Button className="bg-white px-12 rounded-md md:mt-4 text-teal-700 font-semibold">
                   View Now <ArrowRightOutlined />
                 </Button>
               </Link>
@@ -96,11 +97,11 @@ const PropertyCategory = () => {
               src={BannerImg1.src}
               alt=""
             />
-            <div className="absolute top-0 left-0 pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
+            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
               <h1>Explore your future home with detailed videos </h1>
-              <p className="my-2 text-lg">View your dream houses online</p>
+              <p className="md:my-2 text-lg">View your dream houses online</p>
               <Link href={"/houses"}>
-                <Button className="bg-white px-12 rounded-md mt-4 text-teal-700 font-semibold">
+                <Button className="bg-white px-12 rounded-md md:mt-4 text-teal-700 font-semibold">
                   View Now <ArrowRightOutlined />
                 </Button>
               </Link>

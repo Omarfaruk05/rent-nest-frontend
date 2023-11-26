@@ -120,7 +120,7 @@ const HouseOwnerPage = () => {
 
   return (
     <div className="m-2">
-      <ActionBar title="All House Owners"></ActionBar>
+      <ActionBar title="All House Reviews"></ActionBar>
 
       <UMTable
         loading={isLoading}

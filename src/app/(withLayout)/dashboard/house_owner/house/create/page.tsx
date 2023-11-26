@@ -6,18 +6,20 @@ import FormInput from "@/components/forms/FormInput";
 import FormSelectField from "@/components/forms/FormSelectField";
 import FormTextArea from "@/components/forms/FormTextArea";
 import { useAddHouseMutation } from "@/redux/api/houseApi";
+import { houseSchema } from "@/schemas/house";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
 
 import { SubmitHandler } from "react-hook-form";
 
-type FromValues = {
+type FormValues = {
   name: string;
   description: string;
   address: string;
   city: string;
-  yearBuilt: number;
+  yearBuilt: string;
   propertyType: string;
   interior: string;
   gas: string;
@@ -28,20 +30,27 @@ type FromValues = {
   roomSize: string;
   status: string;
   availabilityDate: string;
-  houseImage: string[];
+  houseImage1: string;
+  houseImage2: string;
+  houseImage3: string;
+  houseImage?: string[];
 };
 
 const CreateHousePage = () => {
   const [addHouse] = useAddHouseMutation();
 
-  const onSubmit: SubmitHandler<FromValues> = async (houseData: FromValues) => {
+  const onSubmit: SubmitHandler<FormValues> = async (houseData: FormValues) => {
     houseData.bedrooms = Number(houseData?.bedrooms);
     houseData.numberOfBalcony = Number(houseData?.numberOfBalcony);
     houseData.parking = Number(houseData?.parking);
-
+    console.log(houseData);
+    const { houseImage1, houseImage2, houseImage3, ...newHouseData } =
+      houseData;
+    newHouseData.houseImage = [houseImage1, houseImage2, houseImage3];
+    console.log(newHouseData);
     try {
       message.loading("Please wite");
-      const res = await addHouse(houseData).unwrap();
+      const res = await addHouse(newHouseData).unwrap();
       console.log(res);
       if (res?.id) {
         message.success("House created successfull.");
@@ -129,7 +138,7 @@ const CreateHousePage = () => {
             marginBottom: "10px",
           }}
         >
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(houseSchema)}>
             <p
               style={{
                 fontSize: "18px",
@@ -311,7 +320,7 @@ const CreateHousePage = () => {
               >
                 <FormInput
                   type="text"
-                  name="houseImage[0]"
+                  name="houseImage1"
                   size="large"
                   label="House Image Link-1"
                 />
@@ -325,7 +334,7 @@ const CreateHousePage = () => {
               >
                 <FormInput
                   type="text"
-                  name="houseImage[1]"
+                  name="houseImage2"
                   size="large"
                   label="House Image Link-2"
                 />
@@ -339,7 +348,7 @@ const CreateHousePage = () => {
               >
                 <FormInput
                   type="text"
-                  name="houseImage[2]"
+                  name="houseImage3"
                   size="large"
                   label="House Image Link-3"
                 />
