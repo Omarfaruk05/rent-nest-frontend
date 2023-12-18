@@ -89,7 +89,19 @@ const HousePage = () => {
     },
     {
       title: "Status",
-      dataIndex: "status",
+      dataIndex: "",
+      render: function (data: any) {
+        return (
+          <div className="flex flex-col w-fit">
+            <Button disabled className="mb-1 w-full bg-green-200 font-semibold">
+              {data?.status}
+            </Button>
+            {data?.status === "BOOKED" && (
+              <Button type="primary">Make Available</Button>
+            )}
+          </div>
+        );
+      },
     },
     {
       title: "CreatedAt",

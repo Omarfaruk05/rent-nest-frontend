@@ -58,7 +58,7 @@ const BookedHousePage = () => {
     }
   };
   const updateHandler = async (id: string) => {
-    message.loading("Deleting.....");
+    message.loading("Updating.....");
     try {
       const updatedData = {
         id,

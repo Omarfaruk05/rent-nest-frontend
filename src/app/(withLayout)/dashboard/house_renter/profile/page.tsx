@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Loading from "@/app/loading";
@@ -13,19 +14,31 @@ const ProfilePage = () => {
   }
   return (
     <div>
-      <div className=" mt-40 bg-gray-200 md:flex gap-8 justify-center items-center h-[50vh] w-[100vh] mx-auto">
+      <div className="bg-slate-200 p-2 rounded-md shadow-lg w-fit mt-40 md:flex flex-col-reverse gap-8 justify-center items-center mx-auto">
         <div className="p-4">
-          <h1>Name: {data?.name}</h1>
-          <p>Email: {data?.email}</p>
-          <p>Contact Number: {data?.contactNumber}</p>
-          <p>Role: {data?.role}</p>
-          <p>Address: {data?.address}</p>
+          <h1>
+            Name: <span>{data?.name}</span>
+          </h1>
+          <p>
+            Email:{" "}
+            <span className="text-gray-600 font-semibold">{data?.email}</span>
+          </p>
+          <p>
+            Contact Number:{" "}
+            <span className="font-semibold">{data?.contactNumber}</span>
+          </p>
+          <p className="">
+            Role:{" "}
+            <span className="text-orange-700 font-semibold">{data?.role}</span>
+          </p>
+          <p className="bg-orange-100 w-fit -ml-1 py-1 px-2 rounded-md font-semibold text-gray-600 mt-1">
+            Address: <span>{data?.address}</span>
+          </p>
         </div>
         <div className=" p-4 ">
           {data?.profileImage ? (
-            <Image
-              width={500}
-              height={300}
+            <img
+              className="w-60 rounded-full"
               src={data?.profileImage}
               alt="profileImage"
             />

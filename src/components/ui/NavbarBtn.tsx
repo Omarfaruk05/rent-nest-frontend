@@ -14,7 +14,6 @@ import {
 import { Button } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 type navBtnProps = {
@@ -24,6 +23,7 @@ type navBtnProps = {
 
 const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
   const dispatch = useDispatch();
+  const { id, role } = getUserInfo() as any;
   const loginResponse = useSelector((state: any) => state?.user);
   const isLoggedIn = loginResponse?.isLoggedIn;
 
@@ -92,7 +92,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
       {isLoggedIn && (
         <Link
           className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-          href={"/dashboard/house_renter/profile"}
+          href={`/dashboard/${role}/profile`}
         >
           <Button
             onClick={showDrawer}

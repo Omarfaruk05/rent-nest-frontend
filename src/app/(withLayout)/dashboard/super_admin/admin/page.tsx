@@ -6,11 +6,6 @@ import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-import {
-  useDeleteBookingMutation,
-  useGetBookingsQuery,
-  useUpdateBookingMutation,
-} from "@/redux/api/bookingApi";
 import ActionBar from "@/components/ui/ActionBar";
 import Loading from "@/app/loading";
 import {

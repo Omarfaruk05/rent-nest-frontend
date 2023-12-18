@@ -39,9 +39,7 @@ const FormSelectField = ({
   const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
     <>
-      <div className="text-lg uppercase text-gray-500 ml-1 ">
-        {label ? label : null}
-      </div>
+      <div className="text-lg text-gray-400 ml-1 ">{label ? label : null}</div>
       <Controller
         control={control}
         name={name}

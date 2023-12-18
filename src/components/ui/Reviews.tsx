@@ -17,7 +17,7 @@ const Reviews = ({ houseId }: any) => {
   const { id, role } = getUserInfo() as any;
   const [value, setValue] = useState(0);
 
-  const { data, isLoading } = useGetReviewsQuery({});
+  const { data, isLoading } = useGetReviewsQuery({ houseId });
   const [addReview] = useAddReviewMutation();
 
   const reviews = data?.reviews;

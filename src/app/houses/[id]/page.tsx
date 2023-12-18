@@ -96,7 +96,7 @@ const ProductDetailsPage = ({ params }: any) => {
                     <BookForRent houseId={data?.id} />
                   )}
                   {role && (
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 items-center">
                       <p>
                         For Save <ArrowRightOutlined />
                       </p>

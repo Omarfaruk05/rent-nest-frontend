@@ -1,11 +1,12 @@
 import type { MenuProps } from "antd";
 
 import {
-  ProfileOutlined,
   TableOutlined,
   AppstoreOutlined,
   HomeOutlined,
   OrderedListOutlined,
+  HeartOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
@@ -15,7 +16,7 @@ const sidebarItems = (role: string) => {
     {
       label: <Link href={`/dashboard/${role}/profile`}>My Profile</Link>,
       key: "profile",
-      icon: <ProfileOutlined />,
+      icon: <UserOutlined />,
     },
   ];
 
@@ -29,7 +30,7 @@ const sidebarItems = (role: string) => {
     {
       label: <Link href={`/dashboard/${role}/saved-house`}>Saved House</Link>,
       key: "saved-houses",
-      icon: <OrderedListOutlined />,
+      icon: <HeartOutlined />,
     },
     {
       label: (
@@ -155,14 +156,14 @@ const sidebarItems = (role: string) => {
     {
       label: <Link href={`/dashboard/${role}/booked-house`}>Booked House</Link>,
       key: "all-bookings",
-      icon: <AppstoreOutlined />,
+      icon: <OrderedListOutlined />,
     },
     {
       label: (
         <Link href={`/dashboard/${role}/house-visit`}>House Visit List</Link>
       ),
       key: "all-house-visit",
-      icon: <AppstoreOutlined />,
+      icon: <HeartOutlined />,
     },
     {
       label: <Link href={`/dashboard/${role}/review`}>All Reviews</Link>,
