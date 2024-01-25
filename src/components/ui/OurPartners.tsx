@@ -35,7 +35,7 @@ const OurPartners = () => {
       <div className="mx-4">
         <h2 className=" text-center text-slate-500">Our Partners</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        <div className="text-center flex flex-wrap justify-center mx-auto gap-4">
+        <div className="marquee text-center flex flex-wrap justify-center mx-auto gap-4">
           {partners.map(
             (partner) =>
               partner.partner && (

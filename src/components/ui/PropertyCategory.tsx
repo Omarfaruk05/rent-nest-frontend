@@ -54,14 +54,14 @@ const PropertyCategory = () => {
             <p>Office Space</p>
           </Link>
         </div>
-        <Carousel autoplay className="mt-12">
+        <Carousel autoplay className="mt-12 ">
           <div className="relative">
             <img
               className="rounded-lg mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px]"
               src={BannerImg3.src}
               alt=""
             />
-            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
+            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-gray-800 to-[#0bc29512] bg-opacity-50">
               <h1>Discover impresive virtual property tours </h1>
               <p className="md:my-2 text-lg">
                 Explore properties form the comfort of your home
@@ -79,7 +79,7 @@ const PropertyCategory = () => {
               src={BannerImg2.src}
               alt=""
             />
-            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
+            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-gray-800 to-[#0bc29512] bg-opacity-50">
               <h1>Discover impresive virtual property tours </h1>
               <p className="md:my-2 text-lg">
                 Explore properties form the comfort of your home
@@ -97,7 +97,7 @@ const PropertyCategory = () => {
               src={BannerImg1.src}
               alt=""
             />
-            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
+            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-[#033c79] to-[#0bc29512] bg-opacity-50">
               <h1>Explore your future home with detailed videos </h1>
               <p className="md:my-2 text-lg">View your dream houses online</p>
               <Link href={"/houses"}>

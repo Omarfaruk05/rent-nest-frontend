@@ -37,7 +37,7 @@ const CreateFeedback = () => {
     }
   };
   return (
-    <div className="bg-slate-100 py-4">
+    <div className="bg-slate-100 py-20">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center text-slate-600">Send Feedback</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>

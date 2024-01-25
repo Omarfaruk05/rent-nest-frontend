@@ -2,17 +2,14 @@
 "use client";
 import Image from "next/image";
 import UpcomingIcon from "../../assects/upcoming.png";
-import BannerImg1 from "../../assects/banner.jpeg";
-import BannerImg2 from "../../assects/banner2.jpg";
-import BannerImg3 from "../../assects/banner3.jpg";
-import { Button, Carousel } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import backgroundImage from "../../assects/banner2.jpg";
+import { Button } from "antd";
 import Link from "next/link";
 
 const UpComingCategory = () => {
   return (
-    <div className="mt-12 max-w-7xl mx-auto p-3">
-      <div className="">
+    <div>
+      <div className="mt-12 max-w-7xl mx-auto p-3">
         <h2 className="text-center text-slate-500">Upcoming Category</h2>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 justify-center mx-auto gap-8 lg:gap-12">
@@ -72,60 +69,33 @@ const UpComingCategory = () => {
             </Link>
           </div>
         </div>
-        <Carousel autoplay effect="fade" className="mt-12">
-          <div className="relative">
-            <img
-              className="rounded-lg mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px]"
-              src={BannerImg1.src}
-              alt=""
-            />
-            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
-              <h1>Explore your future home with detailed videos </h1>
-              <p className="md:my-2 text-lg">View your dream houses online</p>
-              <Link href={"/houses"}>
-                <Button className="bg-white px-12 rounded-md md:mt-4 text-teal-700 font-semibold">
-                  View Now <ArrowRightOutlined />
-                </Button>
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              className="rounded-lg mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px]"
-              src={BannerImg2.src}
-              alt=""
-            />
-            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
-              <h1>Discover impresive virtual property tours </h1>
-              <p className="md:my-2 text-lg">
-                Explore properties form the comfort of your home
-              </p>
-              <Link href={"/houses"}>
-                <Button className="bg-white px-12 rounded-md md:mt-4 text-teal-700 font-semibold">
-                  View Now <ArrowRightOutlined />
-                </Button>
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              className="rounded-lg mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px]"
-              src={BannerImg3.src}
-              alt=""
-            />
-            <div className="absolute top-0 left-0 md:pt-12 pl-8 text-gray-200 h-full mx-auto w-[350px] h-[200px] sm:w-[680px] md:w-[840px] lg:w-[9800px] xl:w-[1250px] rounded-md bg-gradient-to-r from-teal-500 to-[#0bc29512] bg-opacity-50">
-              <h1>Discover impresive virtual property tours </h1>
-              <p className="md:my-2 text-lg">
-                Explore properties form the comfort of your home
-              </p>
-              <Link href={"/houses"}>
-                <Button className="bg-white px-12 rounded-md md:mt-4 text-teal-700 font-semibold">
-                  View Now <ArrowRightOutlined />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Carousel>
+      </div>
+      <div
+        style={{
+          backgroundImage: `url(${backgroundImage.src})`,
+
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="h-[50vh]  mt-12 bg-fixed"
+      >
+        <div className="text-white align-left max-w-7xl mx-auto p-4">
+          <h3 className="pt-4 md:pt-32 pb-4">CORPORATE HOUSING</h3>
+          <h1 className="mb-4 text-5xl">Rent Apartments for Your Company</h1>
+          <p>
+            Manage easily all your corporate apartments needs with flexibility
+            and exclusive support. Save time and money. Ideal for you and your
+            team.
+          </p>
+          <br />
+
+          <Link href={"/blog"}>
+            <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
+              GET TO KNOW US
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

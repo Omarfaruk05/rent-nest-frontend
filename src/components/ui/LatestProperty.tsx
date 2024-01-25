@@ -4,10 +4,12 @@
 
 import { useGetHousesQuery } from "@/redux/api/houseApi";
 import ProductCart from "./ProductCart";
+import BannerImg1 from "../../assects/banner.jpeg";
+import BannerImg2 from "../../assects/banner2.jpg";
+import BannerImg3 from "../../assects/banner3.jpg";
 import ProductCartLoading from "./ProductCartLoading";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import backgroundImage from "../../assects/banner2.jpg";
-import { Button } from "antd";
+import { Button, Carousel } from "antd";
 import Link from "next/link";
 const loadingNumber = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -46,33 +48,6 @@ const LatestProperty = () => {
             <Button className="bg-teal-100 px-12" size="large">
               See More
               <ArrowRightOutlined />
-            </Button>
-          </Link>
-        </div>
-      </div>
-      <div
-        style={{
-          backgroundImage: `url(${backgroundImage.src})`,
-
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-        className="h-[50vh]  mt-12 bg-fixed"
-      >
-        <div className="text-white align-left max-w-7xl mx-auto p-4">
-          <h3 className="pt-4 md:pt-32 pb-4">CORPORATE HOUSING</h3>
-          <h1 className="mb-4 text-5xl">Rent Apartments for Your Company</h1>
-          <p>
-            Manage easily all your corporate apartments needs with flexibility
-            and exclusive support. Save time and money. Ideal for you and your
-            team.
-          </p>
-          <br />
-
-          <Link href={"/blog"}>
-            <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
-              GET TO KNOW US
             </Button>
           </Link>
         </div>
