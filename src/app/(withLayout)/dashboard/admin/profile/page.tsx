@@ -3,7 +3,8 @@
 
 import Loading from "@/app/loading";
 import { useGetSingUserQuery } from "@/redux/api/userApi";
-import { Button, Image } from "antd";
+import { Button } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import React from "react";
 
@@ -43,8 +44,8 @@ const ProfilePage = () => {
               alt="profileImage"
             />
           ) : (
-            <div>
-              <h1>No Profile Image</h1>
+            <div className="bg-gray-300 rounded-full text-7xl p-4">
+              <UserOutlined />
             </div>
           )}
         </div>

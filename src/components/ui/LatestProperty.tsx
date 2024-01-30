@@ -4,9 +4,6 @@
 
 import { useGetHousesQuery } from "@/redux/api/houseApi";
 import ProductCart from "./ProductCart";
-import BannerImg1 from "../../assects/banner.jpeg";
-import BannerImg2 from "../../assects/banner2.jpg";
-import BannerImg3 from "../../assects/banner3.jpg";
 import ProductCartLoading from "./ProductCartLoading";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Carousel } from "antd";
