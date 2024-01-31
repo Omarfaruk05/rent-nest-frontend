@@ -19,7 +19,7 @@ const PropertyCategory = () => {
       <div className="items-center">
         <h1 className="text-center text-slate-500">What Do You Want?</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        <div className="mt-12 flex flex-wrap justify-around items-center gap-8 md:gap-12 lg:gap-[100px] mx-20">
+        <div className="mt-12 lg:mx-20 grid grid-cols-2 md:grid-cols-4  items-center gap-4 md:gap-12 lg:gap-[100px]">
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"

@@ -38,7 +38,7 @@ const OurPartners = () => {
         <p className="text-center mb-8 w-72 mx-auto text-sm">
           Trusted by the major brands and top companies.
         </p>
-        <div className="text-center flex flex-wrap justify-center mx-auto gap-12">
+        <div className="text-center flex flex-wrap justify-center mx-auto gap-4 md:gap-12">
           {partners.map(
             (partner) =>
               partner.partner && (

@@ -18,7 +18,7 @@ const Hero = ({ children }: any) => {
     >
       <div className="max-w-7xl mx-auto">
         <div className=" flex justify-center items-center ">
-          <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-4 mx-4 w-96  md:w-[600px] h-40 rounded-md  ">
+          <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-2 md:p-4 mx-4 w-92  md:w-[600px] h-40 rounded-md  ">
             {children}
           </div>
         </div>

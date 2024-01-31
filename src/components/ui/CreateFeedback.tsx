@@ -51,7 +51,7 @@ const CreateFeedback = () => {
           <div className="md:w-1/2 hidden md:block">
             <Image className="w-full h-auto" src={backgroundImage} alt="" />
           </div>
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 mt-4 md:mt-0">
             <Form submitHandler={onSubmit}>
               <div className=" lg:w-[520px] px-4 pt-8 pb-4  bg-slate-200 rounded-md">
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>

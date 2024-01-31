@@ -147,7 +147,7 @@ const Houses = () => {
       <div className="max-w-7xl mx-auto min-h-[70vh]">
         <Row className="m-4" gutter={{ xs: 4, sm: 8, md: 16, lg: 16 }}>
           <Col
-            className="gutter-row px-40"
+            className="gutter-row md:px-40"
             span={24}
             style={{
               marginBottom: "10px",
@@ -259,7 +259,7 @@ const Houses = () => {
               size="large"
               htmlType="submit"
             >
-              Find
+              Reset
             </Button>
           </Col>
         </Row>
