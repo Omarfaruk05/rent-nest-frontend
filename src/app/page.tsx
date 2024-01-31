@@ -1,3 +1,4 @@
+import About from "@/components/ui/About";
 import CreateFeedback from "@/components/ui/CreateFeedback";
 import FaqPage from "@/components/ui/Faq";
 import Feedback from "@/components/ui/Feedback";
@@ -15,6 +16,7 @@ const HomePage = () => {
     <div>
       <Hero text={"Discover Your Perfect Property"} />
       <PropertyCategory />
+      <About />
       <UpComingCategory />
       <LatestProperty />
       <Overview />

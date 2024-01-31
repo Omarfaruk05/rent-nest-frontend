@@ -20,7 +20,7 @@ const Feedback = () => {
   return (
     <div className="my-12 max-w-7xl mx-auto py-4">
       <div className="">
-        <h2 className=" text-center text-slate-500">Feedbacks</h2>
+        <h1 className=" text-center text-slate-500">Feedbacks</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
 
         <div className=" text-center mx-3 flex flex-wrap gap-4 justify-center items-center">

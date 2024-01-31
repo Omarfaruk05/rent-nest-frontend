@@ -48,7 +48,7 @@ const FaqPage = () => {
   return (
     <div className="my-12 max-w-7xl mx-auto">
       <div className="mx-4">
-        <h2 className=" text-center text-slate-500">FAQ'S</h2>
+        <h1 className=" text-center text-slate-500">FAQ'S</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
         <Collapse
           className="mx-auto max-w-7xl mt-4"

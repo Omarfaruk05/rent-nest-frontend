@@ -24,7 +24,7 @@ const FormTextArea = ({
 
   const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
-    <div className={`text-lg ml-1 flex flex-col text-gray-400 w-full`}>
+    <div className={`text-md ml-1 flex flex-col text-gray-400 w-full`}>
       {label ? label : null}
       <Controller
         name={name}

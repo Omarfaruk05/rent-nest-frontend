@@ -66,7 +66,7 @@ const Overview = () => {
           </div>
         </Carousel>
         <div>
-          <h2 className=" text-center text-slate-500">Overviews</h2>
+          <h1 className=" text-center text-slate-500">Overviews</h1>
           <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
 
           <div className="my-4 mx-4">

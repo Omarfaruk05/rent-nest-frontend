@@ -33,9 +33,12 @@ const OurPartners = () => {
   return (
     <div className="mt-12 mb-4 max-w-7xl mx-auto">
       <div className="mx-4">
-        <h2 className=" text-center text-slate-500">Our Partners</h2>
-        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        <div className="marquee text-center flex flex-wrap justify-center mx-auto gap-4">
+        <h1 className=" text-center text-slate-500 ">Our Partners</h1>
+        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>
+        <p className="text-center mb-8 w-72 mx-auto text-sm">
+          Trusted by the major brands and top companies.
+        </p>
+        <div className="text-center flex flex-wrap justify-center mx-auto gap-12">
           {partners.map(
             (partner) =>
               partner.partner && (

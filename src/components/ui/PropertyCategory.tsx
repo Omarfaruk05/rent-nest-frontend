@@ -17,7 +17,7 @@ const PropertyCategory = () => {
   return (
     <div className="mt-12 max-w-7xl mx-auto p-3">
       <div className="items-center">
-        <h2 className="text-center text-slate-500">What Do You Want?</h2>
+        <h1 className="text-center text-slate-500">What Do You Want?</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
         <div className="mt-12 flex flex-wrap justify-around items-center gap-8 md:gap-12 lg:gap-[100px] mx-20">
           <Link
