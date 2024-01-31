@@ -1,7 +1,7 @@
 "use client";
 import backgroundImage from "../../assects/imageBackgroundLarge.ea3d629bf8eb6227abebba2d160de5b8.jpg";
 
-const Hero = ({ text }: { text: string }) => {
+const Hero = ({ children }: any) => {
   return (
     <div
       style={{
@@ -19,7 +19,7 @@ const Hero = ({ text }: { text: string }) => {
       <div className="max-w-7xl mx-auto">
         <div className=" flex justify-center items-center ">
           <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-4 mx-4 w-96  md:w-[600px] h-40 rounded-md  ">
-            <h1 className="text-teal-900">{text}</h1>
+            {children}
           </div>
         </div>
       </div>

@@ -78,7 +78,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
 
       <Link
         className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
-        href={"/about"}
+        href={"/overview"}
       >
         <Button
           onClick={showDrawer}
@@ -86,7 +86,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
           type="link"
           icon={<HeartOutlined />}
         >
-          About Us
+          Overview
         </Button>
       </Link>
       {isLoggedIn && (

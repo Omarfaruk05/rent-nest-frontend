@@ -147,8 +147,8 @@ const Houses = () => {
       <div className="max-w-7xl mx-auto min-h-[70vh]">
         <Row className="m-4" gutter={{ xs: 4, sm: 8, md: 16, lg: 16 }}>
           <Col
-            className="gutter-row"
-            span={6}
+            className="gutter-row px-40"
+            span={24}
             style={{
               marginBottom: "10px",
             }}
@@ -215,30 +215,52 @@ const Houses = () => {
           </Col>
           <Col
             className="gutter-row mx-auto"
-            span={12}
+            span={6}
             style={{
               marginBottom: "10px",
             }}
           >
-            <div className="flex justify-center items-center gap-2">
-              <Select
-                style={{ width: "100%" }}
-                size="large"
-                options={statusOptions}
-                placeholder="Status"
-                onChange={(e) => {
-                  setStatus(e);
-                }}
-              />
-              <Button
-                className="text-white bg-red-500"
-                size="large"
-                htmlType="submit"
-                onClick={resetFilters}
-              >
-                Rset Filter
-              </Button>
-            </div>
+            <Select
+              style={{ width: "100%" }}
+              size="large"
+              options={statusOptions}
+              placeholder="Status"
+              onChange={(e) => {
+                setStatus(e);
+              }}
+            />
+          </Col>
+          <Col
+            className="gutter-row mx-auto"
+            span={6}
+            style={{
+              marginBottom: "10px",
+            }}
+          >
+            <Select
+              style={{ width: "100%" }}
+              size="large"
+              options={bedroomsOptions}
+              placeholder="Bedrooms"
+              onChange={(e) => {
+                setStatus(e);
+              }}
+            />
+          </Col>
+          <Col
+            className="gutter-row mx-auto"
+            span={6}
+            style={{
+              marginBottom: "10px",
+            }}
+          >
+            <Button
+              className="text-white w-full bg-red-500"
+              size="large"
+              htmlType="submit"
+            >
+              Find
+            </Button>
           </Col>
         </Row>
         <div className=" mx-2 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">

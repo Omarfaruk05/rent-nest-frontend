@@ -11,7 +11,9 @@ import Hero from "./Hero";
 const Category = () => {
   return (
     <div>
-      <Hero text={"All Categories"} />
+      <Hero>
+        <h1 className=" text-center text-teal-900">Categories</h1>
+      </Hero>
       <div className="max-w-7xl mx-auto  mt-12">
         <div className=" mb-4">
           <PropertyCategory />
