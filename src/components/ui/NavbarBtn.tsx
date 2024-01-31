@@ -37,7 +37,7 @@ const NavbarBtn = ({ flexDir, showDrawer }: navBtnProps) => {
   return (
     <div className={`flex ${flexDir}`}>
       <Link
-        className="text-center  border-solid border-[1px] rounded-md border-blue-500 m-1 "
+        className="text-center border-solid border-[1px] rounded-md border-blue-500 m-1 "
         href={"/houses"}
       >
         <Button

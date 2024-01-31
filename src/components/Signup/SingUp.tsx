@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import Form from "../forms/Form";
 import FormInput from "../forms/FormInput";
-import { Button, Col, Row, message } from "antd";
+import { Button, message } from "antd";
 import { SubmitHandler } from "react-hook-form";
 import Link from "next/link";
 import FormTextArea from "../forms/FormTextArea";
@@ -12,6 +12,7 @@ import { useAddUserMutation } from "@/redux/api/userApi";
 import FooterComponent from "../ui/FooterComponent";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from "@/schemas/user";
+import backgroundImage from "../../assects/signupBg.webp";
 
 type FromValues = {
   name: string;
@@ -53,118 +54,93 @@ const SingUp = () => {
     },
   ];
   return (
-    <div className="bg-gradient-to-r from-gray-200 to-blue-400 h-full opacity-75 ">
+    <div>
       <div>
-        <div className="mx-4 flex justify-center items-center h-[90vh]">
-          <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
-            <p
-              style={{
-                fontSize: "18px",
-                marginBottom: "10px",
-              }}
+        <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center h-[94vh]">
+          <div className="mt-12 mx-4 md:mx-2">
+            <Link
+              href={"/"}
+              className="font-semibold cursor-pointer border text-2xl no-underline flex justify-center mb-4 text-green-900"
             >
-              User Information
-            </p>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              Rent Nest
+            </Link>
+            <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
+              <div>
                 <FormInput type="text" name="name" size="large" label="Name" />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              </div>
+              <div>
                 <FormInput
                   type="email"
                   name="email"
                   size="large"
                   label="Email"
                 />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              </div>
+              <div>
                 <FormInput
                   type="text"
                   name="contactNumber"
                   size="large"
                   label="Contact Numbe"
                 />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={12}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              </div>
+              <div>
                 <FormSelectField
                   name="role"
                   size="large"
                   label="Role"
                   options={roleOptions}
                 />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={12}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              </div>
+              <div>
                 <FormInput
                   type="password"
                   name="password"
                   size="large"
                   label="Password"
                 />
-              </Col>
+              </div>
 
-              <Col
-                className="gutter-row"
-                span={24}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              <div>
                 <FormInput
                   type="text"
                   name="profileImage"
                   size="large"
                   label="Profile Image Link"
                 />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={24}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
+              </div>
+              <div>
                 <FormTextArea name="address" label="Address" />
-              </Col>
-            </Row>
-            <div className="text-center">
-              <Button type="primary" size="large" htmlType="submit">
-                Sign Up
-              </Button>
-            </div>
-            <Link href={"/login"} className="no-underline hover:underline">
-              Already have Account?
-            </Link>
-          </Form>
+              </div>
+
+              <div className="text-center">
+                <Button
+                  className="w-full mt-4"
+                  type="primary"
+                  size="large"
+                  htmlType="submit"
+                >
+                  Sign Up
+                </Button>
+              </div>
+              <Link
+                href={"/login"}
+                className="text-sm no-underline hover:underline"
+              >
+                Already have Account?
+              </Link>
+            </Form>
+          </div>
+          <div
+            style={{
+              backgroundImage: `url(${backgroundImage.src})`,
+              backgroundRepeat: "no-repeat",
+              backgroundColor: "rgb(5 74 60)",
+              backgroundSize: "1200px",
+              backgroundPosition: "center",
+            }}
+            className="hidden sm:block h-full w-full md:col-span-2 lg:col-span-3"
+          ></div>
         </div>
         <FooterComponent />
       </div>
