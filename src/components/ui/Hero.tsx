@@ -1,5 +1,5 @@
 "use client";
-import backgroundImage from "../../assects/imageBackgroundLarge.ea3d629bf8eb6227abebba2d160de5b8.jpg";
+import backgroundImage from "../../assects/heroBg.jpg";
 
 const Hero = ({ children }: any) => {
   return (
@@ -14,11 +14,16 @@ const Hero = ({ children }: any) => {
         alignItems: "center",
         justifyContent: "center",
       }}
-      className="h-[30vh] md:h-[40vh] lg:h-[50vh] xl:h-[60vh]"
+      className="h-[35vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh]"
     >
       <div className="max-w-7xl mx-auto">
         <div className=" flex justify-center items-center ">
-          <div className="flex  justify-center  items-center backdrop-blur-lg bg-white/50 p-2 md:p-4 mx-4 w-92  md:w-[600px] h-40 rounded-md  ">
+          <div
+            className="flex justify-center 
+            items-center backdrop-blur-lg
+           bg-black/20 p-2 md:p-4 mx-4 
+             w-92 md:w-[600px] h-40 rounded-md  "
+          >
             {children}
           </div>
         </div>

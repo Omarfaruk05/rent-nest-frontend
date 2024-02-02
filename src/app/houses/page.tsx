@@ -145,14 +145,8 @@ const Houses = () => {
   return (
     <div>
       <div className="max-w-7xl mx-auto min-h-[70vh]">
-        <Row className="m-4" gutter={{ xs: 4, sm: 8, md: 16, lg: 16 }}>
-          <Col
-            className="gutter-row md:px-40"
-            span={24}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
+        <div className="m-4">
+          <div className=" md:px-40">
             <Input
               name="searchTerm"
               size="large"
@@ -161,116 +155,80 @@ const Houses = () => {
                 setSearchTerm(e.target.value);
               }}
             />
-          </Col>
-          <Col
-            className="gutter-row"
-            span={6}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
+          </div>
+        </div>
+        <div className="bg-gray-100 p-4 mx-2 rounded-lg flex flex-wrap justify-center gap-2 mt-24">
+          <div>
             <Select
-              style={{ width: "100%" }}
-              size="large"
+              size="middle"
+              className="w-32"
               options={categoryOptions}
               placeholder="Category"
               onChange={(e) => {
                 setPropertyType(e);
               }}
             />
-          </Col>
-          <Col
-            className="gutter-row"
-            span={6}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
+          </div>
+          <div>
             <Select
-              style={{ width: "100%" }}
-              size="large"
+              size="middle"
+              className="w-32"
               options={interiorOptions}
               placeholder="Interior"
               onChange={(e) => {
                 setInterior(e);
               }}
             />
-          </Col>
-          <Col
-            className="gutter-row"
-            span={6}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
+          </div>
+          <div>
             <Select
-              style={{ width: "100%" }}
-              size="large"
-              options={gasOptions}
-              placeholder="GAS"
-              onChange={(e) => {
-                setGas(e);
-              }}
-            />
-          </Col>
-          <Col
-            className="gutter-row mx-auto"
-            span={6}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <Select
-              style={{ width: "100%" }}
-              size="large"
+              className="w-28"
+              size="middle"
               options={statusOptions}
               placeholder="Status"
               onChange={(e) => {
                 setStatus(e);
               }}
             />
-          </Col>
-          <Col
-            className="gutter-row mx-auto"
-            span={6}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
+          </div>
+          <div>
             <Select
-              style={{ width: "100%" }}
-              size="large"
+              size="middle"
               options={bedroomsOptions}
               placeholder="Bedrooms"
               onChange={(e) => {
                 setStatus(e);
               }}
             />
-          </Col>
-          <Col
-            className="gutter-row mx-auto"
-            span={6}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
+          </div>
+          <div>
+            <Select
+              size="middle"
+              options={gasOptions}
+              placeholder="GAS"
+              onChange={(e) => {
+                setGas(e);
+              }}
+            />
+          </div>
+          <div>
             <Button
               className="text-white w-full bg-red-500"
-              size="large"
+              size="middle"
               htmlType="submit"
             >
               Reset
             </Button>
-          </Col>
-        </Row>
-        <div className=" mx-2 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
+          </div>
+        </div>
+        <div className=" mx-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
           {isLoading &&
             loadingNumber?.map((x, index) => (
               <ProductCartLoading key={index} />
             ))}
         </div>
         {houses?.length ? (
-          <div className=" mx-2 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className=" mx-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
             {houses?.map((house: any, index: any) => (
               <ProductCart house={house} key={index} />
             ))}

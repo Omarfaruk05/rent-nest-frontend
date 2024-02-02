@@ -12,7 +12,7 @@ const Category = () => {
   return (
     <div>
       <Hero>
-        <h1 className=" text-center text-teal-900">Categories</h1>
+        <h1 className=" text-center text-5xl text-slate-800">Categories</h1>
       </Hero>
       <div className="max-w-7xl mx-auto  mt-12">
         <div className=" mb-4">

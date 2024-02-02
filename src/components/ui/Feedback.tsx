@@ -5,7 +5,9 @@ import { useGetFeedbacksQuery } from "@/redux/api/feedbackApi";
 import Loading from "@/app/loading";
 import backgroundImage from "../../assects/banner2.jpg";
 import Link from "next/link";
-import { Button } from "antd";
+import { Avatar, Button } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import Image from "next/image";
 
 const Feedback = () => {
   const query = {
@@ -15,6 +17,7 @@ const Feedback = () => {
   const { data, isLoading } = useGetFeedbacksQuery({ ...query });
 
   const feedbacks = data?.feedbacks;
+  console.log(feedbacks);
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -26,21 +29,37 @@ const Feedback = () => {
         <h1 className=" text-center text-slate-500">Feedbacks</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
 
-        <div className=" text-center mx-3 flex flex-wrap gap-4 justify-center items-center">
+        <div className=" text-center mx-2 flex flex-wrap gap-4 justify-center items-center">
           {feedbacks &&
             feedbacks.map((feedback: any) => (
               <div
                 key={feedback?.id}
-                className=" bg-white pb-4 shadow-lg rounded-md w-96 h-40"
+                className=" w-[394px] h-36 relative bg-gray-50 rounded-lg mt-10 p-3"
               >
-                <h3 className="bg-teal-50 py-4 text-purple-500">
-                  {feedback?.user?.name}{" "}
+                <h3 className="font-normal relative">
+                  <span className="text-teal-600">❝ </span>
+                  {feedback?.feedback}
+                  <span className="text-teal-600"> ❞</span>
                 </h3>
-                <p className="mt-8 ">{feedback?.feedback}</p>
+                <div className="absolute bottom-2 text-center w-full">
+                  <h4 className="text-center text-slate-700">
+                    {feedback?.user?.name}{" "}
+                  </h4>
+                  {feedback?.user?.profileImage ? (
+                    <Image
+                      className=" w-9 h-9 bg-gray-300 rounded-full"
+                      src={feedback?.user?.profileImage.src}
+                      alt=""
+                    />
+                  ) : (
+                    <Avatar size={"large"} icon={<UserOutlined />} />
+                  )}
+                </div>
               </div>
             ))}
         </div>
       </div>
+      {/* feedback bottom banner  */}
       <div
         style={{
           backgroundImage: `url(${backgroundImage.src})`,

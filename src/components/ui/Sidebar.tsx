@@ -17,6 +17,7 @@ const Sidebar = () => {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       width={280}
+      className="bg-slate-200"
       style={{
         overflow: "auto",
         height: "100vh",
@@ -37,7 +38,7 @@ const Sidebar = () => {
         }}
       ></div>
       <Menu
-        theme="dark"
+        className="bg-slate-200"
         defaultSelectedKeys={["1"]}
         mode="inline"
         items={sidebarItems(role)}

@@ -5,9 +5,10 @@ import { CaretRightOutlined } from "@ant-design/icons";
 import type { CSSProperties } from "react";
 import React from "react";
 import type { CollapseProps } from "antd";
-import { Collapse, theme } from "antd";
+import { Collapse, Image, theme } from "antd";
 import { useGetFAQQuery } from "@/redux/api/faqApi";
 import Loading from "@/app/loading";
+import FaqImg from "../../assects/faq.jpg";
 
 const FaqPage = () => {
   const { data, isLoading } = useGetFAQQuery({ page: 1, limit: 10 });
@@ -50,16 +51,21 @@ const FaqPage = () => {
       <div className="mx-4">
         <h1 className=" text-center text-slate-500">FAQ'S</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        <Collapse
-          className="mx-auto max-w-7xl mt-4"
-          bordered={false}
-          defaultActiveKey={["1"]}
-          expandIcon={({ isActive }) => (
-            <CaretRightOutlined rotate={isActive ? 90 : 0} />
-          )}
-          style={{ background: token.colorBgContainer }}
-          items={getItems(panelStyle)}
-        />
+        <div className="flex gap-4 my-24">
+          <Collapse
+            className="mx-auto md:w-1/2 mt-4"
+            bordered={false}
+            defaultActiveKey={["1"]}
+            expandIcon={({ isActive }) => (
+              <CaretRightOutlined rotate={isActive ? 90 : 0} />
+            )}
+            style={{ background: token.colorBgContainer }}
+            items={getItems(panelStyle)}
+          />
+          <div className="md:w-1/2 hidden md:block ">
+            <Image className="w-full h-full" src={FaqImg.src} alt="faq_image" />
+          </div>
+        </div>
       </div>
     </div>
   );

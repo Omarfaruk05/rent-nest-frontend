@@ -7,7 +7,7 @@ const AboutPage = () => {
   return (
     <div>
       <Hero>
-        <h1 className="text-teal-900">Overviews</h1>
+        <h1 className="text-5xl text-slate-800">Overviews</h1>
       </Hero>
       <Overview />
       <FooterComponent />

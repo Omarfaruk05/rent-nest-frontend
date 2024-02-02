@@ -199,7 +199,8 @@ const HomePage = () => {
             }}
           >
             <Button
-              className="text-white w-full bg-green-800 border-none"
+              type="primary"
+              className="text-white w-full border-none"
               size="large"
               htmlType="submit"
             >
