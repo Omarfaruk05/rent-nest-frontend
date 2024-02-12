@@ -1,5 +1,5 @@
 import { getUserInfo } from "@/services/auth.service";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface UserState {
   isLoggedIn: boolean;

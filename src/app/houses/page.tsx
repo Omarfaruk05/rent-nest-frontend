@@ -8,6 +8,15 @@ import { useState } from "react";
 import Loading from "../loading";
 import ProductCart from "@/components/ui/ProductCart";
 import ProductCartLoading from "@/components/ui/ProductCartLoading";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  bedrooms,
+  gas,
+  interior,
+  propertyType,
+  searchTerm,
+  status,
+} from "@/redux/slice/searchAndFilterSlice";
 
 const Houses = () => {
   const query: Record<string, any> = {};
@@ -16,33 +25,33 @@ const Houses = () => {
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [propertyType, setPropertyType] = useState<string>("");
-  const [interior, setInterior] = useState<string>("");
-  const [gas, setGas] = useState<string>("");
-  const [status, setStatus] = useState<string>("");
   const loadingNumber = [1, 2, 3, 4, 5, 6, 7, 8];
+  const dispatch = useDispatch();
+  const searchAndFilter = useSelector((state: any) => state?.searchAndFilter);
 
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
 
-  if (propertyType !== "") {
-    query["propertyType"] = propertyType;
+  if (searchAndFilter?.propertyType !== "") {
+    query["propertyType"] = searchAndFilter?.propertyType;
   }
-  if (interior !== "") {
-    query["interior"] = interior;
+  if (searchAndFilter?.interior !== "") {
+    query["interior"] = searchAndFilter?.interior;
   }
-  if (gas !== "") {
-    query["gas"] = gas;
+  if (searchAndFilter?.gas !== "") {
+    query["gas"] = searchAndFilter?.gas;
   }
-  if (status !== "") {
-    query["status"] = status;
+  if (searchAndFilter?.bedrooms !== "") {
+    query["bedrooms"] = searchAndFilter?.bedrooms;
+  }
+  if (searchAndFilter?.status !== "") {
+    query["status"] = searchAndFilter?.status;
   }
 
   const debouncedTerm = useDebounced({
-    searchQuery: searchTerm,
+    searchQuery: searchAndFilter?.searchTerm,
     delay: 600,
   });
 
@@ -61,13 +70,12 @@ const Houses = () => {
   };
 
   const resetFilters = () => {
-    setSortBy("");
-    setSortOrder("");
-    setSearchTerm("");
-    setInterior("");
-    setGas("");
-    setStatus("");
-    setPropertyType("");
+    dispatch(searchTerm(""));
+    dispatch(propertyType(""));
+    dispatch(interior(""));
+    dispatch(gas(""));
+    dispatch(bedrooms(""));
+    dispatch(status(""));
   };
 
   const categoryOptions = [
@@ -150,9 +158,10 @@ const Houses = () => {
             <Input
               name="searchTerm"
               size="large"
+              defaultValue={searchAndFilter?.searchTerm}
               placeholder="Search"
               onChange={(e) => {
-                setSearchTerm(e.target.value);
+                dispatch(searchTerm(e.target.value));
               }}
             />
           </div>
@@ -162,10 +171,15 @@ const Houses = () => {
             <Select
               size="middle"
               className="w-32"
+              defaultValue={
+                searchAndFilter?.propertyType !== ""
+                  ? searchAndFilter?.propertyType
+                  : "Category"
+              }
               options={categoryOptions}
               placeholder="Category"
               onChange={(e) => {
-                setPropertyType(e);
+                dispatch(propertyType(e));
               }}
             />
           </div>
@@ -174,9 +188,14 @@ const Houses = () => {
               size="middle"
               className="w-32"
               options={interiorOptions}
+              defaultValue={
+                searchAndFilter?.interior !== ""
+                  ? searchAndFilter?.interior
+                  : "Interior"
+              }
               placeholder="Interior"
               onChange={(e) => {
-                setInterior(e);
+                dispatch(interior(e));
               }}
             />
           </div>
@@ -185,9 +204,14 @@ const Houses = () => {
               className="w-28"
               size="middle"
               options={statusOptions}
+              defaultValue={
+                searchAndFilter?.status !== ""
+                  ? searchAndFilter?.status
+                  : "Status"
+              }
               placeholder="Status"
               onChange={(e) => {
-                setStatus(e);
+                dispatch(status(e));
               }}
             />
           </div>
@@ -196,8 +220,13 @@ const Houses = () => {
               size="middle"
               options={bedroomsOptions}
               placeholder="Bedrooms"
+              defaultValue={
+                searchAndFilter?.bedrooms !== undefined
+                  ? searchAndFilter?.bedrooms
+                  : "Bedrooms"
+              }
               onChange={(e) => {
-                setStatus(e);
+                dispatch(bedrooms(e));
               }}
             />
           </div>
@@ -206,8 +235,11 @@ const Houses = () => {
               size="middle"
               options={gasOptions}
               placeholder="GAS"
+              defaultValue={
+                searchAndFilter?.gas !== "" ? searchAndFilter?.gas : "GAS"
+              }
               onChange={(e) => {
-                setGas(e);
+                dispatch(gas(e));
               }}
             />
           </div>
@@ -215,7 +247,7 @@ const Houses = () => {
             <Button
               className="text-white w-full bg-red-500"
               size="middle"
-              htmlType="submit"
+              onClick={resetFilters}
             >
               Reset
             </Button>
