@@ -38,7 +38,7 @@ const Sidebar = () => {
         }}
       ></div>
       <Menu
-        className="bg-slate-200"
+        className="bg-slate-200 -mt-3"
         defaultSelectedKeys={["1"]}
         mode="inline"
         items={sidebarItems(role)}

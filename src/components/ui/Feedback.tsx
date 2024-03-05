@@ -68,23 +68,29 @@ const Feedback = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-        className="h-[50vh]  mt-12 bg-fixed"
+        className="h-[50vh] w-full bg-fixed"
       >
-        <div className="text-white align-left max-w-7xl mx-auto p-4">
-          <h3 className="pt-4 md:pt-32 pb-4">CORPORATE HOUSING</h3>
-          <h1 className="mb-4 text-5xl">Rent Apartments for Your Company</h1>
-          <p>
-            Manage easily all your corporate apartments needs with flexibility
-            and exclusive support. Save time and money. Ideal for you and your
-            team.
-          </p>
-          <br />
+        <div className="max-w-7xl mx-auto h-full text-white p-3">
+          <div className="flex items-center justify-start h-full w-full">
+            <div>
+              <h3 className="pt-4  pb-4">CORPORATE HOUSING</h3>
+              <h1 className="mb-4 text-5xl">
+                Rent Apartments for Your Company
+              </h1>
+              <p>
+                Manage easily all your corporate apartments needs with
+                flexibility and exclusive support. Save time and money. Ideal
+                for you and your team.
+              </p>
+              <br />
 
-          <Link href={"/blog"}>
-            <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
-              GET TO KNOW US
-            </Button>
-          </Link>
+              <Link href={"/blog"}>
+                <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
+                  GET TO KNOW US
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

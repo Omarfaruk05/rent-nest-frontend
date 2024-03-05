@@ -1,34 +1,47 @@
 "use client";
 
-import { useGetBlogsQuery } from "@/redux/api/blogApi";
-import FooterComponent from "./FooterComponent";
-import Loading from "@/app/loading";
-import Hero from "./Hero";
+import { Button, Image } from "antd";
+import React, { useState } from "react";
+import { IBlog } from "./Blogs";
 
-const Blog = () => {
-  const { data, isLoading } = useGetBlogsQuery({});
-
-  const blogs = data?.blogs;
-  const meta = data?.meta;
-
+const Blog = ({ blog }: { blog: IBlog }) => {
+  const [minimize, setMinimize] = useState(true);
   return (
-    <div>
-      <Hero>
-        <p className="text-5xl font-semibold text-slate-800">Blog</p>
-      </Hero>
-      <div className="max-w-7xl mx-auto  mt-12">
-        {blogs ? (
-          blogs.map((blog, index) => (
-            <div key={index} className="mx-4 bg-gray-50 p-4 mb-4 rounded-md">
-              <h2 className="text-teal-700">{blog?.title}</h2>
-              <p className="mt-8 text-gray-700 ">{blog?.blog}</p>
-            </div>
-          ))
+    <div className="flex gap-2 bg-gray-50 mb-4 rounded-md">
+      <div>
+        <Image
+          width={300}
+          height={150}
+          src={blog?.blogImage}
+          alt="blog_image"
+        />
+      </div>
+      <div>
+        <h2 className="text-teal-700">{blog?.title}</h2>
+        {minimize ? (
+          <p className="mt-2 text-gray-700 ">
+            <span>
+              {blog?.blog.split(".")[0]}.{blog?.blog.split(".")[1]}....
+            </span>
+            <span>
+              <Button
+                onClick={() => setMinimize(false)}
+                size="small"
+                type="link"
+              >
+                See More
+              </Button>
+            </span>
+          </p>
         ) : (
-          <Loading></Loading>
+          <p className="mt-2 text-gray-700 h-full ">
+            {blog?.blog}
+            <Button onClick={() => setMinimize(true)} size="small" type="link">
+              Show Less
+            </Button>
+          </p>
         )}
       </div>
-      <FooterComponent />
     </div>
   );
 };

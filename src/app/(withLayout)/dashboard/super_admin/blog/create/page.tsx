@@ -50,6 +50,21 @@ const CreateBlog = () => {
                 marginBottom: "10px",
               }}
             >
+              <FormInput
+                type="text"
+                name="blogImage"
+                size="large"
+                label="Blog Image"
+                placeholder="Blog Image Link"
+              />
+            </Col>
+            <Col
+              className="gutter-row"
+              span={24}
+              style={{
+                marginBottom: "10px",
+              }}
+            >
               <FormTextArea name="blog" label="Blog" placeholder="Blog" />
             </Col>
           </Row>

@@ -32,9 +32,7 @@ const FormDatePicker = ({
 
   return (
     <div>
-      <p className="ml-1 uppercase text-lg text-gray-500">
-        {label ? label : null}
-      </p>
+      <p className="ml-1 text-md text-gray-400">{label ? label : null}</p>
       <Controller
         name={name}
         control={control}

@@ -39,7 +39,7 @@ const CreateFeedback = () => {
     }
   };
   return (
-    <div className="bg-slate-100 py-20">
+    <div className="bg-slate-100 pt-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-center text-slate-600">Send Feedback</h1>
         <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>
@@ -48,12 +48,12 @@ const CreateFeedback = () => {
           our website.
         </p>
         <div className="mx-4 md:flex gap-4 justify-center items-center">
-          <div className="md:w-1/2 hidden md:block">
+          <div className="md:w-1/2 lg:w-2/5 hidden md:block">
             <Image className="w-full h-auto" src={backgroundImage} alt="" />
           </div>
-          <div className="md:w-1/2 mt-4 md:mt-0">
+          <div className="md:-mt-4 md:w-1/2  lg:w-3/5">
             <Form submitHandler={onSubmit}>
-              <div className=" lg:w-[520px] px-4 pt-8 pb-4  bg-slate-200 rounded-md">
+              <div className="lg:w-[520px] px-4 pt-8 pb-4  bg-slate-200 rounded-md">
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                   <Col
                     className="gutter-row"

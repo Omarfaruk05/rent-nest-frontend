@@ -1,7 +1,7 @@
 "use client";
 
 import Hero from "@/components/ui/Hero";
-import Overview from "@/components/ui/Overview";
+import { SearchOutlined } from "@ant-design/icons";
 import {
   bedrooms,
   gas,
@@ -204,12 +204,12 @@ const HomepageHero = () => {
           >
             <Link href="/houses">
               <Button
-                type="primary"
-                className="text-white w-full border-none"
+                className="text-white w-full border-none bg-teal-800"
                 size="large"
                 htmlType="submit"
               >
-                Find
+                <SearchOutlined />
+                Search
               </Button>
             </Link>
           </Col>

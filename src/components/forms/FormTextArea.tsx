@@ -35,8 +35,9 @@ const FormTextArea = ({
             placeholder={placeholder}
             {...field}
             defaultValue={value}
+            size="large"
             style={{
-              minHeight: "100px",
+              minHeight: "200px",
             }}
           />
         )}

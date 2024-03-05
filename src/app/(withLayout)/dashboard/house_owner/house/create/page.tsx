@@ -8,10 +8,7 @@ import FormTextArea from "@/components/forms/FormTextArea";
 import { useAddHouseMutation } from "@/redux/api/houseApi";
 import { houseSchema } from "@/schemas/house";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { Button, Col, Row, message } from "antd";
-import { useRouter } from "next/navigation";
-
 import { SubmitHandler } from "react-hook-form";
 
 type FormValues = {

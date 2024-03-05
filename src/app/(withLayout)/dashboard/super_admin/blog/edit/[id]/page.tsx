@@ -3,19 +3,36 @@
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import FormTextArea from "@/components/forms/FormTextArea";
-import { useAddBlogMutation } from "@/redux/api/blogApi";
+import {
+  useGetSingleBlogQuery,
+  useUpdateBlogMutation,
+} from "@/redux/api/blogApi";
 import { blogSchema } from "@/schemas/blog";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row, message } from "antd";
 
-const CreateBlog = () => {
-  const [addBlog] = useAddBlogMutation();
+const EditBlogPage = ({ params }: { params: any }) => {
+  const id: string = params?.id;
+
+  const [updateBlog] = useUpdateBlogMutation();
+  const { data, isLoading } = useGetSingleBlogQuery(id);
+
+  console.log(data);
   const createBlog = async (data: any) => {
     try {
+      const blogData = {
+        id: id,
+        body: {
+          title: data?.title,
+          blogImage: data?.blogImage,
+          blog: data?.blog,
+        },
+      };
+      console.log();
       message.loading("Please wite");
-      const res = await addBlog(data).unwrap();
+      const res = await updateBlog(blogData).unwrap();
       if (res?.id) {
-        message.success("Blog created successfully.");
+        message.success("Blog updated successfully.");
       }
     } catch (error: any) {
       message.error(error.message);
@@ -25,8 +42,12 @@ const CreateBlog = () => {
   return (
     <div>
       <div className="max-w-7xl mx-auto  p-4 md:px-20 lg:px-40">
-        <h2 className="text-slate-700 text-center mt-20">Creat Blog</h2>
-        <Form submitHandler={createBlog} resolver={yupResolver(blogSchema)}>
+        <h2 className="text-slate-700 text-center mt-20">Update Blog</h2>
+        <Form
+          submitHandler={createBlog}
+          defaultValues={data}
+          resolver={yupResolver(blogSchema)}
+        >
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col
               className="gutter-row"
@@ -75,7 +96,7 @@ const CreateBlog = () => {
               size="large"
               className="px-12"
             >
-              Create
+              Update
             </Button>
           </div>
         </Form>
@@ -84,4 +105,4 @@ const CreateBlog = () => {
   );
 };
 
-export default CreateBlog;
+export default EditBlogPage;

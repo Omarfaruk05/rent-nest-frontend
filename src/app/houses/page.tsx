@@ -3,9 +3,9 @@
 import FooterComponent from "@/components/ui/FooterComponent";
 import { useGetHousesQuery } from "@/redux/api/houseApi";
 import { useDebounced } from "@/redux/hooks";
-import { Button, Col, Input, Pagination, Row, Select } from "antd";
+import { Button, Input, Pagination, Select } from "antd";
 import { useState } from "react";
-import Loading from "../loading";
+import { SearchOutlined } from "@ant-design/icons";
 import ProductCart from "@/components/ui/ProductCart";
 import ProductCartLoading from "@/components/ui/ProductCartLoading";
 import { useDispatch, useSelector } from "react-redux";
@@ -154,8 +154,10 @@ const Houses = () => {
     <div>
       <div className="max-w-7xl mx-auto min-h-[70vh]">
         <div className="m-4">
-          <div className=" md:px-40">
+          <div className="flex justify-center">
             <Input
+              className="w-60 md:w-96"
+              addonAfter={<SearchOutlined />}
               name="searchTerm"
               size="large"
               defaultValue={searchAndFilter?.searchTerm}
@@ -166,7 +168,7 @@ const Houses = () => {
             />
           </div>
         </div>
-        <div className="bg-gray-100 p-4 mx-2 rounded-lg flex flex-wrap justify-center gap-2 mt-24">
+        <div className="bg-gray-50 p-4 mx-2 rounded-lg flex flex-wrap justify-center gap-2">
           <div>
             <Select
               size="middle"
