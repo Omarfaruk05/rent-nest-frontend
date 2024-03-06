@@ -68,7 +68,7 @@ const LoginPage = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center h-[94vh]">
-        <div className="mt-12 mx-4 md:mx-2">
+        <div className="mt-12 mx-2 md:ml-5">
           <Link
             href={"/"}
             className="font-semibold cursor-pointer border text-2xl no-underline flex justify-center mb-4 text-green-900"

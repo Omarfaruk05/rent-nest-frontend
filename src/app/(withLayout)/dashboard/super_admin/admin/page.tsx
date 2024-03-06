@@ -72,7 +72,11 @@ const AdminUserPage = () => {
         return (
           <div>
             <p>{data?.name}</p>
-            <Image src={data?.prodileImage} alt="houseImage" />
+            <Image
+              className="rounded-md w-24 h-24"
+              src={data?.profileImage}
+              alt="houseImage"
+            />
           </div>
         );
       },

@@ -14,7 +14,7 @@ const ProfilePage = () => {
   }
   return (
     <div>
-      <div className="bg-slate-200 p-2 rounded-md shadow-lg w-fit mt-40 md:flex flex-col-reverse gap-8 justify-center items-center mx-auto">
+      <div className="bg-slate-200 p-2 rounded-md shadow-lg w-fit mt-40 md:flex flex-col-reverse justify-center items-center mx-auto">
         <div className="p-4">
           <h1>
             Name: <span>{data?.name}</span>
@@ -38,7 +38,7 @@ const ProfilePage = () => {
         <div className=" p-4 ">
           {data?.profileImage ? (
             <img
-              className="w-60 rounded-full"
+              className="w-40 h-40 rounded-full"
               src={data?.profileImage}
               alt="profileImage"
             />

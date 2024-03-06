@@ -29,7 +29,7 @@ const About = () => {
           </p>
         </div>
         <div className="mx-auto">
-          <Image className="rounded-xl" src={AboutPhoto.src} alt="aboutPhoto" />
+          <Image className="rounded-md" src={AboutPhoto.src} alt="aboutPhoto" />
         </div>
       </div>
     </div>

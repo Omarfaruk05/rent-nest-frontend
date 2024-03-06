@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "antd";
-import { MenuUnfoldOutlined } from "@ant-design/icons";
+import { MenuUnfoldOutlined, HomeTwoTone } from "@ant-design/icons";
 import Link from "next/link";
 import { useState } from "react";
 import NavDrawer from "./NavDrawer";
@@ -22,7 +22,10 @@ const Header = () => {
       <div className="mx-2 sm:mx-4 md:mx-12 lg:mx-20 flex justify-between items-center py-2">
         <Link href={"/"}>
           <Button className="text-white hover:text-blue-500" type="link">
-            <h1 className="-mt-3"> Rent Nest</h1>
+            <h1 className="-mt-3">
+              {" "}
+              <HomeTwoTone /> <span>Rent Nest</span>
+            </h1>
           </Button>
         </Link>
 

@@ -7,11 +7,6 @@ import React, { useState } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Image, message } from "antd";
 import UMTable from "@/components/ui/UMTable";
-import {
-  useDeleteBookingMutation,
-  useGetBookingsQuery,
-  useUpdateBookingMutation,
-} from "@/redux/api/bookingApi";
 import ActionBar from "@/components/ui/ActionBar";
 import Loading from "@/app/loading";
 import {
@@ -95,8 +90,7 @@ const HouseOwnerPage = () => {
           <div>
             <p>{data?.name}</p>
             <Image
-              width={100}
-              className="rounded-md"
+              className="rounded-md w-24 h-24"
               src={data?.profileImage}
               alt="houseImage"
             />
