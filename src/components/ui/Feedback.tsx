@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -7,7 +8,6 @@ import backgroundImage from "../../assects/banner2.jpg";
 import Link from "next/link";
 import { Avatar, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import Image from "next/image";
 
 const Feedback = () => {
   const query = {
@@ -17,7 +17,6 @@ const Feedback = () => {
   const { data, isLoading } = useGetFeedbacksQuery({ ...query });
 
   const feedbacks = data?.feedbacks;
-  console.log(feedbacks);
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -46,9 +45,9 @@ const Feedback = () => {
                     {feedback?.user?.name}{" "}
                   </h4>
                   {feedback?.user?.profileImage ? (
-                    <Image
-                      className=" w-9 h-9 bg-gray-300 rounded-full"
-                      src={feedback?.user?.profileImage.src}
+                    <img
+                      className=" w-12 h-12 border-teal-600 border-3 border-dashed rounded-full"
+                      src={feedback?.user?.profileImage}
                       alt=""
                     />
                   ) : (
