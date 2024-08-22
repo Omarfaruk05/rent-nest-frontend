@@ -9,6 +9,7 @@ import { Collapse, Image, theme } from "antd";
 import { useGetFAQQuery } from "@/redux/api/faqApi";
 import Loading from "@/app/loading";
 import FaqImg from "../../assects/faq.jpg";
+import RevelMotion from "../motions/RevelMotion";
 
 const FaqPage = () => {
   const { data, isLoading } = useGetFAQQuery({ page: 1, limit: 10 });
@@ -22,7 +23,11 @@ const FaqPage = () => {
     faqs?.map((faq: any) => {
       return {
         key: faq?.id,
-        label: <h3 className="text-slate-800">{faq?.question}</h3>,
+        label: (
+          <RevelMotion>
+            <h3 className="text-slate-800">{faq?.question}</h3>
+          </RevelMotion>
+        ),
         children: (
           <p className="text-slate-500">
             <span className="font-semibold">Ans:</span>
@@ -49,8 +54,10 @@ const FaqPage = () => {
   return (
     <div className="my-12 max-w-7xl mx-auto">
       <div className="mx-4">
-        <h1 className=" text-center text-slate-500">FAQ'S</h1>
-        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
+        <RevelMotion>
+          <h1 className=" text-center text-slate-500">FAQ'S</h1>
+          <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
+        </RevelMotion>
         <div className="flex gap-4 my-24">
           <Collapse
             className="mx-auto md:w-1/2 mt-4"
@@ -63,7 +70,13 @@ const FaqPage = () => {
             items={getItems(panelStyle)}
           />
           <div className="md:w-1/2 hidden md:block ">
-            <Image className="w-full h-full" src={FaqImg.src} alt="faq_image" />
+            <RevelMotion>
+              <Image
+                className="w-full h-full"
+                src={FaqImg.src}
+                alt="faq_image"
+              />
+            </RevelMotion>
           </div>
         </div>
       </div>

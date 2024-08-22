@@ -1,3 +1,5 @@
+import RevelMotion from "../motions/RevelMotion";
+
 const ProductCartLoading = () => {
   return (
     <div className="border border-gray-200 shadow rounded-md p-4 my-2 max-w-sm w-full mx-auto">

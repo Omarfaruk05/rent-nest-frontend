@@ -12,6 +12,7 @@ import { getUserInfo } from "@/services/auth.service";
 import Link from "next/link";
 import backgroundImage from "../../assects/Feedback.webp";
 import Image from "next/image";
+import RevelMotion from "../motions/RevelMotion";
 
 type FormValues = {
   id: string;
@@ -41,19 +42,25 @@ const CreateFeedback = () => {
   return (
     <div className="bg-slate-100 py-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-center text-slate-600">Send Feedback</h1>
-        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>
-        <p className="text-center w-72 mx-auto text-sm">
-          You can send us anything you liked or disliked. Your feedback improve
-          our website.
-        </p>
+        <RevelMotion>
+          <h1 className="text-center text-slate-600">Send Feedback</h1>
+          <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>
+        </RevelMotion>
+        <RevelMotion>
+          <p className="text-center w-72 mx-auto text-sm">
+            You can send us anything you liked or disliked. Your feedback
+            improve our website.
+          </p>
+        </RevelMotion>
         <div className="mx-4 md:flex gap-4 justify-center items-center">
           <div className="md:w-1/2 hidden md:block">
-            <Image
-              className="w-full lg:w-[500px] h-auto lg:m-4"
-              src={backgroundImage}
-              alt=""
-            />
+            <RevelMotion>
+              <Image
+                className="w-full lg:w-[500px] h-auto lg:m-4"
+                src={backgroundImage}
+                alt=""
+              />
+            </RevelMotion>
           </div>
           <div className="mt-4 md:w-1/2">
             <Form submitHandler={onSubmit}>
@@ -66,12 +73,14 @@ const CreateFeedback = () => {
                       marginBottom: "10px",
                     }}
                   >
-                    <FormInput
-                      type="text"
-                      name="name"
-                      size="large"
-                      label="Name"
-                    />
+                    <RevelMotion>
+                      <FormInput
+                        type="text"
+                        name="name"
+                        size="large"
+                        label="Name"
+                      />
+                    </RevelMotion>
                   </Col>
                   <Col
                     className="gutter-row"
@@ -80,12 +89,14 @@ const CreateFeedback = () => {
                       marginBottom: "10px",
                     }}
                   >
-                    <FormInput
-                      type="text"
-                      name="email"
-                      size="large"
-                      label="Email"
-                    />
+                    <RevelMotion>
+                      <FormInput
+                        type="text"
+                        name="email"
+                        size="large"
+                        label="Email"
+                      />
+                    </RevelMotion>
                   </Col>
                   <Col
                     className="gutter-row"
@@ -94,28 +105,34 @@ const CreateFeedback = () => {
                       marginBottom: "10px",
                     }}
                   >
-                    <FormTextArea name="feedback" label="Feedback" />
+                    <RevelMotion>
+                      <FormTextArea name="feedback" label="Feedback" />
+                    </RevelMotion>
                   </Col>
                 </Row>
                 <div className="text-center">
                   {id ? (
-                    <Button
-                      size="large"
-                      className="bg-teal-700 text-white px-8"
-                      htmlType="submit"
-                    >
-                      Send
-                      <SendOutlined />
-                    </Button>
-                  ) : (
-                    <Link href={"/login"}>
+                    <RevelMotion>
                       <Button
                         size="large"
                         className="bg-teal-700 text-white px-8"
+                        htmlType="submit"
                       >
                         Send
                         <SendOutlined />
                       </Button>
+                    </RevelMotion>
+                  ) : (
+                    <Link href={"/login"}>
+                      <RevelMotion>
+                        <Button
+                          size="large"
+                          className="bg-teal-700 text-white px-8"
+                        >
+                          Send
+                          <SendOutlined />
+                        </Button>
+                      </RevelMotion>
                     </Link>
                   )}
                 </div>

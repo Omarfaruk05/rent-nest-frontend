@@ -11,7 +11,7 @@ import Image from "next/image";
 import { Button, Carousel } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import RevelMotion from "../motions/RevelMotion";
 
 const PropertyCategory = () => {
   return (
@@ -24,34 +24,45 @@ const PropertyCategory = () => {
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            <Image
-              className="text-gray-400"
-              height={50}
-              src={HouseIcon}
-              alt="HouseIcon"
-            />
-            <p>Furnished Apartment</p>
+            <RevelMotion>
+              <Image
+                className="text-gray-400"
+                height={50}
+                src={HouseIcon}
+                alt="HouseIcon"
+              />
+              <p>Furnished Apartment</p>
+            </RevelMotion>
           </Link>
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            <Image height={50} src={ResidentialIcon} alt="HouseIcon" />
-            <p>Residential Apartment</p>
+            {" "}
+            <RevelMotion>
+              <Image height={50} src={ResidentialIcon} alt="HouseIcon" />
+              <p>Residential Apartment</p>
+            </RevelMotion>
           </Link>
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            <Image height={50} src={LuxuryIcon} alt="HouseIcon" />
-            <p>Luxury Apartment</p>
+            {" "}
+            <RevelMotion>
+              <Image height={50} src={LuxuryIcon} alt="HouseIcon" />
+              <p>Luxury Apartment</p>
+            </RevelMotion>
           </Link>
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            <Image height={50} src={OfficeIcon} alt="HouseIcon" />
-            <p>Office Space</p>
+            {" "}
+            <RevelMotion>
+              <Image height={50} src={OfficeIcon} alt="HouseIcon" />
+              <p>Office Space</p>
+            </RevelMotion>
           </Link>
         </div>
         <Carousel autoplay className="mt-12 ">

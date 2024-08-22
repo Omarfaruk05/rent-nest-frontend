@@ -8,6 +8,7 @@ import backgroundImage from "../../assects/banner2.jpg";
 import Link from "next/link";
 import { Avatar, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import RevelMotion from "../motions/RevelMotion";
 
 const Feedback = () => {
   const query = {
@@ -25,8 +26,10 @@ const Feedback = () => {
   return (
     <div>
       <div className="my-12 max-w-7xl mx-auto py-4">
-        <h1 className=" text-center text-slate-500">Feedbacks</h1>
-        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
+        <RevelMotion>
+          <h1 className=" text-center text-slate-500">Feedbacks</h1>
+          <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
+        </RevelMotion>
 
         <div className=" text-center mx-2 flex flex-wrap gap-4 justify-center items-center">
           {feedbacks &&
@@ -35,25 +38,27 @@ const Feedback = () => {
                 key={feedback?.id}
                 className=" w-[394px] h-36 relative bg-gray-50 rounded-lg mt-10 p-3"
               >
-                <h3 className="font-normal relative">
-                  <span className="text-teal-600">❝ </span>
-                  {feedback?.feedback}
-                  <span className="text-teal-600"> ❞</span>
-                </h3>
-                <div className="absolute bottom-2 text-center w-full">
-                  <h4 className="text-center text-slate-700">
-                    {feedback?.user?.name}{" "}
-                  </h4>
-                  {feedback?.user?.profileImage ? (
-                    <img
-                      className=" w-12 h-12 border-teal-600 border-3 border-dashed rounded-full"
-                      src={feedback?.user?.profileImage}
-                      alt=""
-                    />
-                  ) : (
-                    <Avatar size={"large"} icon={<UserOutlined />} />
-                  )}
-                </div>
+                <RevelMotion>
+                  <h3 className="font-normal relative">
+                    <span className="text-teal-600">❝ </span>
+                    {feedback?.feedback}
+                    <span className="text-teal-600"> ❞</span>
+                  </h3>
+                  <div className="absolute bottom-2 text-center w-full">
+                    <h4 className="text-center text-slate-700">
+                      {feedback?.user?.name}{" "}
+                    </h4>
+                    {feedback?.user?.profileImage ? (
+                      <img
+                        className=" w-12 h-12 border-teal-600 border-3 border-dashed rounded-full"
+                        src={feedback?.user?.profileImage}
+                        alt=""
+                      />
+                    ) : (
+                      <Avatar size={"large"} icon={<UserOutlined />} />
+                    )}
+                  </div>
+                </RevelMotion>
               </div>
             ))}
         </div>
