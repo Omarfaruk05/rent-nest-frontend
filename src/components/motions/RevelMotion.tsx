@@ -26,7 +26,7 @@ const RevelMotion = ({ children }: { children: React.ReactNode }) => {
       initial="hidden"
       animate={mainControles}
       transition={{
-        duration: 0.2,
+        duration: 0.5,
         delay: 0.25,
       }}
     >
