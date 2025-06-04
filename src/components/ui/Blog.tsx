@@ -3,12 +3,12 @@
 import { Button, Image } from "antd";
 import React, { useState } from "react";
 import { IBlog } from "./Blogs";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const Blog = ({ blog }: { blog: IBlog }) => {
   const [minimize, setMinimize] = useState(true);
   return (
-    <RevelMotion>
+    <SlideUp>
       <div className="flex gap-2 bg-gray-50 mb-4 rounded-md p-3">
         <div>
           <Image
@@ -19,12 +19,12 @@ const Blog = ({ blog }: { blog: IBlog }) => {
           />
         </div>
         <div>
-          <RevelMotion>
+          <SlideUp>
             {" "}
             <h2 className="text-teal-700">{blog?.title}</h2>
-          </RevelMotion>
+          </SlideUp>
           {minimize ? (
-            <RevelMotion>
+            <SlideUp>
               {" "}
               <p className="mt-2 text-gray-700 ">
                 <span>{blog?.blog.split(".")[0]}....</span>
@@ -38,7 +38,7 @@ const Blog = ({ blog }: { blog: IBlog }) => {
                   </Button>
                 </span>
               </p>
-            </RevelMotion>
+            </SlideUp>
           ) : (
             <p className="mt-2 text-gray-700 h-full ">
               {blog?.blog}
@@ -53,7 +53,7 @@ const Blog = ({ blog }: { blog: IBlog }) => {
           )}
         </div>
       </div>
-    </RevelMotion>
+    </SlideUp>
   );
 };
 

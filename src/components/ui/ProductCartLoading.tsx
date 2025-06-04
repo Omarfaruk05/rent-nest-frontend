@@ -1,4 +1,4 @@
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const ProductCartLoading = () => {
   return (

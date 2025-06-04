@@ -4,7 +4,7 @@ import overview1 from "../../assects/overview/overview-1.jpg";
 import overview2 from "../../assects/overview/overview-2.jpg";
 import overview3 from "../../assects/overview/overview-3.jpg";
 import overview4 from "../../assects/overview/overview-4.jpg";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const Overview = () => {
   return (
@@ -16,12 +16,12 @@ const Overview = () => {
               <Image src={overview1.src} alt="overviewPic" />
             </div>
             <div>
-              <RevelMotion>
+              <SlideUp>
                 <h2 className="mb-4 text-teal-900 text-center">
                   House Rent in Dhaka with RENTS [Easy Guideline]
                 </h2>
-              </RevelMotion>
-              <RevelMotion>
+              </SlideUp>
+              <SlideUp>
                 {" "}
                 <p className="text-slate-500 md:text-xs lg:text-lg">
                   Are you searching for house rent in Dhaka? Renting a house in
@@ -46,18 +46,18 @@ const Overview = () => {
                   get the owner’s number. Then, you can visit the house to
                   inspect it visually. If everything goes right,
                 </p>
-              </RevelMotion>
+              </SlideUp>
             </div>
           </div>
           <div className="mx-4 my-8 flex flex-col-reverse md:flex-row gap-4 items-center">
             <div className="md:w-1/2">
-              <RevelMotion>
+              <SlideUp>
                 {" "}
                 <h2 className="mb-4 text-teal-900 text-center">
                   Things To Consider Before House Rent in Dhaka
                 </h2>
-              </RevelMotion>
-              <RevelMotion>
+              </SlideUp>
+              <SlideUp>
                 {" "}
                 <p className="text-slate-500 md:text-xs lg:text-lg">
                   First thing first, you have to decide on a specific location
@@ -79,7 +79,7 @@ const Overview = () => {
                   bear. If everything goes fine, you can rent flat in Dhaka.
                   Now, I would like to inform you how to get Home Rent in Dhaka
                 </p>
-              </RevelMotion>
+              </SlideUp>
             </div>
             <div className="md:w-1/2">
               <Image src={overview2.src} alt="overviewPic" />
@@ -90,13 +90,13 @@ const Overview = () => {
               <Image src={overview3.src} alt="overviewPic" />
             </div>
             <div>
-              <RevelMotion>
+              <SlideUp>
                 {" "}
                 <h2 className="my-8 text-teal-900 text-center">
                   How to Get Houses For Rent in Dhaka?
                 </h2>
-              </RevelMotion>
-              <RevelMotion>
+              </SlideUp>
+              <SlideUp>
                 {" "}
                 <p className="text-slate-500 md:text-xs lg:text-lg">
                   You can rent a home both offline and online. The offline
@@ -111,7 +111,7 @@ const Overview = () => {
                   contact information and WhatsApp number. That is convenient,
                   isn’t it?
                 </p>
-              </RevelMotion>
+              </SlideUp>
             </div>
           </div>
           <div className="mx-4 my-8 flex flex-col-reverse md:flex-row gap-4 items-center">
@@ -120,24 +120,24 @@ const Overview = () => {
                 Type of Property You can Rent in Dhaka:
               </h2>
               <ul className=" pl-4 text-slate-600 lg:text-4xl">
-                <RevelMotion>
+                <SlideUp>
                   <li>House Rent</li>
-                </RevelMotion>
-                <RevelMotion>
+                </SlideUp>
+                <SlideUp>
                   {" "}
                   <li>House Create</li>
-                </RevelMotion>
-                <RevelMotion>
+                </SlideUp>
+                <SlideUp>
                   {" "}
                   <li>Residential Apartment</li>
-                </RevelMotion>
-                <RevelMotion>
+                </SlideUp>
+                <SlideUp>
                   <li>Furnished Apertment</li>
-                </RevelMotion>
-                <RevelMotion>
+                </SlideUp>
+                <SlideUp>
                   {" "}
                   <li>Luxury Apertment</li>
-                </RevelMotion>
+                </SlideUp>
               </ul>
             </div>
             <div className="md:w-1/2">

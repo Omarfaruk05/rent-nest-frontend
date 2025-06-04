@@ -11,20 +11,22 @@ import Image from "next/image";
 import { Button, Carousel } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const PropertyCategory = () => {
   return (
     <div className="mt-12 max-w-7xl mx-auto p-3">
       <div className="items-center">
-        <h1 className="text-center text-slate-500">What Do You Want?</h1>
-        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
+        <SlideUp>
+          <h1 className="text-center text-slate-500">What Do You Want?</h1>
+          <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
+        </SlideUp>
         <div className="mt-12 lg:mx-20 grid grid-cols-2 md:grid-cols-4  items-center gap-4 md:gap-12 lg:gap-[100px]">
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            <RevelMotion>
+            <SlideUp>
               <Image
                 className="text-gray-400"
                 height={50}
@@ -32,37 +34,34 @@ const PropertyCategory = () => {
                 alt="HouseIcon"
               />
               <p>Furnished Apartment</p>
-            </RevelMotion>
+            </SlideUp>
           </Link>
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            {" "}
-            <RevelMotion>
+            <SlideUp delay={1.5}>
               <Image height={50} src={ResidentialIcon} alt="HouseIcon" />
               <p>Residential Apartment</p>
-            </RevelMotion>
+            </SlideUp>
           </Link>
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            {" "}
-            <RevelMotion>
+            <SlideUp delay={2}>
               <Image height={50} src={LuxuryIcon} alt="HouseIcon" />
               <p>Luxury Apartment</p>
-            </RevelMotion>
+            </SlideUp>
           </Link>
           <Link
             href={"/houses"}
             className="text-center cursor-pointer no-underline text-slate-700"
           >
-            {" "}
-            <RevelMotion>
+            <SlideUp delay={2.5}>
               <Image height={50} src={OfficeIcon} alt="HouseIcon" />
               <p>Office Space</p>
-            </RevelMotion>
+            </SlideUp>
           </Link>
         </div>
         <Carousel autoplay className="mt-12 ">

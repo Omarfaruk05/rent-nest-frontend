@@ -8,7 +8,7 @@ import backgroundImage from "../../assects/banner2.jpg";
 import Link from "next/link";
 import { Avatar, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const Feedback = () => {
   const query = {
@@ -26,10 +26,10 @@ const Feedback = () => {
   return (
     <div>
       <div className="my-12 max-w-7xl mx-auto py-4">
-        <RevelMotion>
+        <SlideUp>
           <h1 className=" text-center text-slate-500">Feedbacks</h1>
           <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        </RevelMotion>
+        </SlideUp>
 
         <div className=" text-center mx-2 flex flex-wrap gap-4 justify-center items-center">
           {feedbacks &&
@@ -38,7 +38,7 @@ const Feedback = () => {
                 key={feedback?.id}
                 className=" w-[394px] h-36 relative bg-gray-50 rounded-lg mt-10 p-3"
               >
-                <RevelMotion>
+                <SlideUp>
                   <h3 className="font-normal relative">
                     <span className="text-teal-600">❝ </span>
                     {feedback?.feedback}
@@ -58,7 +58,7 @@ const Feedback = () => {
                       <Avatar size={"large"} icon={<UserOutlined />} />
                     )}
                   </div>
-                </RevelMotion>
+                </SlideUp>
               </div>
             ))}
         </div>
@@ -77,21 +77,29 @@ const Feedback = () => {
         <div className="max-w-7xl mx-auto h-full text-white p-3">
           <div className="flex items-center justify-start h-full w-full">
             <div>
-              <h3 className="pt-4  pb-4">CORPORATE HOUSING</h3>
-              <h1 className="mb-4 text-5xl">
-                Rent Apartments for Your Company
-              </h1>
-              <p>
-                Manage easily all your corporate apartments needs with
-                flexibility and exclusive support. Save time and money. Ideal
-                for you and your team.
-              </p>
+              <SlideUp delay={1.1}>
+                <h3 className="pt-4  pb-4">CORPORATE HOUSING</h3>
+              </SlideUp>
+              <SlideUp delay={1.3}>
+                <h1 className="mb-4 text-5xl">
+                  Rent Apartments for Your Company
+                </h1>
+              </SlideUp>
+              <SlideUp delay={1.5}>
+                <p>
+                  Manage easily all your corporate apartments needs with
+                  flexibility and exclusive support. Save time and money. Ideal
+                  for you and your team.
+                </p>
+              </SlideUp>
               <br />
 
               <Link href={"/blog"}>
-                <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
-                  GET TO KNOW US
-                </Button>
+                <SlideUp delay={1.7}>
+                  <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
+                    GET TO KNOW US
+                  </Button>
+                </SlideUp>
               </Link>
             </div>
           </div>

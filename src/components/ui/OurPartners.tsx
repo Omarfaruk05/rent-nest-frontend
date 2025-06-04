@@ -13,7 +13,7 @@ import Partner10 from "../../assects/partnars/hp5nlipomnwspsfrutip.png";
 import Partner11 from "../../assects/partnars/fakanf1ushwlastrv0se.png";
 import Partner12 from "../../assects/partnars/bpv86xkbkmazajbaos3p.png";
 import { Carousel, Image } from "antd";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const OurPartners = () => {
   const partners = [
@@ -34,27 +34,27 @@ const OurPartners = () => {
   return (
     <div className="mt-12 mb-4 max-w-7xl mx-auto">
       <div className="mx-4">
-        <RevelMotion>
+        <SlideUp>
           <h1 className=" text-center text-slate-500 ">Our Partners</h1>
           <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>
-        </RevelMotion>
-        <RevelMotion>
+        </SlideUp>
+        <SlideUp>
           <p className="text-center mb-8 w-72 mx-auto text-sm">
             Trusted by the major brands and top companies.
           </p>
-        </RevelMotion>
+        </SlideUp>
         <div className="text-center flex flex-wrap justify-center mx-auto gap-4 md:gap-12">
           {partners.map(
-            (partner) =>
+            (partner, index) =>
               partner.partner && (
-                <RevelMotion key={partner?.key}>
+                <SlideUp key={index} delay={index * 0.5}>
                   <img
                     className="shadow-md px-3 rounded-md"
                     height={80}
                     src={partner.partner.src}
                     alt="HouseIcon"
                   />
-                </RevelMotion>
+                </SlideUp>
               )
           )}
         </div>

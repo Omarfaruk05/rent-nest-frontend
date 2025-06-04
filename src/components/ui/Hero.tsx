@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import backgroundImage from "../../assects/heroBg.jpg";
 import { motion, useAnimation, useInView } from "framer-motion";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 const Hero = ({ children }: any) => {
   const ref = useRef(null);
@@ -32,7 +32,7 @@ const Hero = ({ children }: any) => {
     >
       <div className="max-w-7xl mx-auto">
         <div className=" flex justify-center items-center ">
-          <RevelMotion>
+          <SlideUp>
             <div
               className="flex justify-center 
             items-center backdrop-blur-md
@@ -41,7 +41,7 @@ const Hero = ({ children }: any) => {
             >
               {children}
             </div>
-          </RevelMotion>
+          </SlideUp>
         </div>
       </div>
     </div>

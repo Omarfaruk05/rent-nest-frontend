@@ -12,7 +12,7 @@ import { getUserInfo } from "@/services/auth.service";
 import Link from "next/link";
 import backgroundImage from "../../assects/Feedback.webp";
 import Image from "next/image";
-import RevelMotion from "../motions/RevelMotion";
+import SlideUp from "../motions/SlideUp";
 
 type FormValues = {
   id: string;
@@ -42,25 +42,25 @@ const CreateFeedback = () => {
   return (
     <div className="bg-slate-100 py-8">
       <div className="max-w-7xl mx-auto">
-        <RevelMotion>
+        <SlideUp>
           <h1 className="text-center text-slate-600">Send Feedback</h1>
           <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-1 mb-3"></div>
-        </RevelMotion>
-        <RevelMotion>
+        </SlideUp>
+        <SlideUp>
           <p className="text-center w-72 mx-auto text-sm">
             You can send us anything you liked or disliked. Your feedback
             improve our website.
           </p>
-        </RevelMotion>
+        </SlideUp>
         <div className="mx-4 md:flex gap-4 justify-center items-center">
           <div className="md:w-1/2 hidden md:block">
-            <RevelMotion>
+            <SlideUp>
               <Image
                 className="w-full lg:w-[500px] h-auto lg:m-4"
                 src={backgroundImage}
                 alt=""
               />
-            </RevelMotion>
+            </SlideUp>
           </div>
           <div className="mt-4 md:w-1/2">
             <Form submitHandler={onSubmit}>
@@ -73,14 +73,14 @@ const CreateFeedback = () => {
                       marginBottom: "10px",
                     }}
                   >
-                    <RevelMotion>
+                    <SlideUp>
                       <FormInput
                         type="text"
                         name="name"
                         size="large"
                         label="Name"
                       />
-                    </RevelMotion>
+                    </SlideUp>
                   </Col>
                   <Col
                     className="gutter-row"
@@ -89,14 +89,14 @@ const CreateFeedback = () => {
                       marginBottom: "10px",
                     }}
                   >
-                    <RevelMotion>
+                    <SlideUp>
                       <FormInput
                         type="text"
                         name="email"
                         size="large"
                         label="Email"
                       />
-                    </RevelMotion>
+                    </SlideUp>
                   </Col>
                   <Col
                     className="gutter-row"
@@ -105,14 +105,14 @@ const CreateFeedback = () => {
                       marginBottom: "10px",
                     }}
                   >
-                    <RevelMotion>
+                    <SlideUp>
                       <FormTextArea name="feedback" label="Feedback" />
-                    </RevelMotion>
+                    </SlideUp>
                   </Col>
                 </Row>
                 <div className="text-center">
                   {id ? (
-                    <RevelMotion>
+                    <SlideUp>
                       <Button
                         size="large"
                         className="bg-teal-700 text-white px-8"
@@ -121,10 +121,10 @@ const CreateFeedback = () => {
                         Send
                         <SendOutlined />
                       </Button>
-                    </RevelMotion>
+                    </SlideUp>
                   ) : (
                     <Link href={"/login"}>
-                      <RevelMotion>
+                      <SlideUp>
                         <Button
                           size="large"
                           className="bg-teal-700 text-white px-8"
@@ -132,7 +132,7 @@ const CreateFeedback = () => {
                           Send
                           <SendOutlined />
                         </Button>
-                      </RevelMotion>
+                      </SlideUp>
                     </Link>
                   )}
                 </div>
