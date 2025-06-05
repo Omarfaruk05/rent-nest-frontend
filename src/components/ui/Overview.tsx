@@ -12,9 +12,9 @@ const Overview = () => {
       <div className="max-w-7xl mx-auto">
         <div>
           <div className="mx-4 my-8 md:grid grid-cols-2 gap-4 items-center">
-            <div>
+            <SlideUp>
               <Image src={overview1.src} alt="overviewPic" />
-            </div>
+            </SlideUp>
             <div>
               <SlideUp>
                 <h2 className="mb-4 text-teal-900 text-center">
@@ -22,7 +22,6 @@ const Overview = () => {
                 </h2>
               </SlideUp>
               <SlideUp>
-                {" "}
                 <p className="text-slate-500 md:text-xs lg:text-lg">
                   Are you searching for house rent in Dhaka? Renting a house in
                   Dhaka sounds to be a lengthy process. We’ll make that easier
@@ -52,13 +51,11 @@ const Overview = () => {
           <div className="mx-4 my-8 flex flex-col-reverse md:flex-row gap-4 items-center">
             <div className="md:w-1/2">
               <SlideUp>
-                {" "}
                 <h2 className="mb-4 text-teal-900 text-center">
                   Things To Consider Before House Rent in Dhaka
                 </h2>
               </SlideUp>
               <SlideUp>
-                {" "}
                 <p className="text-slate-500 md:text-xs lg:text-lg">
                   First thing first, you have to decide on a specific location
                   where you would like to stay in Dhaka. Nobody likes a noisy
@@ -81,23 +78,21 @@ const Overview = () => {
                 </p>
               </SlideUp>
             </div>
-            <div className="md:w-1/2">
+            <SlideUp className="md:w-1/2">
               <Image src={overview2.src} alt="overviewPic" />
-            </div>
+            </SlideUp>
           </div>
           <div className="mx-4 my-8 md:grid grid-cols-2 gap-4 items-center">
-            <div>
+            <SlideUp>
               <Image src={overview3.src} alt="overviewPic" />
-            </div>
+            </SlideUp>
             <div>
               <SlideUp>
-                {" "}
                 <h2 className="my-8 text-teal-900 text-center">
                   How to Get Houses For Rent in Dhaka?
                 </h2>
               </SlideUp>
               <SlideUp>
-                {" "}
                 <p className="text-slate-500 md:text-xs lg:text-lg">
                   You can rent a home both offline and online. The offline
                   method has some hassles, You have to look for To-let boards
@@ -124,25 +119,22 @@ const Overview = () => {
                   <li>House Rent</li>
                 </SlideUp>
                 <SlideUp>
-                  {" "}
                   <li>House Create</li>
                 </SlideUp>
                 <SlideUp>
-                  {" "}
                   <li>Residential Apartment</li>
                 </SlideUp>
                 <SlideUp>
                   <li>Furnished Apertment</li>
                 </SlideUp>
                 <SlideUp>
-                  {" "}
                   <li>Luxury Apertment</li>
                 </SlideUp>
               </ul>
             </div>
-            <div className="md:w-1/2">
+            <SlideUp className="md:w-1/2">
               <Image src={overview4.src} alt="overviewPic" />
-            </div>
+            </SlideUp>
           </div>
         </div>
       </div>

@@ -23,11 +23,7 @@ const FaqPage = () => {
     faqs?.map((faq: any) => {
       return {
         key: faq?.id,
-        label: (
-          <SlideUp>
-            <h3 className="text-slate-800">{faq?.question}</h3>
-          </SlideUp>
-        ),
+        label: <h3 className="text-slate-800">{faq?.question}</h3>,
         children: (
           <p className="text-slate-500">
             <span className="font-semibold">Ans:</span>
@@ -54,29 +50,25 @@ const FaqPage = () => {
   return (
     <div className="my-12 max-w-7xl mx-auto">
       <div className="mx-4">
-        <SlideUp>
-          <h1 className=" text-center text-slate-500">FAQ'S</h1>
-          <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        </SlideUp>
+        <h1 className=" text-center text-slate-500">FAQ'S</h1>
+        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
         <div className="flex gap-4 my-24">
-          <Collapse
-            className="mx-auto md:w-1/2 mt-4"
-            bordered={false}
-            defaultActiveKey={["1"]}
-            expandIcon={({ isActive }) => (
-              <CaretRightOutlined rotate={isActive ? 90 : 0} />
-            )}
-            style={{ background: token.colorBgContainer }}
-            items={getItems(panelStyle)}
-          />
-          <div className="md:w-1/2 hidden md:block ">
+          <div className=" md:w-1/2">
             <SlideUp>
-              <Image
-                className="w-full h-full"
-                src={FaqImg.src}
-                alt="faq_image"
+              <Collapse
+                className="mx-auto mt-4"
+                bordered={false}
+                defaultActiveKey={["1"]}
+                expandIcon={({ isActive }) => (
+                  <CaretRightOutlined rotate={isActive ? 90 : 0} />
+                )}
+                style={{ background: token.colorBgContainer }}
+                items={getItems(panelStyle)}
               />
             </SlideUp>
+          </div>
+          <div className="md:w-1/2 hidden md:block ">
+            <Image className="w-full h-full" src={FaqImg.src} alt="faq_image" />
           </div>
         </div>
       </div>

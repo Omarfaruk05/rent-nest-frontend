@@ -28,7 +28,9 @@ const LatestProperty = () => {
         </SlideUp>
         <div className=" mx-2 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
           {loadingNumber?.map((x, index) => (
-            <ProductCartLoading key={index} />
+            <SlideUp key={index} delay={index * 0.1}>
+              <ProductCartLoading />
+            </SlideUp>
           ))}
         </div>
       </div>

@@ -26,40 +26,37 @@ const Feedback = () => {
   return (
     <div>
       <div className="my-12 max-w-7xl mx-auto py-4">
-        <SlideUp>
-          <h1 className=" text-center text-slate-500">Feedbacks</h1>
-          <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
-        </SlideUp>
+        <h1 className=" text-center text-slate-500">Feedbacks</h1>
+        <div className="mx-auto h-[2px] w-20 bg-slate-800 mt-3"></div>
 
         <div className=" text-center mx-2 flex flex-wrap gap-4 justify-center items-center">
           {feedbacks &&
-            feedbacks.map((feedback: any) => (
-              <div
-                key={feedback?.id}
+            feedbacks.map((feedback: any, index: number) => (
+              <SlideUp
+                key={index}
+                delay={index * 0.1}
                 className=" w-[394px] h-36 relative bg-gray-50 rounded-lg mt-10 p-3"
               >
-                <SlideUp>
-                  <h3 className="font-normal relative">
-                    <span className="text-teal-600">❝ </span>
-                    {feedback?.feedback}
-                    <span className="text-teal-600"> ❞</span>
-                  </h3>
-                  <div className="absolute bottom-2 text-center w-full">
-                    <h4 className="text-center text-slate-700">
-                      {feedback?.user?.name}{" "}
-                    </h4>
-                    {feedback?.user?.profileImage ? (
-                      <img
-                        className=" w-12 h-12 border-teal-600 border-3 border-dashed rounded-full"
-                        src={feedback?.user?.profileImage}
-                        alt=""
-                      />
-                    ) : (
-                      <Avatar size={"large"} icon={<UserOutlined />} />
-                    )}
-                  </div>
-                </SlideUp>
-              </div>
+                <h3 className="font-normal relative">
+                  <span className="text-teal-600">❝ </span>
+                  {feedback?.feedback}
+                  <span className="text-teal-600"> ❞</span>
+                </h3>
+                <div className="absolute bottom-2 text-center w-full">
+                  <h4 className="text-center text-slate-700">
+                    {feedback?.user?.name}{" "}
+                  </h4>
+                  {feedback?.user?.profileImage ? (
+                    <img
+                      className=" w-12 h-12 border-teal-600 border-3 border-dashed rounded-full"
+                      src={feedback?.user?.profileImage}
+                      alt=""
+                    />
+                  ) : (
+                    <Avatar size={"large"} icon={<UserOutlined />} />
+                  )}
+                </div>
+              </SlideUp>
             ))}
         </div>
       </div>
@@ -77,29 +74,24 @@ const Feedback = () => {
         <div className="max-w-7xl mx-auto h-full text-white p-3">
           <div className="flex items-center justify-start h-full w-full">
             <div>
-              <SlideUp delay={1.1}>
-                <h3 className="pt-4  pb-4">CORPORATE HOUSING</h3>
-              </SlideUp>
-              <SlideUp delay={1.3}>
-                <h1 className="mb-4 text-5xl">
-                  Rent Apartments for Your Company
-                </h1>
-              </SlideUp>
-              <SlideUp delay={1.5}>
-                <p>
-                  Manage easily all your corporate apartments needs with
-                  flexibility and exclusive support. Save time and money. Ideal
-                  for you and your team.
-                </p>
-              </SlideUp>
+              <h3 className="pt-4  pb-4">CORPORATE HOUSING</h3>
+
+              <h1 className="mb-4 text-5xl">
+                Rent Apartments for Your Company
+              </h1>
+
+              <p>
+                Manage easily all your corporate apartments needs with
+                flexibility and exclusive support. Save time and money. Ideal
+                for you and your team.
+              </p>
+
               <br />
 
               <Link href={"/blog"}>
-                <SlideUp delay={1.7}>
-                  <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
-                    GET TO KNOW US
-                  </Button>
-                </SlideUp>
+                <Button className="mt-4 font-semibold rounded-md bg-teal-400 ">
+                  GET TO KNOW US
+                </Button>
               </Link>
             </div>
           </div>

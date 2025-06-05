@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import FooterComponent from "./FooterComponent";
 import Loading from "@/app/loading";
 import Blog from "./Blog";
+import SlideUp from "../motions/SlideUp";
 
 export interface IBlog {
   title: string;
@@ -26,7 +27,11 @@ const Blogs: React.FC = () => {
       </Hero>
       <div className="max-w-7xl mx-auto mt-12 p-4 lg:grid grid-cols-2 gap-4">
         {blogs ? (
-          blogs.map((blog: IBlog, index) => <Blog blog={blog} key={index} />)
+          blogs.map((blog: IBlog, index) => (
+            <SlideUp key={index} delay={index * 0.1}>
+              <Blog blog={blog} />
+            </SlideUp>
+          ))
         ) : (
           <Loading />
         )}

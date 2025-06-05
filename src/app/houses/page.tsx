@@ -17,6 +17,7 @@ import {
   searchTerm,
   status,
 } from "@/redux/slice/searchAndFilterSlice";
+import SlideUp from "@/components/motions/SlideUp";
 
 const Houses = () => {
   const query: Record<string, any> = {};
@@ -258,7 +259,9 @@ const Houses = () => {
         <div className=" mx-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
           {isLoading &&
             loadingNumber?.map((x, index) => (
-              <ProductCartLoading key={index} />
+              <SlideUp key={index} delay={index * 0.1}>
+                <ProductCartLoading />
+              </SlideUp>
             ))}
         </div>
         {houses?.length ? (
